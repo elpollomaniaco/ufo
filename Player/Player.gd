@@ -7,7 +7,7 @@ export var toggle_tractor_beam: bool = false
 
 
 func _ready():
-	$TractorBeam.hide()
+	_deactivate_tractor_beam()
 
 
 func _physics_process(delta):
@@ -43,10 +43,12 @@ func _control_tractor_beam():
 
 func _activate_tractor_beam():
 	$TractorBeam.show()
+	$TractorBeam.set_physics_process(true)
 
 
 func _deactivate_tractor_beam():
 	$TractorBeam.hide()
+	$TractorBeam.set_physics_process(false)
 
 
 func _toggle_tractor_beam():
