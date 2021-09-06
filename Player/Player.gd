@@ -2,6 +2,12 @@ extends RigidBody
 
 
 export var acceleration: int = 2000
+# Make tractor beam toggle
+export var toggle_tractor_beam: bool = false
+
+
+func _ready():
+	$TractorBeam.hide()
 
 
 func _physics_process(delta):
@@ -19,3 +25,32 @@ func _physics_process(delta):
 	if direction != Vector3.ZERO:
 		direction = direction.normalized()
 		add_central_force(direction * acceleration)
+
+
+func _process(delta):
+	_control_tractor_beam()
+
+func _control_tractor_beam():
+	if toggle_tractor_beam:
+		if Input.is_action_just_pressed("player_tractor_beam"):
+			_toggle_tractor_beam()
+	else:
+		if Input.is_action_just_pressed("player_tractor_beam"):
+			_activate_tractor_beam()
+		if Input.is_action_just_released("player_tractor_beam"):
+			_deactivate_tractor_beam()
+
+
+func _activate_tractor_beam():
+	$TractorBeam.show()
+
+
+func _deactivate_tractor_beam():
+	$TractorBeam.hide()
+
+
+func _toggle_tractor_beam():
+	if $TractorBeam.visible:
+		_deactivate_tractor_beam()
+	else:
+		_activate_tractor_beam()
