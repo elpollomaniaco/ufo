@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Player/TractorBeam.gd" type="Script" id=2]
+[ext_resource path="res://Player/Hatch.gd" type="Script" id=3]
 
 [sub_resource type="CylinderMesh" id=1]
 
@@ -25,6 +26,9 @@ height = 20.0
 [sub_resource type="SpatialMaterial" id=7]
 flags_transparent = true
 albedo_color = Color( 0, 1, 1, 0.25098 )
+
+[sub_resource type="CylinderShape" id=8]
+height = 0.5
 
 [node name="Player" type="RigidBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0 )
@@ -77,5 +81,15 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0 )
 mesh = SubResource( 6 )
 material/0 = SubResource( 7 )
 
+[node name="Hatch" type="Area" parent="."]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Hatch"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0 )
+shape = SubResource( 8 )
+
 [connection signal="body_entered" from="TractorBeam" to="TractorBeam" method="_on_TractorBeam_body_entered"]
 [connection signal="body_exited" from="TractorBeam" to="TractorBeam" method="_on_TractorBeam_body_exited"]
+[connection signal="body_entered" from="Hatch" to="Hatch" method="_on_Hatch_body_entered"]
