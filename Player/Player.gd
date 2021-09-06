@@ -80,3 +80,7 @@ func try_to_drain_energy(amount: float) -> bool:
 
 func add_points_to_score(points: int):
 	_score += points
+
+
+func get_ground_position() -> Vector3:
+	return Vector3(translation.x, 0, translation.z)
