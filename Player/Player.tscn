@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
+[ext_resource path="res://Player/TractorBeam.gd" type="Script" id=2]
 
 [sub_resource type="CylinderMesh" id=1]
 
@@ -27,6 +28,7 @@ albedo_color = Color( 0, 1, 1, 0.25098 )
 
 [node name="Player" type="RigidBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0 )
+collision_mask = 0
 mass = 100.0
 gravity_scale = 0.0
 axis_lock_linear_y = true
@@ -62,6 +64,10 @@ projection = 1
 size = 25.0
 
 [node name="TractorBeam" type="Area" parent="."]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource( 2 )
+power = 1000
 
 [node name="CollisionShape" type="CollisionShape" parent="TractorBeam"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0 )
@@ -71,3 +77,6 @@ shape = SubResource( 5 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0 )
 mesh = SubResource( 6 )
 material/0 = SubResource( 7 )
+
+[connection signal="body_entered" from="TractorBeam" to="TractorBeam" method="_on_TractorBeam_body_entered"]
+[connection signal="body_exited" from="TractorBeam" to="TractorBeam" method="_on_TractorBeam_body_exited"]
