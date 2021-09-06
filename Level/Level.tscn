@@ -453,3 +453,7 @@ material/0 = SubResource( 6 )
 [node name="Collectibles" type="Spatial" parent="."]
 
 [node name="Gold" parent="Collectibles" instance=ExtResource( 2 )]
+
+[node name="Gold2" parent="Collectibles" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.67318, 0, 0 )
+points = 50
