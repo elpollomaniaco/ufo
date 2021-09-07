@@ -1,11 +1,13 @@
 extends RigidBody
 
+export var _max_health: float = 100
 export var acceleration: int = 2000
 # Make tractor beam toggle
 export var toggle_tractor_beam: bool = false
 export var max_energy: float = 100.0
 export var energy_regeneration: float = 1.0
 
+var _current_health: float
 var _current_energy: float
 var _score: int = 0
 
@@ -13,6 +15,7 @@ var _score: int = 0
 func _ready():
 	_deactivate_tractor_beam()
 	_current_energy = max_energy
+	_current_health = _max_health
 
 
 func _physics_process(delta):
@@ -80,3 +83,17 @@ func try_to_drain_energy(amount: float) -> bool:
 
 func add_points_to_score(points: int):
 	_score += points
+
+
+func get_ground_position() -> Vector3:
+	return Vector3(translation.x, 0, translation.z)
+
+
+func take_damage(damage):
+	_current_health -= damage
+	if _current_health < 0:
+		_die()
+
+
+func _die():
+	queue_free()
