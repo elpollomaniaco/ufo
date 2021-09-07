@@ -29,4 +29,5 @@ func _on_SpawnTimer_timeout():
 
 func _pause_game():
 	$PauseMenu.show()
+	$PauseMenu/Buttons/Resume.grab_focus()
 	get_tree().paused = true

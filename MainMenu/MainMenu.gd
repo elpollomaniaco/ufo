@@ -1,6 +1,10 @@
 extends Control
 
 
+func _ready():
+	$Buttons/Start.grab_focus()
+
+
 func _on_Start_pressed():
 	get_tree().change_scene("res://Level/Level.tscn")
 
