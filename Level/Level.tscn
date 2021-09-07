@@ -469,3 +469,7 @@ points = 50
 [node name="Enemy4" parent="." instance=ExtResource( 3 )]
 
 [node name="UI" parent="." instance=ExtResource( 4 )]
+
+[connection signal="energy_changed" from="Player" to="UI" method="_on_Player_energy_changed"]
+[connection signal="health_changed" from="Player" to="UI" method="_on_Player_health_changed"]
+[connection signal="score_changed" from="Player" to="UI" method="_on_Player_score_changed"]
