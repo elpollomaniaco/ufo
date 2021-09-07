@@ -1,10 +1,9 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Collectible/Gold.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Enemy/Enemy.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Font/Montserrat-Bold.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://UI/UI.gd" type="Script" id=5]
+[ext_resource path="res://UI/UI.tscn" type="PackedScene" id=4]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.345098, 0.568627, 0.25098, 1 )
@@ -23,19 +22,6 @@ albedo_color = Color( 0.603922, 0, 1, 1 )
 
 [sub_resource type="SpatialMaterial" id=6]
 albedo_color = Color( 1, 0.364706, 0, 1 )
-
-[sub_resource type="DynamicFont" id=11]
-size = 28
-font_data = ExtResource( 4 )
-
-[sub_resource type="Theme" id=12]
-default_font = SubResource( 11 )
-
-[sub_resource type="StyleBoxFlat" id=9]
-bg_color = Color( 0.686275, 0.0941176, 0.0941176, 1 )
-
-[sub_resource type="StyleBoxFlat" id=10]
-bg_color = Color( 0, 0.811765, 1, 1 )
 
 [node name="Level" type="Node"]
 
@@ -482,72 +468,4 @@ points = 50
 
 [node name="Enemy4" parent="." instance=ExtResource( 3 )]
 
-[node name="UI" type="Control" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -0.661743
-margin_right = -0.661743
-theme = SubResource( 12 )
-script = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Health" type="ProgressBar" parent="UI"]
-margin_left = 50.0
-margin_top = 50.0
-margin_right = 250.0
-margin_bottom = 80.0
-custom_styles/fg = SubResource( 9 )
-value = 100.0
-percent_visible = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Energy" type="ProgressBar" parent="UI"]
-margin_left = 50.0
-margin_top = 100.0
-margin_right = 250.0
-margin_bottom = 130.0
-custom_styles/fg = SubResource( 10 )
-value = 100.0
-percent_visible = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Score" type="Control" parent="UI"]
-margin_left = 1646.0
-margin_top = 50.0
-margin_right = 1880.0
-margin_bottom = 90.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="UI/Score"]
-anchor_top = 0.5
-anchor_bottom = 0.5
-margin_top = -18.0
-margin_right = 90.0
-margin_bottom = 18.0
-text = "Score:"
-
-[node name="Value" type="Label" parent="UI/Score"]
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = -116.0
-margin_top = -18.0
-margin_bottom = 18.0
-text = "0"
-align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[connection signal="energy_changed" from="Player" to="UI" method="_on_Player_energy_changed"]
-[connection signal="health_changed" from="Player" to="UI" method="_on_Player_health_changed"]
-[connection signal="score_changed" from="Player" to="UI" method="_on_Player_score_changed"]
+[node name="UI" parent="." instance=ExtResource( 4 )]
