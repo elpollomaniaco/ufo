@@ -11,8 +11,6 @@ var _is_reloading: bool = false
 
 
 func _ready():
-	var start = Vector3(0,0,0)
-	initialize(start, get_owner().get_node("Player"))
 	# For making faster distance comparisons and avoiding sqrt
 	_moving_threshold_distance = pow(_attack_range, 2)
 
@@ -52,7 +50,7 @@ func _fire_projectile(player_position):
 	direction = direction.normalized()
 	
 	var projectile = _projectile.instance()
-	owner.add_child(projectile)
+	get_tree().get_root().get_node("Level").add_child(projectile)
 	
 	projectile.translation = translation
 	projectile.add_central_force(direction * _fire_power)
