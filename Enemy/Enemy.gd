@@ -3,7 +3,7 @@ extends RigidBody
 export var _acceleration: int = 500
 export var _attack_range: int = 10
 export var _projectile: PackedScene
-export var _fire_power: int = 20000
+export var _fire_power: int = 25000
 
 var _player_node
 var _moving_threshold_distance: int
@@ -23,11 +23,13 @@ func initialize(starting_position, player_node):
 
 
 func _physics_process(delta):
-	var target_position = _player_node.get_ground_position()
-	if transform.origin.distance_squared_to(target_position) > _moving_threshold_distance:
-		_follow_player(target_position)
-	else:
-		_attack_player(_player_node.translation)
+	# Validity check to prevent error when calling queue_free() on player
+	if is_instance_valid(_player_node):
+		var target_position = _player_node.get_ground_position()
+		if transform.origin.distance_squared_to(target_position) > _moving_threshold_distance:
+			_follow_player(target_position)
+		else:
+			_attack_player(_player_node.translation)
 
 
 func _follow_player(player_position):
