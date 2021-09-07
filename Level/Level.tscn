@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Level/Level.gd" type="Script" id=2]
@@ -18,6 +18,35 @@ extents = Vector3( 75, 1, 75 )
 [sub_resource type="BoxShape" id=4]
 extents = Vector3( 50, 15, 1 )
 
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 5.5, 2.5, 3.5 )
+
+[sub_resource type="CubeMesh" id=6]
+size = Vector3( 11, 5, 7 )
+
+[sub_resource type="SpatialMaterial" id=7]
+albedo_color = Color( 0.321569, 0.203922, 0.054902, 1 )
+
+[sub_resource type="SpatialMaterial" id=8]
+albedo_color = Color( 0.572549, 0.345098, 0.0509804, 1 )
+
+[sub_resource type="CylinderMesh" id=9]
+material = SubResource( 8 )
+top_radius = 0.3
+bottom_radius = 0.5
+height = 4.0
+
+[sub_resource type="SphereMesh" id=10]
+radius = 3.0
+height = 4.0
+
+[sub_resource type="SpatialMaterial" id=11]
+albedo_color = Color( 0.341176, 0.721569, 0.0823529, 1 )
+
+[sub_resource type="CylinderShape" id=12]
+radius = 0.5
+height = 5.0
+
 [node name="Level" type="Node"]
 script = ExtResource( 2 )
 _enemy_scene = ExtResource( 3 )
@@ -26,7 +55,7 @@ _enemy_scene = ExtResource( 3 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0 )
 
 [node name="Ground" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -1, 0 )
 collision_layer = 2
 collision_mask = 0
 __meta__ = {
@@ -59,6 +88,291 @@ shape = SubResource( 4 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 50 )
 shape = SubResource( 4 )
 
+[node name="Props" type="Spatial" parent="Ground"]
+
+[node name="Barn" type="StaticBody" parent="Ground/Props"]
+transform = Transform( 0.855419, 0, 0.517937, 0, 1, 0, -0.517937, 0, 0.855419, 25.5366, 3.5, -52.7876 )
+collision_layer = 2
+collision_mask = 0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="Ground/Props/Barn"]
+shape = SubResource( 5 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Ground/Props/Barn"]
+mesh = SubResource( 6 )
+material/0 = SubResource( 7 )
+
+[node name="Barn2" type="StaticBody" parent="Ground/Props"]
+transform = Transform( 0.961204, 0, -0.275839, 0, 1, 0, 0.275839, 0, 0.961204, -18.5043, 3.5, 29.0251 )
+collision_layer = 2
+collision_mask = 0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="Ground/Props/Barn2"]
+shape = SubResource( 5 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="Ground/Props/Barn2"]
+mesh = SubResource( 6 )
+material/0 = SubResource( 7 )
+
+[node name="Barn3" type="StaticBody" parent="Ground/Props"]
+transform = Transform( 0.480178, 0, -0.877171, 0, 1, 0, 0.877171, 0, 0.480178, -39.9762, 3.5, -34.9205 )
+collision_layer = 2
+collision_mask = 0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="Ground/Props/Barn3"]
+shape = SubResource( 5 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Ground/Props/Barn3"]
+mesh = SubResource( 6 )
+material/0 = SubResource( 7 )
+
+[node name="Barn4" type="StaticBody" parent="Ground/Props"]
+transform = Transform( 0.956249, 0, 0.292555, 0, 1, 0, -0.292555, 0, 0.956249, 61.8978, 3.5, 22.9126 )
+collision_layer = 2
+collision_mask = 0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape" type="CollisionShape" parent="Ground/Props/Barn4"]
+shape = SubResource( 5 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Ground/Props/Barn4"]
+mesh = SubResource( 6 )
+material/0 = SubResource( 7 )
+
+[node name="Tree" type="StaticBody" parent="Ground/Props"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 3, 0 )
+collision_layer = 2
+collision_mask = 0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="Ground/Props/Tree"]
+mesh = SubResource( 9 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="Ground/Props/Tree"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+mesh = SubResource( 10 )
+material/0 = SubResource( 11 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Ground/Props/Tree"]
+shape = SubResource( 12 )
+
+[node name="Tree2" type="StaticBody" parent="Ground/Props"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 34.2163, 3, 6.16349 )
+collision_layer = 2
+collision_mask = 0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="Ground/Props/Tree2"]
+mesh = SubResource( 9 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="Ground/Props/Tree2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+mesh = SubResource( 10 )
+material/0 = SubResource( 11 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Ground/Props/Tree2"]
+shape = SubResource( 12 )
+
+[node name="Tree3" type="StaticBody" parent="Ground/Props"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.8385, 3, 8.78368 )
+collision_layer = 2
+collision_mask = 0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="Ground/Props/Tree3"]
+mesh = SubResource( 9 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="Ground/Props/Tree3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+mesh = SubResource( 10 )
+material/0 = SubResource( 11 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Ground/Props/Tree3"]
+shape = SubResource( 12 )
+
+[node name="Tree4" type="StaticBody" parent="Ground/Props"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -42.3349, 3.00001, 1.63657 )
+collision_layer = 2
+collision_mask = 0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="Ground/Props/Tree4"]
+mesh = SubResource( 9 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="Ground/Props/Tree4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+mesh = SubResource( 10 )
+material/0 = SubResource( 11 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Ground/Props/Tree4"]
+shape = SubResource( 12 )
+
+[node name="Tree5" type="StaticBody" parent="Ground/Props"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -35.4867, 3, 7.70259 )
+collision_layer = 2
+collision_mask = 0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="Ground/Props/Tree5"]
+mesh = SubResource( 9 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="Ground/Props/Tree5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+mesh = SubResource( 10 )
+material/0 = SubResource( 11 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Ground/Props/Tree5"]
+shape = SubResource( 12 )
+
+[node name="Tree6" type="StaticBody" parent="Ground/Props"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.14482, 3, -31.7682 )
+collision_layer = 2
+collision_mask = 0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="Ground/Props/Tree6"]
+mesh = SubResource( 9 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="Ground/Props/Tree6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+mesh = SubResource( 10 )
+material/0 = SubResource( 11 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Ground/Props/Tree6"]
+shape = SubResource( 12 )
+
+[node name="Tree7" type="StaticBody" parent="Ground/Props"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.82148, 3, -33.1586 )
+collision_layer = 2
+collision_mask = 0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="Ground/Props/Tree7"]
+mesh = SubResource( 9 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="Ground/Props/Tree7"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+mesh = SubResource( 10 )
+material/0 = SubResource( 11 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Ground/Props/Tree7"]
+shape = SubResource( 12 )
+
+[node name="Tree8" type="StaticBody" parent="Ground/Props"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.93001, 3, -24.5458 )
+collision_layer = 2
+collision_mask = 0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="Ground/Props/Tree8"]
+mesh = SubResource( 9 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="Ground/Props/Tree8"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+mesh = SubResource( 10 )
+material/0 = SubResource( 11 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Ground/Props/Tree8"]
+shape = SubResource( 12 )
+
+[node name="Tree9" type="StaticBody" parent="Ground/Props"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.1183, 3, 27.0997 )
+collision_layer = 2
+collision_mask = 0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="Ground/Props/Tree9"]
+mesh = SubResource( 9 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="Ground/Props/Tree9"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+mesh = SubResource( 10 )
+material/0 = SubResource( 11 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Ground/Props/Tree9"]
+shape = SubResource( 12 )
+
+[node name="Tree10" type="StaticBody" parent="Ground/Props"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.0479, 3, 24.1128 )
+collision_layer = 2
+collision_mask = 0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="Ground/Props/Tree10"]
+mesh = SubResource( 9 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="Ground/Props/Tree10"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+mesh = SubResource( 10 )
+material/0 = SubResource( 11 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Ground/Props/Tree10"]
+shape = SubResource( 12 )
+
+[node name="Tree11" type="StaticBody" parent="Ground/Props"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5534, 3, -36.9928 )
+collision_layer = 2
+collision_mask = 0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="Ground/Props/Tree11"]
+mesh = SubResource( 9 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="Ground/Props/Tree11"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+mesh = SubResource( 10 )
+material/0 = SubResource( 11 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Ground/Props/Tree11"]
+shape = SubResource( 12 )
+
 [node name="Enemies" type="Spatial" parent="."]
 
 [node name="SpawnTimer" type="Timer" parent="Enemies"]
@@ -71,22 +385,22 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
 [node name="SpawnPoint" type="Position3D" parent="Enemies/SpawnPoints" groups=[
 "EnemySpawnPoints",
 ]]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 65, 0, 65 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 63.4327, 0, 25.8177 )
 
 [node name="SpawnPoint2" type="Position3D" parent="Enemies/SpawnPoints" groups=[
 "EnemySpawnPoints",
 ]]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 65, 0, -65 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.6499, 0, -47.8172 )
 
 [node name="SpawnPoint3" type="Position3D" parent="Enemies/SpawnPoints" groups=[
 "EnemySpawnPoints",
 ]]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -65, 0, 65 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17.685, 0, 26.6499 )
 
 [node name="SpawnPoint4" type="Position3D" parent="Enemies/SpawnPoints" groups=[
 "EnemySpawnPoints",
 ]]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -65, 0, -65 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26.6499, 0, -27.148 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 
