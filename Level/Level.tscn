@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Collectible/Gold.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Enemy/Enemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://UI/UI.tscn" type="PackedScene" id=4]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.345098, 0.568627, 0.25098, 1 )
@@ -466,3 +467,9 @@ points = 50
 [node name="Enemy3" parent="." instance=ExtResource( 3 )]
 
 [node name="Enemy4" parent="." instance=ExtResource( 3 )]
+
+[node name="UI" parent="." instance=ExtResource( 4 )]
+
+[connection signal="energy_changed" from="Player" to="UI" method="_on_Player_energy_changed"]
+[connection signal="health_changed" from="Player" to="UI" method="_on_Player_health_changed"]
+[connection signal="score_changed" from="Player" to="UI" method="_on_Player_score_changed"]

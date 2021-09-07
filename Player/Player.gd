@@ -1,5 +1,9 @@
 extends RigidBody
 
+signal health_changed
+signal energy_changed
+signal score_changed
+
 export var _max_health: float = 100
 export var acceleration: int = 2000
 # Make tractor beam toggle
@@ -71,11 +75,13 @@ func _regenerate_energy(delta):
 	# Don't waste this one or two cycles if energy is already fully loaded
 	if _current_energy < max_energy:
 		_current_energy = min(_current_energy + (energy_regeneration * delta), max_energy)
+		emit_signal("energy_changed", _current_energy)
 
 
 func try_to_drain_energy(amount: float) -> bool:
 	if _current_energy > amount:
 		_current_energy -= amount
+		emit_signal("energy_changed", _current_energy)
 		return true
 	else:
 		return false
@@ -83,6 +89,7 @@ func try_to_drain_energy(amount: float) -> bool:
 
 func add_points_to_score(points: int):
 	_score += points
+	emit_signal("score_changed", _score)
 
 
 func get_ground_position() -> Vector3:
@@ -91,6 +98,7 @@ func get_ground_position() -> Vector3:
 
 func take_damage(damage):
 	_current_health -= damage
+	emit_signal("health_changed", _current_health)
 	if _current_health < 0:
 		_die()
 
