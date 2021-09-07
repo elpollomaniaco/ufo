@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Font/Montserrat-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Font/Montserrat-Bold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://MainMenu/MainMenu.gd" type="Script" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
@@ -18,6 +19,7 @@ font_data = ExtResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = SubResource( 2 )
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -46,19 +48,23 @@ __meta__ = {
 }
 
 [node name="Start" type="Button" parent="Buttons"]
-margin_top = 174.0
+margin_top = 203.0
 margin_right = 500.0
-margin_bottom = 211.0
+margin_bottom = 240.0
 text = "Start"
 
 [node name="Options" type="Button" parent="Buttons"]
+visible = false
 margin_top = 231.0
 margin_right = 500.0
 margin_bottom = 268.0
 text = "Options"
 
 [node name="Exit" type="Button" parent="Buttons"]
-margin_top = 288.0
+margin_top = 260.0
 margin_right = 500.0
-margin_bottom = 325.0
+margin_bottom = 297.0
 text = "Exit"
+
+[connection signal="pressed" from="Buttons/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="Buttons/Exit" to="." method="_on_Exit_pressed"]
