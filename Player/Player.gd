@@ -100,7 +100,7 @@ func get_ground_position() -> Vector3:
 func take_damage(damage):
 	_current_health -= damage
 	emit_signal("health_changed", _current_health)
-	if _current_health < 0:
+	if _current_health <= 0:
 		_die()
 
 
