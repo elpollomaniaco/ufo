@@ -38,8 +38,11 @@ func _on_Player_player_died():
 	_game_over()
 
 
+func _on_Player_last_collectible_collected():
+	_game_over()
+
+
 func _game_over():
 	$GameOver.show()
 	$GameOver.set_outcome($Player.get_score())
 	get_tree().paused = true
-	

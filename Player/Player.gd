@@ -4,6 +4,7 @@ signal health_changed
 signal energy_changed
 signal score_changed
 signal player_died
+signal last_collectible_collected
 
 export var _max_health: float = 100
 export var acceleration: int = 2000
