@@ -32,3 +32,14 @@ func _pause_game():
 	$PauseMenu.set_process(true)
 	$PauseMenu/Buttons/Resume.grab_focus()
 	get_tree().paused = true
+
+
+func _on_Player_player_died():
+	_game_over()
+
+
+func _game_over():
+	$GameOver.show()
+	$GameOver.set_outcome($Player.get_score())
+	get_tree().paused = true
+	

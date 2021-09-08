@@ -115,4 +115,9 @@ func _die():
 	camera.set_owner(new_parent)
 	camera.translation = old_position
 	
+	emit_signal("player_died")
 	queue_free()
+
+
+func get_score() -> int:
+	return _score
