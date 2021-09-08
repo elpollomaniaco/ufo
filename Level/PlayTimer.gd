@@ -1,0 +1,9 @@
+extends Timer
+
+signal play_time_changed
+
+var _play_time: int = 0
+
+func _on_PlayTimer_timeout():
+	_play_time += 1
+	emit_signal("play_time_changed", _play_time)

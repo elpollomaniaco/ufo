@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Level/Level.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Collectible/Sheep.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Level/PauseMenu.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Level/GameOver.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Level/PlayTimer.gd" type="Script" id=9]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.345098, 0.568627, 0.25098, 1 )
@@ -64,6 +65,10 @@ extents = Vector3( 0.05, 0.25, 1 )
 [node name="Level" type="Node"]
 script = ExtResource( 2 )
 _enemy_scene = ExtResource( 3 )
+
+[node name="PlayTimer" type="Timer" parent="."]
+autostart = true
+script = ExtResource( 9 )
 
 [node name="Sun" type="DirectionalLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0 )
@@ -681,6 +686,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26.6499, 0, -27.148 )
 [node name="GameOver" parent="." instance=ExtResource( 8 )]
 visible = false
 
+[connection signal="play_time_changed" from="PlayTimer" to="UI" method="_on_PlayTimer_play_time_changed"]
+[connection signal="timeout" from="PlayTimer" to="PlayTimer" method="_on_PlayTimer_timeout"]
 [connection signal="timeout" from="Enemies/SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
 [connection signal="energy_changed" from="Player" to="UI" method="_on_Player_energy_changed"]
 [connection signal="health_changed" from="Player" to="UI" method="_on_Player_health_changed"]
