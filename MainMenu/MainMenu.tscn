@@ -12,7 +12,7 @@ font_data = ExtResource( 1 )
 default_font = SubResource( 1 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 72
+size = 96
 font_data = ExtResource( 2 )
 
 [node name="MainMenu" type="Control"]
@@ -24,13 +24,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
-margin_top = 50.0
-margin_bottom = 31.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="."]
+anchor_right = 1.0
+margin_top = 200.0
+margin_bottom = 289.0
 custom_fonts/font = SubResource( 3 )
 text = "U.F.O."
 align = 1
+uppercase = true
 
 [node name="Buttons" type="VBoxContainer" parent="."]
 anchor_left = 0.5
