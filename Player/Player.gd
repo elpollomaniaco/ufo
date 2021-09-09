@@ -3,6 +3,8 @@ extends RigidBody
 signal health_changed
 signal energy_changed
 signal score_changed
+signal player_died
+signal last_collectible_collected
 
 export var _max_health: float = 100
 export var acceleration: int = 2000
@@ -99,9 +101,28 @@ func get_ground_position() -> Vector3:
 func take_damage(damage):
 	_current_health -= damage
 	emit_signal("health_changed", _current_health)
-	if _current_health < 0:
+	if _current_health <= 0:
 		_die()
 
 
 func _die():
+	# Reparent camera so it won't be freed with player
+	var camera = $AimMarker/CameraArm
+	var old_position = camera.global_transform.origin
+	var old_parent = $AimMarker
+	var new_parent = get_tree().get_root().get_node("Level")
+	old_parent.remove_child(camera)
+	new_parent.add_child(camera)
+	camera.set_owner(new_parent)
+	camera.translation = old_position
+	
+	emit_signal("player_died")
 	queue_free()
+
+
+func get_score() -> int:
+	return _score
+
+
+func get_health() -> float:
+	return _current_health

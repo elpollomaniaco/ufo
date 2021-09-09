@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Level/Level.gd" type="Script" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://Collectible/Cow.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Collectible/Sheep.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Level/PauseMenu.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Level/GameOver.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Level/PlayTimer.gd" type="Script" id=9]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.345098, 0.568627, 0.25098, 1 )
@@ -63,6 +65,10 @@ extents = Vector3( 0.05, 0.25, 1 )
 [node name="Level" type="Node"]
 script = ExtResource( 2 )
 _enemy_scene = ExtResource( 3 )
+
+[node name="PlayTimer" type="Timer" parent="."]
+autostart = true
+script = ExtResource( 9 )
 
 [node name="Sun" type="DirectionalLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0 )
@@ -517,79 +523,129 @@ shape = SubResource( 15 )
 
 [node name="Collectibles" type="Spatial" parent="Ground"]
 
-[node name="Cow" parent="Ground/Collectibles" instance=ExtResource( 5 )]
+[node name="Cow" parent="Ground/Collectibles" groups=[
+"Collectible",
+] instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -39.8194, 1.5, -10.3353 )
 
-[node name="Cow2" parent="Ground/Collectibles" instance=ExtResource( 5 )]
+[node name="Cow2" parent="Ground/Collectibles" groups=[
+"Collectible",
+] instance=ExtResource( 5 )]
 transform = Transform( 0.735908, 0, -0.677081, 0, 1, 0, 0.677081, 0, 0.735908, -34.563, 1.5, -7.76743 )
 
-[node name="Cow3" parent="Ground/Collectibles" instance=ExtResource( 5 )]
+[node name="Cow3" parent="Ground/Collectibles" groups=[
+"Collectible",
+] instance=ExtResource( 5 )]
 transform = Transform( 0.232478, 0, -0.972602, 0, 1, 0, 0.972602, 0, 0.232478, -31.8127, 1.5, -18.7605 )
 
-[node name="Cow4" parent="Ground/Collectibles" instance=ExtResource( 5 )]
+[node name="Cow4" parent="Ground/Collectibles" groups=[
+"Collectible",
+] instance=ExtResource( 5 )]
 transform = Transform( 0.780736, 0, -0.624861, 0, 1, 0, 0.624861, 0, 0.780736, 38.4576, 1.5, 13.6936 )
 
-[node name="Cow5" parent="Ground/Collectibles" instance=ExtResource( 5 )]
+[node name="Cow5" parent="Ground/Collectibles" groups=[
+"Collectible",
+] instance=ExtResource( 5 )]
 transform = Transform( -0.368238, 0, -0.929732, 0, 1, 0, 0.929732, 0, -0.368238, 38.2032, 1.5, 19.0364 )
 
-[node name="Cow6" parent="Ground/Collectibles" instance=ExtResource( 5 )]
+[node name="Cow6" parent="Ground/Collectibles" groups=[
+"Collectible",
+] instance=ExtResource( 5 )]
 transform = Transform( -0.0265083, 0, -0.999649, 0, 1, 0, 0.999649, 0, -0.0265083, -29.2173, 1.5, 40.5346 )
 
-[node name="Cow7" parent="Ground/Collectibles" instance=ExtResource( 5 )]
+[node name="Cow7" parent="Ground/Collectibles" groups=[
+"Collectible",
+] instance=ExtResource( 5 )]
 transform = Transform( 0.523406, 0, -0.852083, 0, 1, 0, 0.852083, 0, 0.523406, -25.9098, 1.5, 38.3721 )
 
-[node name="Sheep" parent="Ground/Collectibles" instance=ExtResource( 6 )]
+[node name="Sheep" parent="Ground/Collectibles" groups=[
+"Collectible",
+] instance=ExtResource( 6 )]
 transform = Transform( 0.786677, 0, 0.617365, 0, 1, 0, -0.617365, 0, 0.786677, -32.057, 1.25, -13.611 )
 
-[node name="Sheep2" parent="Ground/Collectibles" instance=ExtResource( 6 )]
+[node name="Sheep2" parent="Ground/Collectibles" groups=[
+"Collectible",
+] instance=ExtResource( 6 )]
 transform = Transform( -0.862425, 0, 0.506184, 0, 1, 0, -0.506184, 0, -0.862425, -39.4446, 1.25, -15.63 )
 
-[node name="Sheep3" parent="Ground/Collectibles" instance=ExtResource( 6 )]
+[node name="Sheep3" parent="Ground/Collectibles" groups=[
+"Collectible",
+] instance=ExtResource( 6 )]
 transform = Transform( -0.0500352, 0, 0.998747, 0, 1, 0, -0.998747, 0, -0.0500352, -36.2555, 1.25, -12.6703 )
 
-[node name="Sheep4" parent="Ground/Collectibles" instance=ExtResource( 6 )]
+[node name="Sheep4" parent="Ground/Collectibles" groups=[
+"Collectible",
+] instance=ExtResource( 6 )]
 transform = Transform( -0.595706, 0, 0.803202, 0, 1, 0, -0.803202, 0, -0.595706, -35.7049, 1.25, -16.2265 )
 
-[node name="Sheep5" parent="Ground/Collectibles" instance=ExtResource( 6 )]
+[node name="Sheep5" parent="Ground/Collectibles" groups=[
+"Collectible",
+] instance=ExtResource( 6 )]
 transform = Transform( -0.999801, 0, -0.0199304, 0, 1, 0, 0.0199304, 0, -0.999801, -29.7627, 1.25, -16.1806 )
 
-[node name="Sheep6" parent="Ground/Collectibles" instance=ExtResource( 6 )]
+[node name="Sheep6" parent="Ground/Collectibles" groups=[
+"Collectible",
+] instance=ExtResource( 6 )]
 transform = Transform( -0.999801, 0, -0.0199304, 0, 1, 0, 0.0199304, 0, -0.999801, 1.49725, 1.25, 6.77252 )
 
-[node name="Sheep7" parent="Ground/Collectibles" instance=ExtResource( 6 )]
+[node name="Sheep7" parent="Ground/Collectibles" groups=[
+"Collectible",
+] instance=ExtResource( 6 )]
 transform = Transform( -0.798646, 0, 0.601801, 0, 1, 0, -0.601801, 0, -0.798646, 1.49725, 1.25, -2.62733 )
 
-[node name="Sheep8" parent="Ground/Collectibles" instance=ExtResource( 6 )]
+[node name="Sheep8" parent="Ground/Collectibles" groups=[
+"Collectible",
+] instance=ExtResource( 6 )]
 transform = Transform( -0.161018, 0, 0.986951, 0, 1, 0, -0.986951, 0, -0.161018, 4.55766, 1.25, 2.4005 )
 
-[node name="Sheep9" parent="Ground/Collectibles" instance=ExtResource( 6 )]
+[node name="Sheep9" parent="Ground/Collectibles" groups=[
+"Collectible",
+] instance=ExtResource( 6 )]
 transform = Transform( -0.516668, 0, 0.856186, 0, 1, 0, -0.856186, 0, -0.516668, 33.413, 1.25, -32.3571 )
 
-[node name="Sheep10" parent="Ground/Collectibles" instance=ExtResource( 6 )]
+[node name="Sheep10" parent="Ground/Collectibles" groups=[
+"Collectible",
+] instance=ExtResource( 6 )]
 transform = Transform( -0.877398, 0, 0.479764, 0, 1, 0, -0.479764, 0, -0.877398, 30.5712, 1.25, -22.9572 )
 
-[node name="Sheep11" parent="Ground/Collectibles" instance=ExtResource( 6 )]
+[node name="Sheep11" parent="Ground/Collectibles" groups=[
+"Collectible",
+] instance=ExtResource( 6 )]
 transform = Transform( -0.663313, 0, 0.748343, 0, 1, 0, -0.748343, 0, -0.663313, 27.5108, 1.25, -31.0455 )
 
-[node name="Sheep12" parent="Ground/Collectibles" instance=ExtResource( 6 )]
+[node name="Sheep12" parent="Ground/Collectibles" groups=[
+"Collectible",
+] instance=ExtResource( 6 )]
 transform = Transform( -0.944491, 0, 0.328537, 0, 1, 0, -0.328537, 0, -0.944491, 31.6642, 1.25, -28.2037 )
 
-[node name="Sheep13" parent="Ground/Collectibles" instance=ExtResource( 6 )]
+[node name="Sheep13" parent="Ground/Collectibles" groups=[
+"Collectible",
+] instance=ExtResource( 6 )]
 transform = Transform( -0.301288, 0, 0.953533, 0, 1, 0, -0.953533, 0, -0.301288, 36.4734, 1.25, -28.6409 )
 
-[node name="Sheep14" parent="Ground/Collectibles" instance=ExtResource( 6 )]
+[node name="Sheep14" parent="Ground/Collectibles" groups=[
+"Collectible",
+] instance=ExtResource( 6 )]
 transform = Transform( -0.301288, 0, 0.953533, 0, 1, 0, -0.953533, 0, -0.301288, 35.599, 1.25, 21.856 )
 
-[node name="Sheep15" parent="Ground/Collectibles" instance=ExtResource( 6 )]
+[node name="Sheep15" parent="Ground/Collectibles" groups=[
+"Collectible",
+] instance=ExtResource( 6 )]
 transform = Transform( -0.615304, 0, 0.78829, 0, 1, 0, -0.78829, 0, -0.615304, 39.3152, 1.25, 24.4792 )
 
-[node name="Sheep16" parent="Ground/Collectibles" instance=ExtResource( 6 )]
+[node name="Sheep16" parent="Ground/Collectibles" groups=[
+"Collectible",
+] instance=ExtResource( 6 )]
 transform = Transform( -0.615304, 0, 0.78829, 0, 1, 0, -0.78829, 0, -0.615304, 34.9432, 1.25, 16.391 )
 
-[node name="Sheep17" parent="Ground/Collectibles" instance=ExtResource( 6 )]
+[node name="Sheep17" parent="Ground/Collectibles" groups=[
+"Collectible",
+] instance=ExtResource( 6 )]
 transform = Transform( 0.906485, 0, 0.422238, 0, 1, 0, -0.422238, 0, 0.906485, 41.5012, 1.25, 16.1724 )
 
-[node name="Sheep18" parent="Ground/Collectibles" instance=ExtResource( 6 )]
+[node name="Sheep18" parent="Ground/Collectibles" groups=[
+"Collectible",
+] instance=ExtResource( 6 )]
 transform = Transform( 0.906485, 0, 0.422238, 0, 1, 0, -0.422238, 0, 0.906485, -28.8883, 1.25, 36.2837 )
 
 [node name="Enemies" type="Spatial" parent="."]
@@ -627,7 +683,14 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -26.6499, 0, -27.148 )
 
 [node name="PauseMenu" parent="." instance=ExtResource( 7 )]
 
+[node name="GameOver" parent="." instance=ExtResource( 8 )]
+visible = false
+
+[connection signal="play_time_changed" from="PlayTimer" to="UI" method="_on_PlayTimer_play_time_changed"]
+[connection signal="timeout" from="PlayTimer" to="PlayTimer" method="_on_PlayTimer_timeout"]
 [connection signal="timeout" from="Enemies/SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
 [connection signal="energy_changed" from="Player" to="UI" method="_on_Player_energy_changed"]
 [connection signal="health_changed" from="Player" to="UI" method="_on_Player_health_changed"]
+[connection signal="last_collectible_collected" from="Player" to="." method="_on_Player_last_collectible_collected"]
+[connection signal="player_died" from="Player" to="." method="_on_Player_player_died"]
 [connection signal="score_changed" from="Player" to="UI" method="_on_Player_score_changed"]
