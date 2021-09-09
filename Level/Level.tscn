@@ -78,7 +78,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
 collision_layer = 2
 collision_mask = 0
 __meta__ = {
-"_edit_group_": true,
 "_edit_lock_": true
 }
 
@@ -647,6 +646,16 @@ transform = Transform( 0.906485, 0, 0.422238, 0, 1, 0, -0.422238, 0, 0.906485, 4
 "Collectible",
 ] instance=ExtResource( 6 )]
 transform = Transform( 0.906485, 0, 0.422238, 0, 1, 0, -0.422238, 0, 0.906485, -28.8883, 1.25, 36.2837 )
+
+[node name="Sheep19" parent="Ground/Collectibles" groups=[
+"Collectible",
+] instance=ExtResource( 6 )]
+transform = Transform( -0.504497, 0, 0.863414, 0, 1, 0, -0.863414, 0, -0.504497, -32.6281, 1.25, 37.4561 )
+
+[node name="Sheep20" parent="Ground/Collectibles" groups=[
+"Collectible",
+] instance=ExtResource( 6 )]
+transform = Transform( -0.504497, 0, 0.863414, 0, 1, 0, -0.863414, 0, -0.504497, -25.2304, 1.25, 41.4542 )
 
 [node name="Enemies" type="Spatial" parent="."]
 
