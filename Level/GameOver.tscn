@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Font/Montserrat-Bold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Level/GameOver.gd" type="Script" id=2]
@@ -15,6 +15,10 @@ font_data = ExtResource( 3 )
 [sub_resource type="DynamicFont" id=2]
 size = 48
 font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 24
+font_data = ExtResource( 3 )
 
 [node name="GameOver" type="Control"]
 pause_mode = 2
@@ -223,3 +227,24 @@ uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Return" type="Label" parent="."]
+visible = false
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -180.0
+margin_bottom = -166.0
+custom_fonts/font = SubResource( 4 )
+text = "Use tractor beam to return to main menu"
+align = 1
+uppercase = true
+
+[node name="InputTimeout" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+__meta__ = {
+"_editor_description_": "Time until input will be processed"
+}
+
+[connection signal="timeout" from="InputTimeout" to="." method="_on_InputTimeout_timeout"]
