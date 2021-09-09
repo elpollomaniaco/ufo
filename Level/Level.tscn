@@ -70,8 +70,11 @@ _enemy_scene = ExtResource( 3 )
 autostart = true
 script = ExtResource( 9 )
 
-[node name="Sun" type="DirectionalLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0 )
+[node name="Moon" type="DirectionalLight" parent="."]
+transform = Transform( 0.865217, 0.460904, 0.197399, -0.341788, 0.254109, 0.904771, 0.366851, -0.850292, 0.377391, 0, 100, 0 )
+light_color = Color( 0.0823529, 0.215686, 0.615686, 1 )
+light_energy = 2.0
+shadow_enabled = true
 
 [node name="Ground" type="StaticBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
