@@ -35,14 +35,24 @@ func _pause_game():
 
 
 func _on_Player_player_died():
-	_game_over()
+	_game_over(false)
 
 
 func _on_Player_last_collectible_collected():
-	_game_over()
+	_game_over(true)
 
 
-func _game_over():
+func _game_over(successful: bool):
+	var collectible_score = $Player.get_score()
+	var time_score = 0
+	var health_score = 0
+	
+	if successful:
+		time_score = max(600 - $PlayTimer.get_elapsed_time(), 0)
+		health_score = max($Player.get_health() as int, 0)
+	
+	var total_score = collectible_score + time_score + health_score
+	
 	$GameOver.show()
-	$GameOver.set_outcome($Player.get_score())
+	$GameOver.set_outcome(successful, total_score, collectible_score, time_score, health_score)
 	get_tree().paused = true

@@ -122,3 +122,7 @@ func _die():
 
 func get_score() -> int:
 	return _score
+
+
+func get_health() -> float:
+	return _current_health
