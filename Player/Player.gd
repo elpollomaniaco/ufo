@@ -12,6 +12,8 @@ export var acceleration: int = 2000
 export var toggle_tractor_beam: bool = false
 export var max_energy: float = 100.0
 export var energy_regeneration: float = 1.0
+export var _attack_porjectile_scene: PackedScene
+export var _attack_energy_usage: float = 10.0
 
 var _current_health: float
 var _current_energy: float
@@ -44,6 +46,9 @@ func _physics_process(delta):
 func _process(delta):
 	_control_tractor_beam()
 	_regenerate_energy(delta)
+	
+	if Input.is_action_just_pressed("player_attack") and try_to_drain_energy(_attack_energy_usage):
+		_attack()
 
 func _control_tractor_beam():
 	if toggle_tractor_beam:
@@ -126,3 +131,9 @@ func get_score() -> int:
 
 func get_health() -> float:
 	return _current_health
+
+
+func _attack():
+	var projectile = _attack_porjectile_scene.instance()
+	get_tree().get_root().get_node("Level").add_child(projectile)
+	projectile.translation = transform.origin
