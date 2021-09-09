@@ -1,6 +1,6 @@
 extends KinematicBody
 
-var _speed = 10
+var _speed = 100
 
 
 func _physics_process(delta):
