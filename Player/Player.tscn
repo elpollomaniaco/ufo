@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Player/TractorBeam.gd" type="Script" id=2]
@@ -10,25 +10,18 @@
 [sub_resource type="CylinderShape" id=2]
 height = 0.436533
 
-[sub_resource type="SphereMesh" id=3]
-radius = 0.5
-height = 1.0
-
-[sub_resource type="SpatialMaterial" id=4]
-albedo_color = Color( 1, 0, 0, 1 )
-
-[sub_resource type="CylinderShape" id=5]
+[sub_resource type="CylinderShape" id=3]
 height = 20.0
 
-[sub_resource type="CylinderMesh" id=6]
+[sub_resource type="CylinderMesh" id=4]
 top_radius = 0.5
 height = 20.0
 
-[sub_resource type="SpatialMaterial" id=7]
+[sub_resource type="SpatialMaterial" id=5]
 flags_transparent = true
 albedo_color = Color( 0, 1, 1, 0.25098 )
 
-[sub_resource type="CylinderShape" id=8]
+[sub_resource type="CylinderShape" id=6]
 height = 0.5
 
 [node name="Player" type="RigidBody"]
@@ -44,7 +37,9 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
+energy_regeneration = 5.0
 _attack_porjectile_scene = ExtResource( 4 )
+_attack_energy_usage = 25.0
 
 [node name="Pivot" type="Spatial" parent="."]
 
@@ -56,10 +51,8 @@ material/0 = null
 [node name="Collider" type="CollisionShape" parent="."]
 shape = SubResource( 2 )
 
-[node name="AimMarker" type="MeshInstance" parent="."]
+[node name="AimMarker" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20, 0 )
-mesh = SubResource( 3 )
-material/0 = SubResource( 4 )
 
 [node name="CameraArm" type="Spatial" parent="AimMarker"]
 transform = Transform( 1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 0, 0 )
@@ -69,19 +62,27 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50 )
 projection = 1
 size = 25.0
 
+[node name="SpotLight" type="SpotLight" parent="AimMarker"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 0 )
+light_energy = 5.0
+spot_range = 21.0
+spot_attenuation = 0.032352
+spot_angle = 3.0
+
 [node name="TractorBeam" type="Area" parent="."]
 collision_layer = 0
 collision_mask = 4
 script = ExtResource( 2 )
+energy_drain = 7.5
 
 [node name="CollisionShape" type="CollisionShape" parent="TractorBeam"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0 )
-shape = SubResource( 5 )
+shape = SubResource( 3 )
 
 [node name="MeshInstance" type="MeshInstance" parent="TractorBeam"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0 )
-mesh = SubResource( 6 )
-material/0 = SubResource( 7 )
+mesh = SubResource( 4 )
+material/0 = SubResource( 5 )
 
 [node name="Hatch" type="Area" parent="."]
 collision_layer = 0
@@ -90,7 +91,7 @@ script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Hatch"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0 )
-shape = SubResource( 8 )
+shape = SubResource( 6 )
 
 [connection signal="body_entered" from="TractorBeam" to="TractorBeam" method="_on_TractorBeam_body_entered"]
 [connection signal="body_exited" from="TractorBeam" to="TractorBeam" method="_on_TractorBeam_body_exited"]
