@@ -18,12 +18,15 @@ export var _attack_energy_usage: float = 10.0
 var _current_health: float
 var _current_energy: float
 var _score: int = 0
-
+var _animationPlayer: AnimationPlayer
+var _attackAnimation: String = "UFOEarsAttack"
+var _beamAnimation: String = "UFOEarsBeam"
 
 func _ready():
-	_deactivate_tractor_beam()
 	_current_energy = max_energy
 	_current_health = _max_health
+	_animationPlayer = $Pivot/UFO/SecondaryAnimationPlayer
+	_deactivate_tractor_beam()
 
 
 func _physics_process(delta):
@@ -64,11 +67,13 @@ func _control_tractor_beam():
 func _activate_tractor_beam():
 	$TractorBeam.show()
 	$TractorBeam.set_physics_process(true)
+	_animationPlayer.play(_beamAnimation)
 
 
 func _deactivate_tractor_beam():
 	$TractorBeam.hide()
 	$TractorBeam.set_physics_process(false)
+	_animationPlayer.stop()
 
 
 func _toggle_tractor_beam():
@@ -137,3 +142,4 @@ func _attack():
 	var projectile = _attack_porjectile_scene.instance()
 	get_tree().get_root().get_node("Level").add_child(projectile)
 	projectile.translation = transform.origin
+	_animationPlayer.play(_attackAnimation)
