@@ -4,24 +4,23 @@
 [ext_resource path="res://Scenes/Player/TractorBeam.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Player/Hatch.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/Player/DeathBall.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Player/UFO.tscn" type="PackedScene" id=5]
 
-[sub_resource type="CylinderMesh" id=1]
-
-[sub_resource type="CylinderShape" id=2]
+[sub_resource type="CylinderShape" id=1]
 height = 0.436533
 
-[sub_resource type="CylinderShape" id=3]
+[sub_resource type="CylinderShape" id=2]
 height = 20.0
 
-[sub_resource type="CylinderMesh" id=4]
+[sub_resource type="CylinderMesh" id=3]
 top_radius = 0.5
 height = 20.0
 
-[sub_resource type="SpatialMaterial" id=5]
+[sub_resource type="SpatialMaterial" id=4]
 flags_transparent = true
 albedo_color = Color( 0, 1, 1, 0.25098 )
 
-[sub_resource type="CylinderShape" id=6]
+[sub_resource type="CylinderShape" id=5]
 height = 0.5
 
 [node name="Player" type="RigidBody"]
@@ -43,13 +42,10 @@ _attack_energy_usage = 25.0
 
 [node name="Pivot" type="Spatial" parent="."]
 
-[node name="UFO" type="MeshInstance" parent="Pivot"]
-transform = Transform( 1, 0, 0, 0, 0.2, 0, 0, 0, 1, 0, 0, 0 )
-mesh = SubResource( 1 )
-material/0 = null
+[node name="UFO" parent="Pivot" instance=ExtResource( 5 )]
 
 [node name="Collider" type="CollisionShape" parent="."]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="AimMarker" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20, 0 )
@@ -77,12 +73,12 @@ energy_drain = 7.5
 
 [node name="CollisionShape" type="CollisionShape" parent="TractorBeam"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="MeshInstance" type="MeshInstance" parent="TractorBeam"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
 
 [node name="Hatch" type="Area" parent="."]
 collision_layer = 0
@@ -91,7 +87,7 @@ script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Hatch"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0 )
-shape = SubResource( 6 )
+shape = SubResource( 5 )
 
 [connection signal="body_entered" from="TractorBeam" to="TractorBeam" method="_on_TractorBeam_body_entered"]
 [connection signal="body_exited" from="TractorBeam" to="TractorBeam" method="_on_TractorBeam_body_exited"]
