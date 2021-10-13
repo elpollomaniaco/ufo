@@ -15,7 +15,7 @@ func _on_Resume_pressed():
 
 
 func _on_MainMenu_pressed():
-	get_tree().change_scene("res://MainMenu/MainMenu.tscn")
+	get_tree().change_scene("res://Scenes/MainMenu/MainMenu.tscn")
 	get_tree().paused = false
 
 
