@@ -1,9 +1,9 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://Player/Player.gd" type="Script" id=1]
-[ext_resource path="res://Player/TractorBeam.gd" type="Script" id=2]
-[ext_resource path="res://Player/Hatch.gd" type="Script" id=3]
-[ext_resource path="res://Player/DeathBall.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Player/Player.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Player/TractorBeam.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Player/Hatch.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Player/DeathBall.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CylinderMesh" id=1]
 

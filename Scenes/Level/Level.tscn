@@ -1,14 +1,14 @@
 [gd_scene load_steps=25 format=2]
 
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Level/Level.gd" type="Script" id=2]
-[ext_resource path="res://Enemy/Enemy.tscn" type="PackedScene" id=3]
-[ext_resource path="res://UI/UI.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Collectible/Cow.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Collectible/Sheep.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Level/PauseMenu.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Level/GameOver.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Level/PlayTimer.gd" type="Script" id=9]
+[ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Level/Level.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Enemy/Enemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/UI/UI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Collectible/Cow.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Collectible/Sheep.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Level/PauseMenu.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Level/GameOver.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Level/PlayTimer.gd" type="Script" id=9]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.345098, 0.568627, 0.25098, 1 )
