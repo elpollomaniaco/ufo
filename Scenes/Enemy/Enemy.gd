@@ -20,7 +20,8 @@ func initialize(starting_position, player_node):
 	_player_node = player_node
 
 
-func _physics_process(delta):
+# In _integrate_forces so add_force and look_at will work together
+func _integrate_forces(state):
 	# Validity check to prevent error when calling queue_free() on player
 	if is_instance_valid(_player_node):
 		var target_position = _player_node.get_ground_position()
@@ -28,6 +29,7 @@ func _physics_process(delta):
 			_follow_player(target_position)
 		else:
 			_attack_player(_player_node.translation)
+		look_at(target_position, Vector3.UP)
 
 
 func _follow_player(player_position):
