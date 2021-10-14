@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Models/FenceGate.scn" type="PackedScene" id=1]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.929218, 0.496851, 0.105887 )
+
+[node name="FenceGate" type="RigidBody"]
+collision_layer = 2
+collision_mask = 2
+mass = 15.0
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00196254, 0.496303, 0 )
+shape = SubResource( 1 )
+
+[node name="FenceGate" parent="." instance=ExtResource( 1 )]
