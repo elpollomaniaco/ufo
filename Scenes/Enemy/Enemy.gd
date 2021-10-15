@@ -52,7 +52,9 @@ func _fire_projectile(player_position):
 	direction = direction.normalized()
 	
 	var projectile = _projectile.instance()
+	# Add instance to level so it won't be moved with enemy
 	get_tree().get_root().get_node("Level").add_child(projectile)
 	
-	projectile.translation = translation
+	projectile.translation = ($ProjectileOffset as Spatial).global_transform.origin
+	projectile.look_at(player_position, Vector3.UP)
 	projectile.add_central_force(direction * _fire_power)
