@@ -29,7 +29,8 @@ func _integrate_forces(state):
 			_follow_player(target_position)
 		else:
 			_attack_player(_player_node.translation)
-		look_at(target_position, Vector3.UP)
+		# Make enemy only turn on UP-axis
+		look_at(Vector3(target_position.x, translation.y, target_position.z), Vector3.UP)
 
 
 func _follow_player(player_position):
