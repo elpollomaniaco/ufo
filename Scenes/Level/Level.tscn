@@ -40,11 +40,8 @@ light_energy = 2.0
 shadow_enabled = true
 
 [node name="Ground" type="StaticBody" parent="."]
-collision_layer = 2
+collision_layer = 34
 collision_mask = 0
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Level" parent="Ground" instance=ExtResource( 10 )]
 
@@ -53,9 +50,6 @@ shape = SubResource( 1 )
 
 [node name="Barriers" type="StaticBody" parent="Ground"]
 collision_layer = 0
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Left" type="CollisionShape" parent="Ground/Barriers"]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -65, 15, 0 )

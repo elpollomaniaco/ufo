@@ -21,6 +21,7 @@ var _score: int = 0
 var _animationPlayer: AnimationPlayer
 var _attackAnimation: String = "UFOEarsAttack"
 var _beamAnimation: String = "UFOEarsBeam"
+var _ground_position: Vector3
 
 func _ready():
 	_current_energy = max_energy
@@ -105,7 +106,7 @@ func add_points_to_score(points: int):
 
 
 func get_ground_position() -> Vector3:
-	return Vector3(translation.x, 0, translation.z)
+	return _ground_position
 
 
 func take_damage(damage):
@@ -117,9 +118,9 @@ func take_damage(damage):
 
 func _die():
 	# Reparent camera so it won't be freed with player
-	var camera = $AimMarker/CameraArm
+	var camera = $CameraArm
 	var old_position = camera.global_transform.origin
-	var old_parent = $AimMarker
+	var old_parent = self
 	var new_parent = get_tree().get_root().get_node("Level")
 	old_parent.remove_child(camera)
 	new_parent.add_child(camera)
@@ -143,3 +144,11 @@ func _attack():
 	get_tree().get_root().get_node("Level").add_child(projectile)
 	projectile.translation = transform.origin
 	_animationPlayer.play(_attackAnimation)
+
+
+# Using RayCast to take level height into account.
+# Called by timer to improve performance. Calling get_collision_point() every frame was unplayable on laptop.
+# Updating the position every second for enemies to follow the player is enough, as throwing projectiles is calculated completely independently.
+func _update_ground_position():
+	if $AimMarker.is_colliding():
+		_ground_position = $AimMarker.get_collision_point()
