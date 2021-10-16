@@ -7,6 +7,7 @@ radius = 0.591184
 height = 4.0
 
 [node name="Tree002" type="StaticBody"]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
 collision_layer = 2
 collision_mask = 2
 
