@@ -5,7 +5,7 @@ var _input_is_deactivated: bool = true
 func _process(delta):
 	if not _input_is_deactivated:
 		if Input.is_action_just_pressed("player_tractor_beam"):
-			get_tree().change_scene("res://MainMenu/MainMenu.tscn")
+			get_tree().change_scene("res://Scenes/MainMenu/MainMenu.tscn")
 			get_tree().paused = false
 
 
