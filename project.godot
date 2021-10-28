@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="U.F.O."
-run/main_scene="res://MainMenu/MainMenu.tscn"
+run/main_scene="res://Scenes/MainMenu/MainMenu.tscn"
 config/icon="res://icon.png"
 
 [display]
@@ -111,6 +111,7 @@ player_attack={
 3d_physics/layer_3="Collectibles"
 3d_physics/layer_4="Enemies"
 3d_physics/layer_5="Projectiles"
+3d_physics/layer_6="Ground"
 
 [physics]
 

@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/Enemy/Projectile.gd" type="Script" id=1]
+[ext_resource path="res://Models/Pitchfork.scn" type="PackedScene" id=2]
+
+[sub_resource type="CylinderShape" id=1]
+radius = 0.0579867
+height = 1.11219
+
+[sub_resource type="SphereShape" id=2]
+radius = 0.325519
+
+[node name="Projectile" type="RigidBody"]
+collision_layer = 16
+collision_mask = 3
+mass = 10.0
+script = ExtResource( 1 )
+_damage = 5.0
+
+[node name="Collider" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.1, -0.4 )
+shape = SubResource( 1 )
+
+[node name="Pitchfork" parent="." instance=ExtResource( 2 )]
+transform = Transform( 2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, 0, 0.1, 1.1 )
+
+[node name="Trigger" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.1, -1.1 )
+collision_layer = 0
+
+[node name="CollisionShape" type="CollisionShape" parent="Trigger"]
+shape = SubResource( 2 )
+
+[node name="LiveTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="body_entered" from="Trigger" to="." method="_on_Trigger_body_entered"]
+[connection signal="timeout" from="LiveTimer" to="." method="_on_LiveTimer_timeout"]

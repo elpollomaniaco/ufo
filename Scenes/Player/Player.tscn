@@ -1,0 +1,100 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Scenes/Player/Player.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Player/TractorBeam.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Player/Hatch.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Player/DeathBall.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Player/UFO.tscn" type="PackedScene" id=5]
+
+[sub_resource type="CylinderShape" id=1]
+height = 0.436533
+
+[sub_resource type="CylinderShape" id=2]
+height = 20.0
+
+[sub_resource type="CylinderMesh" id=3]
+top_radius = 0.5
+height = 20.0
+
+[sub_resource type="SpatialMaterial" id=4]
+flags_transparent = true
+albedo_color = Color( 0, 1, 1, 0.25098 )
+
+[sub_resource type="CylinderShape" id=5]
+height = 0.5
+
+[node name="Player" type="RigidBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0 )
+collision_mask = 0
+mass = 100.0
+gravity_scale = 0.0
+axis_lock_linear_y = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+energy_regeneration = 5.0
+_attack_porjectile_scene = ExtResource( 4 )
+_attack_energy_usage = 25.0
+
+[node name="Pivot" type="Spatial" parent="."]
+
+[node name="UFO" parent="Pivot" instance=ExtResource( 5 )]
+
+[node name="Collider" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="AimMarker" type="RayCast" parent="."]
+enabled = true
+cast_to = Vector3( 0, -30, 0 )
+collision_mask = 32
+
+[node name="RayCastTimer" type="Timer" parent="AimMarker"]
+autostart = true
+
+[node name="SpotLight" type="SpotLight" parent="AimMarker"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
+light_energy = 5.0
+spot_range = 21.0
+spot_attenuation = 0.032352
+spot_angle = 3.0
+
+[node name="CameraArm" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, -20, 0 )
+
+[node name="Camera" type="Camera" parent="CameraArm"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50 )
+projection = 1
+size = 25.0
+
+[node name="TractorBeam" type="Area" parent="."]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource( 2 )
+energy_drain = 7.5
+
+[node name="CollisionShape" type="CollisionShape" parent="TractorBeam"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0 )
+shape = SubResource( 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="TractorBeam"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
+
+[node name="Hatch" type="Area" parent="."]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Hatch"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0 )
+shape = SubResource( 5 )
+
+[connection signal="timeout" from="AimMarker/RayCastTimer" to="." method="_update_ground_position"]
+[connection signal="body_entered" from="TractorBeam" to="TractorBeam" method="_on_TractorBeam_body_entered"]
+[connection signal="body_exited" from="TractorBeam" to="TractorBeam" method="_on_TractorBeam_body_exited"]
+[connection signal="body_entered" from="Hatch" to="Hatch" method="_on_Hatch_body_entered"]
