@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Textures/Fog.png" type="Texture" id=1]
+
+[sub_resource type="Gradient" id=1]
+colors = PoolColorArray( 0.416191, 0.672835, 0.91849, 0.0392157, 0, 0, 0, 0 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="Curve" id=3]
+max_value = 4.0
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.122995, 3.01818 ), 0.0, 0.0, 0, 0, Vector2( 0.989305, 4 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+lifetime_randomness = 0.1
+emission_shape = 2
+emission_box_extents = Vector3( 2, 0.1, 2 )
+spread = 100.0
+gravity = Vector3( 0, 1, 0 )
+scale_curve = SubResource( 4 )
+color_ramp = SubResource( 2 )
+anim_offset = 1.0
+anim_offset_random = 1.0
+
+[sub_resource type="SpatialMaterial" id=6]
+flags_transparent = true
+flags_unshaded = true
+flags_vertex_lighting = true
+flags_do_not_receive_shadows = true
+flags_disable_ambient_light = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+params_billboard_mode = 3
+particles_anim_h_frames = 4
+particles_anim_v_frames = 4
+particles_anim_loop = false
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="QuadMesh" id=7]
+material = SubResource( 6 )
+
+[node name="Fog" type="Particles"]
+amount = 128
+speed_scale = 0.05
+visibility_aabb = AABB( -100, -1, -100, 200, 2, 200 )
+process_material = SubResource( 5 )
+draw_pass_1 = SubResource( 7 )
