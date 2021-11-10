@@ -6,7 +6,8 @@ func _ready():
 
 
 func _on_Start_pressed():
-	get_tree().change_scene("res://Scenes/Level/Level.tscn")
+	# Not via PackedScene because of cyclic dependencies.
+	get_tree().change_scene("res://level/level.tscn")
 
 
 func _on_Exit_pressed():

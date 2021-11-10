@@ -1,6 +1,9 @@
 extends Control
 
 
+export var _main_menu_scene: PackedScene
+
+
 func _ready():
 	# Deactivate input detection through process. 
 	# Otherwise, the menu would open and immediately close again in game.
@@ -23,7 +26,7 @@ func _on_Resume_pressed():
 
 
 func _on_MainMenu_pressed():
-	get_tree().change_scene("res://Scenes/MainMenu/MainMenu.tscn")
+	get_tree().change_scene_to(_main_menu_scene)
 	get_tree().paused = false
 
 
