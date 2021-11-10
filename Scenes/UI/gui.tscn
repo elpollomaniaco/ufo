@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Font/Montserrat-Bold.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Scenes/UI/UI.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/UI/gui.gd" type="Script" id=2]
 
 [sub_resource type="DynamicFont" id=1]
 size = 28
@@ -67,6 +67,9 @@ margin_top = -18.0
 margin_right = 90.0
 margin_bottom = 18.0
 text = "Score:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Value" type="Label" parent="Score"]
 anchor_left = 1.0

@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://Scenes/Player/Player.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/Player/TractorBeam.gd" type="Script" id=2]
-[ext_resource path="res://Scenes/Player/Hatch.gd" type="Script" id=3]
-[ext_resource path="res://Scenes/Player/DeathBall.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/Player/UFO.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Player/player.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Player/tractor_beam.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Player/hatch.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Player/attack_projectile.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Player/ufo.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CylinderShape" id=1]
 height = 0.436533

@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Scenes/Level/PauseMenu.gd" type="Script" id=1]
-[ext_resource path="res://Font/Montserrat-Bold.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://Font/Montserrat-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Scenes/Level/pause_menu.gd" type="Script" id=1]
+[ext_resource path="res://Font/montserrat_bold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Font/montserrat_regular.ttf" type="DynamicFontData" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32

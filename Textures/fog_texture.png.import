@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/Fog.png-39a2f9a1a85e94aa8029e885b5aafc97.s3tc.stex"
-path.etc2="res://.import/Fog.png-39a2f9a1a85e94aa8029e885b5aafc97.etc2.stex"
+path.s3tc="res://.import/fog_texture.png-8268c38bd2246041dfacf45c39c550cf.s3tc.stex"
+path.etc2="res://.import/fog_texture.png-8268c38bd2246041dfacf45c39c550cf.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Textures/Fog.png"
-dest_files=[ "res://.import/Fog.png-39a2f9a1a85e94aa8029e885b5aafc97.s3tc.stex", "res://.import/Fog.png-39a2f9a1a85e94aa8029e885b5aafc97.etc2.stex" ]
+source_file="res://Textures/fog_texture.png"
+dest_files=[ "res://.import/fog_texture.png-8268c38bd2246041dfacf45c39c550cf.s3tc.stex", "res://.import/fog_texture.png-8268c38bd2246041dfacf45c39c550cf.etc2.stex" ]
 
 [params]
 
