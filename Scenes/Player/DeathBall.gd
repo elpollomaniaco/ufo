@@ -1,10 +1,11 @@
 extends KinematicBody
 
-var _speed = 100
+
+const SPEED = 100
 
 
 func _physics_process(delta):
-	move_and_slide(Vector3.DOWN * _speed)
+	move_and_slide(Vector3.DOWN * SPEED)
 
 
 func _on_Trigger_body_entered(body):

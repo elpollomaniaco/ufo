@@ -1,4 +1,4 @@
 extends RigidBody
 
 
-export var points: int = 100
+export var points: int

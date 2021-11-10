@@ -60,19 +60,19 @@ __meta__ = {
 
 [node name="BarrierN" parent="Ground/Barriers" instance=ExtResource( 19 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -80 )
-_direction = Vector3( 0, 0, 1 )
+_push_direction = Vector3( 0, 0, 1 )
 
 [node name="BarrierE" parent="Ground/Barriers" instance=ExtResource( 19 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 80, 0, 0 )
-_direction = Vector3( -1, 0, 0 )
+_push_direction = Vector3( -1, 0, 0 )
 
 [node name="BarrierS" parent="Ground/Barriers" instance=ExtResource( 19 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 80 )
-_direction = Vector3( 0, 0, -1 )
+_push_direction = Vector3( 0, 0, 1 )
 
 [node name="BarrierW" parent="Ground/Barriers" instance=ExtResource( 19 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -80, 0, 0 )
-_direction = Vector3( 1, 0, 0 )
+_push_direction = Vector3( 1, 0, 0 )
 
 [node name="Props" type="Spatial" parent="Ground"]
 
@@ -1529,6 +1529,7 @@ transform = Transform( 0.69759, 0, -0.716497, 0, 1, 0, 0.716497, 0, 0.69759, 43.
 transform = Transform( 0.758567, 0, 0.651596, 0, 1, 0, -0.651596, 0, 0.758567, 53.183, 0, -0.903198 )
 
 [node name="Fog" type="Spatial" parent="Ground/Props"]
+visible = false
 __meta__ = {
 "_edit_lock_": true
 }

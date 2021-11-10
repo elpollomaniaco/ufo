@@ -16,8 +16,10 @@ can_sleep = false
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 script = ExtResource( 1 )
-_projectile = ExtResource( 2 )
-_fire_power = 30000
+_movement_acceleration = 500
+_attack_range = 10
+_fire_power = 400
+_projectile_scene = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.828236, 0 )

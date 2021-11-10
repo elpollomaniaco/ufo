@@ -1,12 +1,8 @@
 extends StaticBody
 
-var _light_left: Light
-var _light_right: Light
 
-
-func _ready():
-	_light_left = $EmergencyLights/LightL
-	_light_right = $EmergencyLights/LightR
+onready var _light_left: Light = $EmergencyLights/LightL
+onready var _light_right: Light = $EmergencyLights/LightR
 
 
 func _switch_emergency_lights():
