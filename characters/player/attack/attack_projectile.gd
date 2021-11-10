@@ -5,6 +5,7 @@ const SPEED = 100
 
 
 func _physics_process(_delta):
+	# warning-ignore:return_value_discarded
 	move_and_slide(Vector3.DOWN * SPEED)
 
 

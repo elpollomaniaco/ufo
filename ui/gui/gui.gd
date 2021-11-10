@@ -14,4 +14,5 @@ func _on_Player_score_changed(new_value: int):
 
 
 func _on_PlayTimer_play_time_changed(new_value: int):
+	# warning-ignore:integer_division
 	$Time/Value.text = "%02d:%02d" % [new_value / 60, new_value % 60]
