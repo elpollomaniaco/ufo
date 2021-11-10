@@ -21,7 +21,7 @@ func initialize(starting_position, player_node):
 
 
 # In _integrate_forces so add_force and look_at will work together.
-func _integrate_forces(state):
+func _integrate_forces(_state):
 	# Validity check to prevent error when calling queue_free() on player.
 	if is_instance_valid(_player_node):
 		var target_position = _player_node.get_ground_position()

@@ -12,7 +12,7 @@ onready var _player_node: RigidBody = owner.get_node("Player")
 var _player_is_in_area: bool = false
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if _player_is_in_area:
 		_add_force_to_player()
 
@@ -23,9 +23,9 @@ func _add_force_to_player():
 
 
 # Collision detection only with player layer.
-func _on_Barrier_body_entered(body):
+func _on_Barrier_body_entered(_body):
 	_player_is_in_area = true
 
 
-func _on_Barrier_body_exited(body):
+func _on_Barrier_body_exited(_body):
 	_player_is_in_area = false

@@ -6,7 +6,7 @@ export var _main_menu_scene: PackedScene
 var _input_is_deactivated: bool = true
 
 
-func _process(delta):
+func _process(_delta):
 	if not _input_is_deactivated:
 		if Input.is_action_just_pressed("player_tractor_beam"):
 			get_tree().change_scene_to(_main_menu_scene)

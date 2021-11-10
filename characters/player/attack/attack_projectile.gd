@@ -4,7 +4,7 @@ extends KinematicBody
 const SPEED = 100
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	move_and_slide(Vector3.DOWN * SPEED)
 
 

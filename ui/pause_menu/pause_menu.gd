@@ -10,7 +10,7 @@ func _ready():
 	set_process(false)
 
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("ui_pause"):
 		_resume_game()
 

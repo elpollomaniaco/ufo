@@ -32,7 +32,7 @@ func _ready():
 	_deactivate_tractor_beam()
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var direction: Vector3 = Vector3.ZERO
 	
 	if Input.is_action_pressed("player_move_left"):
