@@ -14,7 +14,6 @@ const MOVEMENT_ACCELERATION: int = 2000
 const MAX_HEALTH: int = 100
 const MAX_ENERGY: float = 100.0
 const ENERGY_REGENERATION: float = 1.0
-const ATTACK_ENERGY_USAGE: float = 10.0
 const ATTACK_ANIMATION_NAME: String = "UFOEarsAttack"
 const BEAM_ANIMATION_NAME: String = "UFOEarsBeam"
 
@@ -56,8 +55,7 @@ func _process(delta):
 	_control_tractor_beam()
 	_regenerate_energy(delta)
 	
-	if (Input.is_action_just_pressed("player_attack") 
-			and try_to_drain_energy(ATTACK_ENERGY_USAGE)):
+	if Input.is_action_just_pressed("player_attack"):
 		_attack()
 
 
@@ -145,10 +143,8 @@ func _die():
 
 
 func _attack():
-	var projectile = _attack_projectile_scene.instance()
-	owner.add_child(projectile)
-	projectile.translation = transform.origin
-	_animation_player.play(ATTACK_ANIMATION_NAME)
+	if $Weapon.attack():
+		_animation_player.play(ATTACK_ANIMATION_NAME)
 
 
 # Using RayCast to take level height into account.

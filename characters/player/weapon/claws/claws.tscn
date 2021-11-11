@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://characters/player/weapon/claws/claws.gd" type="Script" id=1]
+
+[sub_resource type="CylinderShape" id=1]
+height = 1.0
+
+[sub_resource type="CylinderMesh" id=2]
+
+[sub_resource type="CylinderShape" id=3]
+radius = 1.18822
+height = 1.11766
+
+[node name="Claws" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="Extension" type="KinematicBody" parent="."]
+collision_layer = 0
+collision_mask = 34
+
+[node name="Collider" type="CollisionShape" parent="Extension"]
+shape = SubResource( 1 )
+
+[node name="Mesh" type="MeshInstance" parent="Extension"]
+transform = Transform( 1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Trigger" type="Area" parent="Extension"]
+collision_layer = 0
+collision_mask = 28
+
+[node name="Shape" type="CollisionShape" parent="Extension/Trigger"]
+shape = SubResource( 3 )
