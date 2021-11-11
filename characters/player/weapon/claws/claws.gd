@@ -48,7 +48,8 @@ func _on_collision():
 
 func _on_return():
 	_current_movement = MOVEMENT.STOP
-	$Extension.translation.y = 0
+	# Fix offset.
+	$Extension.translation = Vector3.ZERO
 	# Disable so collectibles won't be destroyed.
 	$Extension/Trigger/Shape.disabled = true
 
