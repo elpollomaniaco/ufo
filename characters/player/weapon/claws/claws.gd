@@ -17,8 +17,10 @@ func _physics_process(delta):
 
 
 func extend():
-	# Needs to be reactivated because it is deactivated on touching environment.
+	# Needs to be reactivated because it is deactivated 
+	# on touching environment/returning.
 	$Extension/Collider.disabled = false
+	$Extension/Trigger/Shape.disabled = false
 	_current_movement = MOVEMENT.DOWN
 
 
@@ -47,6 +49,8 @@ func _on_collision():
 func _on_return():
 	_current_movement = MOVEMENT.STOP
 	$Extension.translation.y = 0
+	# Disable so collectibles won't be destroyed.
+	$Extension/Trigger/Shape.disabled = true
 
 
 func _on_RetractTimer_timeout():

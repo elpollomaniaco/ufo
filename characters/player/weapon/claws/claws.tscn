@@ -49,6 +49,7 @@ collision_mask = 12
 
 [node name="Shape" type="CollisionShape" parent="Extension/Trigger"]
 shape = SubResource( 6 )
+disabled = true
 
 [node name="RetractTimer" type="Timer" parent="."]
 wait_time = 2.0
