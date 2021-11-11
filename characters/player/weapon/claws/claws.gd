@@ -26,19 +26,6 @@ func _retract():
 	_current_movement = MOVEMENT.UP
 
 
-func _on_collision():
-	# Disable collider so it won't be moved around 
-	# when extension is extracted, player is flying around
-	# and it hits buildings etc.
-	$Extension/Collider.disabled = true
-	_retract()
-
-
-func _on_return():
-	_current_movement = MOVEMENT.STOP
-	$Extension.translation.y = 0
-	
-
 func _move_extension(delta: float, direction: int):
 	var collision = $Extension.move_and_collide(Vector3.UP * direction * SPEED * delta)
 	
@@ -46,3 +33,21 @@ func _move_extension(delta: float, direction: int):
 		_on_collision()
 	if direction == MOVEMENT.UP and $Extension.translation.y >= 0.0:
 		_on_return()
+
+
+func _on_collision():
+	# Disable collider so it won't be moved around 
+	# when extension is extracted, player is flying around
+	# and it hits buildings etc.
+	$Extension/Collider.disabled = true
+	_current_movement = MOVEMENT.STOP
+	$RetractTimer.start()
+
+
+func _on_return():
+	_current_movement = MOVEMENT.STOP
+	$Extension.translation.y = 0
+
+
+func _on_RetractTimer_timeout():
+	_retract()

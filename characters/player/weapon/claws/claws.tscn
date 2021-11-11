@@ -32,3 +32,9 @@ collision_mask = 28
 
 [node name="Shape" type="CollisionShape" parent="Extension/Trigger"]
 shape = SubResource( 3 )
+
+[node name="RetractTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="RetractTimer" to="." method="_on_RetractTimer_timeout"]
