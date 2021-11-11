@@ -35,6 +35,10 @@ func _integrate_forces(_state):
 		look_at(Vector3(target_position.x, translation.y, target_position.z), Vector3.UP)
 
 
+func destroy():
+	queue_free()
+
+
 func _follow_player(ground_position: Vector3):
 	var direction = ground_position - transform.origin
 	direction = direction.normalized()

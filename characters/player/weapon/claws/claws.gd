@@ -51,3 +51,13 @@ func _on_return():
 
 func _on_RetractTimer_timeout():
 	_retract()
+
+
+func _on_Trigger_body_entered(body):
+	if body.has_method("destroy"):
+		body.destroy()
+	else:
+		# Just destroy if there is no controlled method.
+		# Collision layers should never register anything that 
+		# must not be destroyed.
+		body.queue_free()
