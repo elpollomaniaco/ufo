@@ -17,8 +17,6 @@ const ENERGY_REGENERATION: float = 1.0
 const ATTACK_ANIMATION_NAME: String = "UFOEarsAttack"
 const BEAM_ANIMATION_NAME: String = "UFOEarsBeam"
 
-export var _attack_projectile_scene: PackedScene
-
 var _current_health: int = MAX_HEALTH
 var _current_energy: float = MAX_ENERGY
 var _score: int = 0
