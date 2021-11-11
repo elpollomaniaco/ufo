@@ -8,4 +8,3 @@ script = ExtResource( 1 )
 _energy_usage = 20.0
 
 [node name="Claws" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.510597, 0 )
