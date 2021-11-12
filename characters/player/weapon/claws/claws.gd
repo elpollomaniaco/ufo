@@ -2,6 +2,7 @@ extends Spatial
 
 
 const SPEED: float = 50.0
+const THROW_POWER: float = 200.0
 const MOVEMENT = {
 	"UP": 1,
 	"DOWN": -1,
@@ -20,7 +21,7 @@ func extend():
 	# Needs to be reactivated because it is deactivated 
 	# on touching environment/returning.
 	$Extension/Collider.disabled = false
-	$Extension/Trigger/Shape.disabled = false
+	$Extension/DestroyTrigger/Shape.disabled = false
 	_current_movement = MOVEMENT.DOWN
 
 
@@ -42,7 +43,7 @@ func _on_collision():
 	# Disable collider so it won't be moved around 
 	# when extension is extracted, player is flying around
 	# and it hits buildings etc.
-	$Extension/Collider.disabled = true
+	#$Extension/Collider.disabled = true
 	_current_movement = MOVEMENT.STOP
 	$RetractTimer.start()
 	_set_particle_emission(true)
@@ -53,14 +54,14 @@ func _on_return():
 	# Fix offset.
 	$Extension.translation = Vector3.ZERO
 	# Disable so collectibles won't be destroyed.
-	$Extension/Trigger/Shape.disabled = true
+	$Extension/DestroyTrigger/Shape.disabled = true
 
 
 func _on_RetractTimer_timeout():
 	_retract()
 
 
-func _on_Trigger_body_entered(body):
+func _on_DestroyTrigger_body_entered(body):
 	if body.has_method("destroy"):
 		body.destroy()
 	else:
@@ -68,6 +69,10 @@ func _on_Trigger_body_entered(body):
 		# Collision layers should never register anything that 
 		# must not be destroyed.
 		body.queue_free()
+
+
+func _on_MoveablesTrigger_body_entered(body):
+	body.apply_central_impulse(Vector3.UP * THROW_POWER)
 
 
 func _set_particle_emission(emit: bool):
