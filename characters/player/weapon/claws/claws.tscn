@@ -45,7 +45,7 @@ material/0 = null
 [node name="Trigger" type="Area" parent="Extension"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.119264, 0 )
 collision_layer = 0
-collision_mask = 12
+collision_mask = 76
 
 [node name="Shape" type="CollisionShape" parent="Extension/Trigger"]
 shape = SubResource( 3 )
