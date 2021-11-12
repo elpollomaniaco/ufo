@@ -26,6 +26,7 @@ func extend():
 
 func _retract():
 	_current_movement = MOVEMENT.UP
+	_set_particle_emission(false)
 
 
 func _move_extension(delta: float, direction: int):
@@ -44,6 +45,7 @@ func _on_collision():
 	$Extension/Collider.disabled = true
 	_current_movement = MOVEMENT.STOP
 	$RetractTimer.start()
+	_set_particle_emission(true)
 
 
 func _on_return():
@@ -66,3 +68,8 @@ func _on_Trigger_body_entered(body):
 		# Collision layers should never register anything that 
 		# must not be destroyed.
 		body.queue_free()
+
+
+func _set_particle_emission(emit: bool):
+	$Extension/Particles/Dust.emitting = emit
+	$Extension/Particles/Glyphs.emitting = emit
