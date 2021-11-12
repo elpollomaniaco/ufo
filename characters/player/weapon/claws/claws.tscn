@@ -3,11 +3,11 @@
 [ext_resource path="res://characters/player/weapon/claws/claws.gd" type="Script" id=1]
 [ext_resource path="res://_import/Common.material" type="Material" id=2]
 
-[sub_resource type="CapsuleShape" id=5]
-radius = 0.756399
-height = 0.731891
+[sub_resource type="CylinderShape" id=5]
+radius = 0.908001
+height = 0.292732
 
-[sub_resource type="ArrayMesh" id=4]
+[sub_resource type="ArrayMesh" id=2]
 resource_name = "Paws"
 surfaces/0 = {
 "aabb": AABB( -0.753178, -0.073041, -0.756516, 1.50636, 0.187163, 1.67408 ),
@@ -22,7 +22,7 @@ surfaces/0 = {
 "vertex_count": 1055
 }
 
-[sub_resource type="CapsuleShape" id=6]
+[sub_resource type="CapsuleShape" id=3]
 radius = 0.842152
 height = 0.766847
 
@@ -39,7 +39,7 @@ shape = SubResource( 5 )
 
 [node name="Mesh" type="MeshInstance" parent="Extension"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.119264, 0 )
-mesh = SubResource( 4 )
+mesh = SubResource( 2 )
 material/0 = null
 
 [node name="Trigger" type="Area" parent="Extension"]
@@ -48,7 +48,7 @@ collision_layer = 0
 collision_mask = 12
 
 [node name="Shape" type="CollisionShape" parent="Extension/Trigger"]
-shape = SubResource( 6 )
+shape = SubResource( 3 )
 disabled = true
 
 [node name="RetractTimer" type="Timer" parent="."]
