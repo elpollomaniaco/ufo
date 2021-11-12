@@ -3,8 +3,8 @@
 [ext_resource path="res://characters/player/player.gd" type="Script" id=1]
 [ext_resource path="res://characters/player/tractor_beam/tractor_beam.tscn" type="PackedScene" id=2]
 [ext_resource path="res://characters/player/hatch/hatch.tscn" type="PackedScene" id=3]
-[ext_resource path="res://characters/player/attack/attack_projectile.tscn" type="PackedScene" id=4]
 [ext_resource path="res://characters/player/ufo/ufo.tscn" type="PackedScene" id=5]
+[ext_resource path="res://characters/player/weapon/weapon.tscn" type="PackedScene" id=6]
 
 [sub_resource type="CylinderShape" id=1]
 height = 0.436533
@@ -22,7 +22,6 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
-_attack_projectile_scene = ExtResource( 4 )
 
 [node name="Collider" type="CollisionShape" parent="."]
 shape = SubResource( 1 )
@@ -57,5 +56,7 @@ size = 25.0
 [node name="TractorBeam" parent="." instance=ExtResource( 2 )]
 
 [node name="Hatch" parent="." instance=ExtResource( 3 )]
+
+[node name="Weapon" parent="." instance=ExtResource( 6 )]
 
 [connection signal="timeout" from="AimMarker/RayCastTimer" to="." method="_update_ground_position"]
