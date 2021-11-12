@@ -21,8 +21,8 @@ surfaces/0 = {
 }
 
 [node name="Hay" type="RigidBody"]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 64
+collision_mask = 66
 mass = 25.0
 
 [node name="Collider" type="CollisionShape" parent="."]
