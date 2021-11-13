@@ -36,7 +36,10 @@ func _on_TractorBeam_body_exited(body):
 
 func _attract_targets():
 	for target in _targets:
-		target.add_central_force(Vector3.UP * PULL_FORCE)
+		# Attract towards ufo (owner).
+		var direction = owner.global_transform.origin - target.global_transform.origin
+		direction = direction.normalized()
+		target.add_central_force(direction * PULL_FORCE)
 
 
 func _force_deactivate_tractor_beam():
