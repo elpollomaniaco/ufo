@@ -1,13 +1,15 @@
 extends Spatial
 
 
-const SPEED: float = 50.0
-const THROW_POWER: float = 200.0
 const MOVEMENT = {
 	"UP": 1,
 	"DOWN": -1,
 	"STOP": 0,
 }
+
+export var _vertical_speed: float
+# For throwing moveables around.
+export var _throw_power: float
 
 var _current_movement: int = MOVEMENT.STOP
 
@@ -31,7 +33,7 @@ func _retract():
 
 
 func _move_extension(delta: float, direction: int):
-	var collision = $Extension.move_and_collide(Vector3.UP * direction * SPEED * delta)
+	var collision = $Extension.move_and_collide(Vector3.UP * direction * _vertical_speed * delta)
 	
 	if collision:
 		_on_collision()
@@ -72,7 +74,7 @@ func _on_DestroyTrigger_body_entered(body):
 
 
 func _on_MoveablesTrigger_body_entered(body):
-	body.apply_central_impulse(Vector3.UP * THROW_POWER)
+	body.apply_central_impulse(Vector3.UP * _throw_power)
 
 
 func _set_particle_emission(emit: bool):
