@@ -7,22 +7,24 @@ const PULL_FORCE: int = 1000;
 export var _energy_drain: float
 
 var _targets: Array
+var _is_active: bool = false
 
 
 func _physics_process(delta):
-	if get_owner().try_to_drain_energy(_energy_drain * delta):
-		_attract_targets()
-	else:
-		_force_deactivate_tractor_beam()
+	if _is_active:
+		if owner.try_to_drain_energy(_energy_drain * delta):
+			_attract_targets()
+		else:
+			_force_deactivate_tractor_beam()
 
 
 func activate():
 	show()
-	set_physics_process(true)
+	_is_active = true
 
 
 func deactivate():
-	set_physics_process(false)
+	_is_active = false
 	hide()
 
 
@@ -36,10 +38,13 @@ func _on_TractorBeam_body_exited(body):
 
 func _attract_targets():
 	for target in _targets:
-		target.add_central_force(Vector3.UP * PULL_FORCE)
+		# Attract towards ufo (owner).
+		var direction = owner.global_transform.origin - target.global_transform.origin
+		direction = direction.normalized()
+		target.add_central_force(direction * PULL_FORCE)
 
 
 func _force_deactivate_tractor_beam():
 	hide()
-	set_physics_process(false)
+	_is_active = false
 	# TODO: Some fancy "no more energy" stuff

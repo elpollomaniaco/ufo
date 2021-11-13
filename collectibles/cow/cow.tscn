@@ -24,7 +24,7 @@ surfaces/0 = {
 mass = 75.0
 axis_lock_angular_x = true
 axis_lock_angular_z = true
-points = 100
+_points = 100
 
 [node name="Collider" parent="." index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.834613, 0 )
