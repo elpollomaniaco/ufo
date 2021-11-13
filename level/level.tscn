@@ -3350,7 +3350,6 @@ visible = false
 [connection signal="timeout" from="Enemies/SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
 [connection signal="energy_changed" from="Player" to="GUI" method="_on_Player_energy_changed"]
 [connection signal="health_changed" from="Player" to="GUI" method="_on_Player_health_changed"]
-[connection signal="last_collectible_collected" from="Player" to="." method="_on_Player_last_collectible_collected"]
 [connection signal="player_died" from="Player" to="." method="_on_Player_player_died"]
 [connection signal="score_changed" from="Player" to="GUI" method="_on_Player_score_changed"]
 [connection signal="last_collectible_vanished" from="CollectiblesController" to="." method="_on_CollectiblesController_last_collectible_vanished"]

@@ -5,10 +5,7 @@ signal health_changed
 signal energy_changed
 signal score_changed
 signal player_died
-# warning-ignore:unused_signal
-# Emitted by child.
-# TODO: Call by method?
-signal last_collectible_collected
+
 
 const MOVEMENT_ACCELERATION: int = 2000
 const MAX_HEALTH: int = 100
