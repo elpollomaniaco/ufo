@@ -1,10 +1,9 @@
 extends Area
 
 
-const PULL_FORCE: int = 1000;
-
 # Energy drained per second while activated.
 export var _energy_drain: float
+export var _pull_force: int
 
 var _targets: Array
 var _is_active: bool = false
@@ -41,7 +40,7 @@ func _attract_targets():
 		# Attract towards ufo (owner).
 		var direction = owner.global_transform.origin - target.global_transform.origin
 		direction = direction.normalized()
-		target.add_central_force(direction * PULL_FORCE)
+		target.add_central_force(direction * _pull_force)
 
 
 func _force_deactivate_tractor_beam():
