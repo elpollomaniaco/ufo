@@ -98,6 +98,8 @@ material = SubResource( 12 )
 
 [node name="Claws" type="Spatial"]
 script = ExtResource( 1 )
+_vertical_speed = 50.0
+_throw_power = 200.0
 
 [node name="Extension" type="KinematicBody" parent="."]
 collision_layer = 0
