@@ -22,6 +22,8 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
+_movement_acceleration = 2000
+_energy_regeneration = 1.0
 
 [node name="Collider" type="CollisionShape" parent="."]
 shape = SubResource( 1 )

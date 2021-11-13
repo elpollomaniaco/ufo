@@ -6,13 +6,13 @@ signal energy_changed
 signal score_changed
 signal player_died
 
-
-const MOVEMENT_ACCELERATION: int = 2000
 const MAX_HEALTH: int = 100
 const MAX_ENERGY: float = 100.0
-const ENERGY_REGENERATION: float = 1.0
 const ATTACK_ANIMATION_NAME: String = "UFOEarsAttack"
 const BEAM_ANIMATION_NAME: String = "UFOEarsBeam"
+
+export var _movement_acceleration: int
+export var _energy_regeneration: float
 
 var _current_health: int = MAX_HEALTH
 var _current_energy: float = MAX_ENERGY
@@ -43,7 +43,7 @@ func _physics_process(_delta):
 	
 	if direction != Vector3.ZERO:
 		direction = direction.normalized()
-		add_central_force(direction * MOVEMENT_ACCELERATION)
+		add_central_force(direction * _movement_acceleration)
 
 
 func _process(delta):
@@ -118,7 +118,7 @@ func _toggle_tractor_beam():
 func _regenerate_energy(delta: float):
 	# Don't waste this one or two cycles if energy is already fully loaded.
 	if _current_energy < MAX_ENERGY:
-		_current_energy = min(_current_energy + (ENERGY_REGENERATION * delta), MAX_ENERGY)
+		_current_energy = min(_current_energy + (_energy_regeneration * delta), MAX_ENERGY)
 		emit_signal("energy_changed", _current_energy)
 
 
