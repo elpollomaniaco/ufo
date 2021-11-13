@@ -38,7 +38,7 @@ func _on_Player_player_died():
 	_game_over(false)
 
 
-func _on_Player_last_collectible_collected():
+func _on_CollectiblesController_last_collectible_vanished():
 	_game_over(true)
 
 
@@ -55,4 +55,3 @@ func _game_over(successful: bool):
 	
 	$GameOver.show_score(successful, total_score, collectible_score, time_score, health_score)
 	get_tree().paused = true
-
