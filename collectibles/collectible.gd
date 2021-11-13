@@ -1,17 +1,17 @@
 extends RigidBody
 
 
-export var _points: int
+signal collectible_vanished
 
-onready var _collectibles_controller = get_tree().get_root().get_node("Level/CollectiblesController")
+export var _points: int
 
 
 func destroy():
-	_collectibles_controller.collectible_vanished()
+	emit_signal("collectible_vanished")
 	queue_free()
 
 
 func collect() -> int:
-	_collectibles_controller.collectible_vanished()
+	emit_signal("collectible_vanished")
 	queue_free()
 	return _points
