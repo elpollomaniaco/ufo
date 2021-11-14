@@ -10,7 +10,7 @@
 height = 0.436533
 
 [node name="Player" type="RigidBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0 )
 collision_mask = 0
 mass = 100.0
 gravity_scale = 0.0
@@ -43,15 +43,16 @@ autostart = true
 [node name="SpotLight" type="SpotLight" parent="AimMarker"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
 light_energy = 5.0
-spot_range = 21.0
+spot_range = 11.0
 spot_attenuation = 0.032352
-spot_angle = 3.0
+spot_angle = 4.23551
 
 [node name="CameraArm" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.5, 0.866026, 0, -0.866026, 0.5, 0, -20, 0 )
 
 [node name="Camera" type="Camera" parent="CameraArm"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 35 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 30 )
+fov = 60.0
 size = 25.0
 
 [node name="TractorBeam" parent="." instance=ExtResource( 2 )]
