@@ -79,6 +79,12 @@ func damage(amount: int):
 		_die()
 
 
+func recharge_energy(amount: float):
+	if amount > 0:
+		_current_energy = min(_current_energy + amount, MAX_ENERGY)
+		emit_signal("energy_changed")
+
+
 func get_score() -> int:
 	return _score
 
