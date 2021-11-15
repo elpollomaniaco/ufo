@@ -13,3 +13,5 @@ func _on_Hatch_body_entered(body):
 func _collect(collectible):
 	var points = collectible.collect()
 	owner.add_points_to_score(points)
+	var energy = collectible.get_energy_charge()
+	owner.recharge_energy(energy)
