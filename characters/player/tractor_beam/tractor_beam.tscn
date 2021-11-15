@@ -18,7 +18,7 @@ collision_layer = 0
 collision_mask = 76
 script = ExtResource( 1 )
 _energy_drain = 5.0
-_pull_force = 1000
+_pull_force = 850
 
 [node name="Shape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0 )
