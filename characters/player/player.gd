@@ -82,7 +82,7 @@ func damage(amount: int):
 func recharge_energy(amount: float):
 	if amount > 0:
 		_current_energy = min(_current_energy + amount, MAX_ENERGY)
-		emit_signal("energy_changed")
+		emit_signal("energy_changed", _current_energy)
 
 
 func get_score() -> int:
