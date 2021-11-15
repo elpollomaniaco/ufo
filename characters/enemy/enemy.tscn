@@ -68,7 +68,7 @@ axis_lock_angular_z = true
 script = ExtResource( 3 )
 _movement_acceleration = 500
 _attack_range = 10
-_fire_power = 400
+_fire_power = 300
 _projectile_scene = ExtResource( 1 )
 
 [node name="Collider" type="CollisionShape" parent="."]
