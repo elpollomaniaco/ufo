@@ -3,6 +3,7 @@
 [ext_resource path="res://ui/gui/gui.gd" type="Script" id=1]
 [ext_resource path="res://Font/Montserrat-Bold.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://ui/fonts/montserrat_bold.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://ui/gui/energy_bar/energy_bar.tscn" type="PackedScene" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 28
@@ -14,18 +15,15 @@ default_font = SubResource( 1 )
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.686275, 0.0941176, 0.0941176, 1 )
 
-[sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 0, 0.811765, 1, 1 )
+[sub_resource type="DynamicFont" id=4]
+size = 24
+font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=5]
 size = 24
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=6]
-size = 24
-font_data = ExtResource( 3 )
-
-[node name="UI" type="Control"]
+[node name="GUI" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -0.661743
@@ -48,17 +46,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Energy" type="ProgressBar" parent="."]
+[node name="EnergyBar" parent="." instance=ExtResource( 4 )]
 margin_left = 50.0
-margin_top = 100.0
-margin_right = 250.0
-margin_bottom = 130.0
-custom_styles/fg = SubResource( 4 )
-value = 100.0
-percent_visible = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
+margin_top = 150.0
+margin_right = 50.0
+margin_bottom = 150.0
+rect_scale = Vector2( 0.5, 0.5 )
 
 [node name="Score" type="Control" parent="."]
 margin_left = 1646.0
@@ -75,7 +68,7 @@ anchor_bottom = 0.5
 margin_top = -18.0
 margin_right = 90.0
 margin_bottom = 18.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 text = "Score:"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -89,7 +82,7 @@ anchor_bottom = 0.5
 margin_left = -116.0
 margin_top = -18.0
 margin_bottom = 18.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 5 )
 text = "0"
 align = 2
 __meta__ = {
@@ -111,7 +104,7 @@ anchor_bottom = 0.5
 margin_top = -18.0
 margin_right = 90.0
 margin_bottom = 18.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 5 )
 text = "Time:"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -125,7 +118,7 @@ anchor_bottom = 0.5
 margin_left = -116.0
 margin_top = -18.0
 margin_bottom = 18.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 5 )
 text = "00:00"
 align = 2
 __meta__ = {
