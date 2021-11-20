@@ -48,10 +48,10 @@ __meta__ = {
 
 [node name="EnergyBar" parent="." instance=ExtResource( 4 )]
 margin_left = 50.0
-margin_top = 150.0
+margin_top = 120.0
 margin_right = 50.0
-margin_bottom = 150.0
-rect_scale = Vector2( 0.5, 0.5 )
+margin_bottom = 120.0
+rect_scale = Vector2( 0.2, 0.2 )
 
 [node name="Score" type="Control" parent="."]
 margin_left = 1646.0

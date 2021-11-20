@@ -1,8 +1,15 @@
 extends Control
 
 
+export var _container_spacing: int
+export var _focus_scale: float
+
+var _current_focus: int = -1
+
 onready var _energy_containers: Array = get_children()
 onready var _energy_per_container: float = 100.0 / _energy_containers.size()
+# Container is rotated by 90 degrees so y equals width.s
+onready var _container_width: int = _energy_containers[0].rect_size.y
 
 
 func _ready():
@@ -18,6 +25,7 @@ func change_value(new_value: float):
 func _change_container_value(container_number: int, new_value: float):
 	if container_number < _energy_containers.size():
 		_energy_containers[container_number].value = new_value
+		_focus_container(container_number)
 		
 		# Change value of neighbouring containers.
 		var left_container = container_number - 1
@@ -36,3 +44,22 @@ func _init_containers():
 	for energy_container in _energy_containers:
 		energy_container.max_value = _energy_per_container
 		energy_container.value = _energy_per_container
+	_focus_container(_energy_containers.size() - 1)
+
+
+func _focus_container(container_number: int):
+	if container_number != _current_focus:
+		# First position is not 0 because of rotation and pivot.
+		var h_position = -_container_width
+		var index = 0
+		for container in _energy_containers:
+			container.rect_position.x = h_position
+			
+			if index == container_number:
+				container.rect_scale = Vector2(_focus_scale, _focus_scale)
+			else:
+				container.rect_scale = Vector2(1.0, 1.0)
+			
+			index += 1
+			h_position += container.rect_scale.y * _container_width + _container_spacing
+		_current_focus = container_number
