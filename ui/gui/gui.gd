@@ -10,7 +10,7 @@ func _on_Player_energy_changed(new_value: float):
 
 
 func _on_Player_score_changed(new_value: int):
-	$Score/Value.text = str(new_value)
+	$ScoreDisplay.change_value(new_value)
 
 
 func _on_PlayTimer_play_time_changed(new_value: int):

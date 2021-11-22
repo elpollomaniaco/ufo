@@ -4,6 +4,7 @@
 [ext_resource path="res://Font/Montserrat-Bold.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://ui/fonts/montserrat_bold.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://ui/gui/energy_bar/energy_bar.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ui/gui/score_display/score_display.tscn" type="PackedScene" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 28
@@ -14,10 +15,6 @@ default_font = SubResource( 1 )
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.686275, 0.0941176, 0.0941176, 1 )
-
-[sub_resource type="DynamicFont" id=4]
-size = 24
-font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=5]
 size = 24
@@ -53,41 +50,12 @@ margin_right = 50.0
 margin_bottom = 120.0
 rect_scale = Vector2( 0.2, 0.2 )
 
-[node name="Score" type="Control" parent="."]
-margin_left = 1646.0
-margin_top = 50.0
-margin_right = 1880.0
-margin_bottom = 90.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="Score"]
-anchor_top = 0.5
-anchor_bottom = 0.5
-margin_top = -18.0
-margin_right = 90.0
-margin_bottom = 18.0
-custom_fonts/font = SubResource( 4 )
-text = "Score:"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Value" type="Label" parent="Score"]
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = -116.0
-margin_top = -18.0
-margin_bottom = 18.0
-custom_fonts/font = SubResource( 5 )
-text = "0"
-align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ScoreDisplay" parent="." instance=ExtResource( 5 )]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+margin_right = 200.0
+margin_bottom = 100.0
 
 [node name="Time" type="Control" parent="."]
 margin_left = 1646.0
