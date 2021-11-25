@@ -1,41 +1,35 @@
 extends Control
 
 
-export var _min_orb_scale: float
+const MAX_HEALTH: int = 100
 
-var _current_orb: int
+export var _orb_health_amount: int
 
 onready var _bar = $Bar
-onready var _health_orbs: Array = $Orbs.get_children()
-onready var _health_per_orb: float = 100.0 / _health_orbs.size()
-
+onready var _orb = $Orb/Foreground
 
 func _ready():
 	_init_elements()
 
 
 func change_value(new_value: int):
-	_change_bar_value(new_value)
-	_change_orb_size(new_value)
+	if new_value > _orb_health_amount:
+		_change_bar_value(new_value)
+	else:
+		_change_orb_size(new_value)
 
 
 func _init_elements():
-	_bar.max_value = _health_per_orb
+	_bar.max_value = MAX_HEALTH - _orb_health_amount
 	_bar.value = _bar.max_value
-	for orb in _health_orbs:
-		orb.rect_scale = Vector2.ONE
-	_current_orb = _health_orbs.size()
+	_orb.rect_scale = Vector2.ONE
 
 
-func _change_bar_value(new_value: int):
-	var value: float = fmod(new_value, _health_per_orb)
-	_bar.value = value
+func _change_bar_value(health_value: int):
+	_bar.value = health_value - _orb_health_amount
 
 
-func _change_orb_size(new_value: int):
-	var orb_number: int = (new_value / _health_per_orb) as int + 1
-	var scale: float = fmod(new_value, _health_per_orb) / _health_per_orb
-	_health_orbs[-orb_number].rect_scale = Vector2.ONE * max(scale, _min_orb_scale)
-	if orb_number < _current_orb:
-		_health_orbs[-_current_orb].hide()
-		_current_orb = orb_number
+func _change_orb_size(health_value: int):
+	_bar.value = 0.0
+	var scale: float = health_value as float / _orb_health_amount as float
+	_orb.rect_scale = Vector2.ONE * scale
