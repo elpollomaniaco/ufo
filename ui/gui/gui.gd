@@ -2,7 +2,7 @@ extends Control
 
 
 func _on_Player_health_changed(new_value: int):
-	$Health.value = new_value
+	$HealthDisplay.change_value(new_value)
 
 
 func _on_Player_energy_changed(new_value: float):

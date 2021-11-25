@@ -5,6 +5,7 @@
 [ext_resource path="res://ui/gui/time_display/time_display.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ui/gui/energy_bar/energy_bar.tscn" type="PackedScene" id=4]
 [ext_resource path="res://ui/gui/score_display/score_display.tscn" type="PackedScene" id=5]
+[ext_resource path="res://ui/gui/health_display/health_display.tscn" type="PackedScene" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 28
@@ -12,9 +13,6 @@ font_data = ExtResource( 2 )
 
 [sub_resource type="Theme" id=2]
 default_font = SubResource( 1 )
-
-[sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 0.686275, 0.0941176, 0.0941176, 1 )
 
 [node name="GUI" type="Control"]
 anchor_right = 1.0
@@ -27,17 +25,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Health" type="ProgressBar" parent="."]
+[node name="HealthDisplay" parent="." instance=ExtResource( 6 )]
 margin_left = 50.0
-margin_top = 50.0
-margin_right = 250.0
-margin_bottom = 80.0
-custom_styles/fg = SubResource( 3 )
-value = 100.0
-percent_visible = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
+margin_top = 10.0
+margin_right = -1470.0
+margin_bottom = -970.0
+rect_scale = Vector2( 0.7, 0.7 )
 
 [node name="EnergyBar" parent="." instance=ExtResource( 4 )]
 margin_left = 50.0
