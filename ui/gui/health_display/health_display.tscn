@@ -22,13 +22,14 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+_min_orb_scale = 0.4
 
 [node name="Bar" type="ProgressBar" parent="."]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -300.0
+margin_left = -370.0
 margin_top = 10.0
 margin_bottom = 30.0
 custom_styles/fg = SubResource( 1 )
@@ -51,15 +52,22 @@ __meta__ = {
 }
 
 [node name="HealthOrb" type="TextureRect" parent="Orbs"]
-margin_left = 75.0
-margin_right = 275.0
-margin_bottom = 200.0
+margin_left = 25.3871
+margin_top = 20.2962
+margin_right = 225.387
+margin_bottom = 220.296
+rect_pivot_offset = Vector2( 100, 200 )
 texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="HealthOrb2" type="TextureRect" parent="Orbs"]
-margin_top = 125.0
-margin_right = 200.0
-margin_bottom = 325.0
+margin_left = 138.144
+margin_top = 38.3372
+margin_right = 338.144
+margin_bottom = 238.337
+rect_pivot_offset = Vector2( 100, 200 )
 texture = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -70,6 +78,17 @@ margin_left = 150.0
 margin_top = 125.0
 margin_right = 350.0
 margin_bottom = 325.0
+rect_pivot_offset = Vector2( 0, 100 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthOrb4" type="TextureRect" parent="Orbs"]
+margin_top = 125.0
+margin_right = 200.0
+margin_bottom = 325.0
+rect_pivot_offset = Vector2( 100, 100 )
 texture = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
