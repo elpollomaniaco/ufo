@@ -10,15 +10,33 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-_container_spacing = 20
 _focus_scale = 1.5
 
 [node name="EnergyContainer" parent="." instance=ExtResource( 1 )]
+margin_top = 150.0
+margin_bottom = 250.0
 
 [node name="EnergyContainer2" parent="." instance=ExtResource( 1 )]
+margin_left = 0.0
+margin_top = 150.0
+margin_right = 200.0
+margin_bottom = 250.0
 
 [node name="EnergyContainer3" parent="." instance=ExtResource( 1 )]
+margin_left = 100.0
+margin_top = 150.0
+margin_right = 300.0
+margin_bottom = 250.0
 
 [node name="EnergyContainer4" parent="." instance=ExtResource( 1 )]
+margin_left = 200.0
+margin_top = 150.0
+margin_right = 400.0
+margin_bottom = 250.0
 
 [node name="EnergyContainer5" parent="." instance=ExtResource( 1 )]
+margin_left = 300.0
+margin_top = 150.0
+margin_right = 500.0
+margin_bottom = 250.0
+rect_scale = Vector2( 1.5, 1.5 )
