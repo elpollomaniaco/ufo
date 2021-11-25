@@ -1,15 +1,16 @@
 extends Control
 
 
-export var _container_spacing: int
-export var _focus_scale: float
-
 var _current_focus: int = -1
 
 onready var _energy_containers: Array = get_children()
 onready var _energy_per_container: float = 100.0 / _energy_containers.size()
 # Container is rotated by 90 degrees so y equals width.s
 onready var _container_width: int = _energy_containers[0].rect_size.y
+onready var _container_spacing: int = (_energy_containers[1].rect_position.x
+		- _energy_containers[0].rect_position.x 
+		- _container_width)
+onready var _focus_scale: float = _energy_containers[-1].rect_scale.x
 
 
 func _ready():
