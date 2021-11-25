@@ -16,7 +16,7 @@ default_font = SubResource( 1 )
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.686275, 0.0941176, 0.0941176, 1 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=4]
 size = 24
 font_data = ExtResource( 3 )
 
@@ -72,7 +72,7 @@ anchor_bottom = 0.5
 margin_top = -18.0
 margin_right = 90.0
 margin_bottom = 18.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 text = "Time:"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -86,7 +86,7 @@ anchor_bottom = 0.5
 margin_left = -116.0
 margin_top = -18.0
 margin_bottom = 18.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 text = "00:00"
 align = 2
 __meta__ = {
