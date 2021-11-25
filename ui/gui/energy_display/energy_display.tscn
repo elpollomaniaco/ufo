@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://ui/gui/energy_bar/energy_container/energy_container.tscn" type="PackedScene" id=1]
-[ext_resource path="res://ui/gui/energy_bar/energy_bar.gd" type="Script" id=2]
+[ext_resource path="res://ui/gui/energy_display/energy_container/energy_container.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ui/gui/energy_display/energy_display.gd" type="Script" id=2]
 
 [node name="EnergyBar" type="Control"]
 margin_right = -1120.0

@@ -3,7 +3,7 @@
 [ext_resource path="res://ui/gui/gui.gd" type="Script" id=1]
 [ext_resource path="res://Font/Montserrat-Bold.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://ui/gui/time_display/time_display.tscn" type="PackedScene" id=3]
-[ext_resource path="res://ui/gui/energy_bar/energy_bar.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ui/gui/energy_display/energy_display.tscn" type="PackedScene" id=4]
 [ext_resource path="res://ui/gui/score_display/score_display.tscn" type="PackedScene" id=5]
 [ext_resource path="res://ui/gui/health_display/health_display.tscn" type="PackedScene" id=6]
 
