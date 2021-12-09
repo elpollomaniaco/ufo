@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://ui/gui/gui.gd" type="Script" id=1]
 [ext_resource path="res://Font/Montserrat-Bold.ttf" type="DynamicFontData" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://ui/gui/score_display/score_display.tscn" type="PackedScene" id=5]
 [ext_resource path="res://ui/gui/health_display/health_display.tscn" type="PackedScene" id=6]
 [ext_resource path="res://ui/gui/gui_cockpit.png" type="Texture" id=7]
+[ext_resource path="res://ui/gui/gui_label_theme.theme" type="Theme" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 28
@@ -47,11 +48,10 @@ margin_right = 25.0
 margin_bottom = 40.0
 
 [node name="ScoreDisplay" parent="." instance=ExtResource( 5 )]
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.0
-margin_right = 200.0
-margin_bottom = 100.0
+margin_left = 1670.0
+margin_top = 50.0
+margin_right = 1870.0
+margin_bottom = 90.0
 
 [node name="TimeDisplay" parent="." instance=ExtResource( 3 )]
 anchor_left = 0.5
@@ -60,3 +60,22 @@ anchor_bottom = 0.0
 margin_top = 75.0
 margin_right = 100.0
 margin_bottom = 125.0
+
+[node name="Labels" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="Labels"]
+margin_left = 1610.0
+margin_top = 50.0
+margin_right = 1704.0
+margin_bottom = 90.0
+text = "Score"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
