@@ -6,7 +6,7 @@ func _on_Player_health_changed(new_value: int):
 
 
 func _on_Player_energy_changed(new_value: float):
-	$EnergyBar.change_value(new_value)
+	$EnergyDisplay.change_value(new_value)
 
 
 func _on_Player_score_changed(new_value: int):

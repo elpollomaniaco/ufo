@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/wool_thread.png-c13f5b41e1e9be349e21dd7fb5c411fe.stex"
+path="res://.import/health_fill.png-cf08bbad742e4484f12eb047a7693a6b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/gui/health_display/wool_thread.png"
-dest_files=[ "res://.import/wool_thread.png-c13f5b41e1e9be349e21dd7fb5c411fe.stex" ]
+source_file="res://ui/gui/health_display/health_fill.png"
+dest_files=[ "res://.import/health_fill.png-cf08bbad742e4484f12eb047a7693a6b.stex" ]
 
 [params]
 

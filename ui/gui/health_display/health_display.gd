@@ -1,35 +1,26 @@
 extends Control
 
 
+# Not yet secured against changes in player node!
 const MAX_HEALTH: int = 100
 
-export var _orb_health_amount: int
+onready var _fill: TextureRect = $Fill
+onready var _value_label: Label = $Value
 
-onready var _bar = $Bar
-onready var _orb = $Orb/Foreground
 
 func _ready():
-	_init_elements()
+	change_value(MAX_HEALTH)
 
 
 func change_value(new_value: int):
-	if new_value > _orb_health_amount:
-		_change_bar_value(new_value)
-	else:
-		_change_orb_size(new_value)
+	_change_value_label(new_value)
+	_change_fill_size(new_value)
 
 
-func _init_elements():
-	_bar.max_value = MAX_HEALTH - _orb_health_amount
-	_bar.value = _bar.max_value
-	_orb.rect_scale = Vector2.ONE
+func _change_value_label(health_value: int):
+	_value_label.text = str(health_value)
 
 
-func _change_bar_value(health_value: int):
-	_bar.value = health_value - _orb_health_amount
-
-
-func _change_orb_size(health_value: int):
-	_bar.value = 0.0
-	var scale: float = health_value as float / _orb_health_amount as float
-	_orb.rect_scale = Vector2.ONE * scale
+func _change_fill_size(health_value: int):
+	var ratio: float = (health_value as float) / (MAX_HEALTH as float)
+	_fill.rect_scale = Vector2.ONE * ratio

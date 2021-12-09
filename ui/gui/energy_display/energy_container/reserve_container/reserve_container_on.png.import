@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/wool_ball_empty.png-a41bca67adb462ac896cbecfc5d63f2d.stex"
+path="res://.import/reserve_container_on.png-767eae91e5581b032c628e02fed36d3b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/gui/health_display/wool_ball_empty.png"
-dest_files=[ "res://.import/wool_ball_empty.png-a41bca67adb462ac896cbecfc5d63f2d.stex" ]
+source_file="res://ui/gui/energy_display/energy_container/reserve_container/reserve_container_on.png"
+dest_files=[ "res://.import/reserve_container_on.png-767eae91e5581b032c628e02fed36d3b.stex" ]
 
 [params]
 

@@ -1,16 +1,12 @@
 extends Control
 
 
-var _current_focus: int = -1
+# Not yet secured against changes in player node!
+const MAX_ENERGY = 100.0
 
-onready var _energy_containers: Array = get_children()
-onready var _energy_per_container: float = 100.0 / _energy_containers.size()
-# Container is rotated by 90 degrees so y equals width.s
-onready var _container_width: int = _energy_containers[0].rect_size.y
-onready var _container_spacing: int = (_energy_containers[1].rect_position.x
-		- _energy_containers[0].rect_position.x 
-		- _container_width)
-onready var _focus_scale: float = _energy_containers[-1].rect_scale.x
+onready var _reserve_containers: Array = $ReserveContainers.get_children()
+# x + 1 because main container is also filled.
+onready var _energy_in_container = MAX_ENERGY / (_reserve_containers.size() + 1)
 
 
 func _ready():
@@ -18,49 +14,26 @@ func _ready():
 
 
 func change_value(new_value: float):
-	var container_number: int = (new_value / _energy_per_container) as int
-	var container_value: float = fmod(new_value, _energy_per_container)
-	_change_container_value(container_number, container_value)
+	var container_number: int = (new_value / _energy_in_container) as int
+	var container_value: float = fmod(new_value, _energy_in_container)
+	_change_container_value(container_number + 1, container_value)
 
 
 func _change_container_value(container_number: int, new_value: float):
-	if container_number < _energy_containers.size():
-		_energy_containers[container_number].value = new_value
-		_focus_container(container_number)
+	if container_number <= (_reserve_containers.size() + 1):
+		$EnergyContainer.value = new_value
+		if container_number <= _reserve_containers.size():
+			# Access backwars because of automatic order of controls.
+			_reserve_containers[-container_number].deactivate()
 		
-		# Change value of neighbouring containers.
-		var left_container = container_number - 1
-		if left_container >= 0:
-			_energy_containers[left_container].value = _energy_containers[left_container].max_value
-		
-		var right_container = container_number + 1
-		if right_container < _energy_containers.size():
-			_energy_containers[right_container].value = 0.0
-	else:
-		# Set last container to be full.
-		_energy_containers[-1].value = _energy_containers[-1].max_value
-
+		# Reactivating successor important when regeneration fills container.
+		# Successor means reserve container which would be emptied next.
+		var successor_container_number: int = container_number - 1
+		if successor_container_number > 0 and successor_container_number <= _reserve_containers.size():
+			_reserve_containers[-successor_container_number].activate()
 
 func _init_containers():
-	for energy_container in _energy_containers:
-		energy_container.max_value = _energy_per_container
-		energy_container.value = _energy_per_container
-	_focus_container(_energy_containers.size() - 1)
-
-
-func _focus_container(container_number: int):
-	if container_number != _current_focus:
-		# First position is not 0 because of rotation and pivot.
-		var h_position = -_container_width
-		var index = 0
-		for container in _energy_containers:
-			container.rect_position.x = h_position
-			
-			if index == container_number:
-				container.rect_scale = Vector2(_focus_scale, _focus_scale)
-			else:
-				container.rect_scale = Vector2(1.0, 1.0)
-			
-			index += 1
-			h_position += container.rect_scale.y * _container_width + _container_spacing
-		_current_focus = container_number
+	$EnergyContainer.max_value = _energy_in_container
+	$EnergyContainer.value = _energy_in_container
+	for reserve_container in _reserve_containers:
+		reserve_container.activate()
