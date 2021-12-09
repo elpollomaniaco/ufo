@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://ui/gui/gui.gd" type="Script" id=1]
 [ext_resource path="res://Font/Montserrat-Bold.ttf" type="DynamicFontData" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://ui/gui/energy_display/energy_display.tscn" type="PackedScene" id=4]
 [ext_resource path="res://ui/gui/score_display/score_display.tscn" type="PackedScene" id=5]
 [ext_resource path="res://ui/gui/health_display/health_display.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ui/gui/gui_cockpit.png" type="Texture" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 28
@@ -25,6 +26,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Cockpit" type="TextureRect" parent="."]
+margin_right = 1920.0
+margin_bottom = 1080.0
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="HealthDisplay" parent="." instance=ExtResource( 6 )]
 margin_left = 20.0
 margin_top = 20.0
@@ -32,12 +41,11 @@ margin_right = -950.0
 margin_bottom = -840.0
 rect_scale = Vector2( 0.7, 0.7 )
 
-[node name="EnergyBar" parent="." instance=ExtResource( 4 )]
-margin_left = 169.0
-margin_top = 72.0
-margin_right = 169.0
-margin_bottom = 72.0
-rect_scale = Vector2( 0.3, 0.3 )
+[node name="EnergyDisplay" parent="." instance=ExtResource( 4 )]
+margin_left = 25.0
+margin_top = 40.0
+margin_right = 25.0
+margin_bottom = 40.0
 
 [node name="ScoreDisplay" parent="." instance=ExtResource( 5 )]
 anchor_left = 0.5
