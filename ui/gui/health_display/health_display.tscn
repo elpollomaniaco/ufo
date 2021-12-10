@@ -1,40 +1,26 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://ui/gui/health_display/health_fill.png" type="Texture" id=1]
-[ext_resource path="res://ui/gui/health_display/health_display.gd" type="Script" id=2]
-[ext_resource path="res://ui/gui/gui_label_theme.theme" type="Theme" id=3]
+[ext_resource path="res://ui/gui/health_display/health_display.gd" type="Script" id=1]
+[ext_resource path="res://ui/gui/health_display/health_vial.png" type="Texture" id=2]
+[ext_resource path="res://ui/gui/health_display/health_fill.png" type="Texture" id=3]
 
 [node name="HealthDisplay" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -60.0
-margin_top = -60.0
-margin_right = -1860.0
-margin_bottom = -1020.0
-script = ExtResource( 2 )
+margin_right = -1440.0
+margin_bottom = -780.0
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Fill" type="TextureRect" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 60, 60 )
-texture = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Value" type="Label" parent="."]
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_top = -20.0
-margin_bottom = 20.0
-theme = ExtResource( 3 )
-text = "000"
-align = 1
-valign = 1
+[node name="Vial" type="TextureProgress" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+value = 100.0
+texture_over = ExtResource( 2 )
+texture_progress = ExtResource( 3 )
+texture_progress_offset = Vector2( 57, 220 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
