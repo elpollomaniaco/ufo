@@ -13,10 +13,12 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+_tween_time = 0.3
 
 [node name="Vial" type="TextureProgress" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
+step = 0.01
 value = 100.0
 texture_over = ExtResource( 2 )
 texture_progress = ExtResource( 3 )
@@ -24,3 +26,5 @@ texture_progress_offset = Vector2( 57, 220 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Tween" type="Tween" parent="."]
