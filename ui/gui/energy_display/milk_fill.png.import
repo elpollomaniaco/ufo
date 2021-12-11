@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/reserve_container_on.png-767eae91e5581b032c628e02fed36d3b.stex"
+path="res://.import/milk_fill.png-ed8a59e4f3879ade875877e3c8e0d913.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/gui/energy_display/energy_container/reserve_container/reserve_container_on.png"
-dest_files=[ "res://.import/reserve_container_on.png-767eae91e5581b032c628e02fed36d3b.stex" ]
+source_file="res://ui/gui/energy_display/milk_fill.png"
+dest_files=[ "res://.import/milk_fill.png-ed8a59e4f3879ade875877e3c8e0d913.stex" ]
 
 [params]
 
