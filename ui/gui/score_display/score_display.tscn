@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://ui/gui/score_display/score_display.gd" type="Script" id=1]
-[ext_resource path="res://ui/gui/gui_label_theme.theme" type="Theme" id=3]
+[ext_resource path="res://ui/gui/gui_score_icon.png" type="Texture" id=2]
+[ext_resource path="res://ui/gui/gui_label_theme_big.theme" type="Theme" id=3]
 
 [node name="ScoreDisplay" type="Control"]
 margin_right = 200.0
-margin_bottom = 40.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 210, 100 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -18,9 +20,19 @@ anchor_bottom = 1.0
 theme = ExtResource( 3 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
-text = "0"
+text = "0000"
 align = 2
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" type="TextureRect" parent="."]
+margin_top = 25.0
+margin_right = 100.0
+margin_bottom = 125.0
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
