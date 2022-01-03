@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://ui/gui/gui.gd" type="Script" id=1]
 [ext_resource path="res://Font/Montserrat-Bold.ttf" type="DynamicFontData" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://ui/gui/energy_display/energy_display.tscn" type="PackedScene" id=4]
 [ext_resource path="res://ui/gui/score_display/score_display.tscn" type="PackedScene" id=5]
 [ext_resource path="res://ui/gui/health_display/health_display.tscn" type="PackedScene" id=6]
-[ext_resource path="res://ui/gui/gui_label_theme.theme" type="Theme" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 28
@@ -27,59 +26,25 @@ __meta__ = {
 }
 
 [node name="EnergyDisplay" parent="." instance=ExtResource( 4 )]
-margin_left = 10.0
-margin_top = -110.0
-margin_right = 10.0
-margin_bottom = -110.0
+margin_left = -420.0
+margin_top = -150.0
+margin_right = -420.0
+margin_bottom = -150.0
 
 [node name="HealthDisplay" parent="." instance=ExtResource( 6 )]
-margin_top = -200.0
-margin_right = -1920.0
-margin_bottom = -1280.0
+margin_left = -150.0
+margin_top = -180.0
+margin_right = -2070.0
+margin_bottom = -1260.0
 
 [node name="ScoreDisplay" parent="." instance=ExtResource( 5 )]
-visible = false
-margin_left = 1670.0
-margin_top = 50.0
+margin_left = 1660.0
+margin_top = 25.0
 margin_right = 1870.0
-margin_bottom = 90.0
+margin_bottom = 125.0
 
 [node name="TimeDisplay" parent="." instance=ExtResource( 3 )]
-visible = false
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.0
-margin_left = 710.0
+margin_left = 1740.0
 margin_top = 100.0
-margin_right = 910.0
-margin_bottom = 140.0
-
-[node name="Labels" type="Control" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-theme = ExtResource( 8 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Score" type="Label" parent="Labels"]
-margin_left = 1610.0
-margin_top = 50.0
-margin_right = 1704.0
-margin_bottom = 90.0
-text = "Score"
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Time" type="Label" parent="Labels"]
-margin_left = 1610.0
-margin_top = 100.0
-margin_right = 1704.0
-margin_bottom = 140.0
-text = "Time"
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+margin_right = -50.0
+margin_bottom = -930.0
