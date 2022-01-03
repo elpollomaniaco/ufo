@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/milk_vial.png-573dbd258268ae674d2ad833fa9faa58.stex"
+path="res://.import/milk_vial_underlay.png-5ccf1a5f5b49125c350cf501756eaaa4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/gui/energy_display/milk_vial.png"
-dest_files=[ "res://.import/milk_vial.png-573dbd258268ae674d2ad833fa9faa58.stex" ]
+source_file="res://ui/gui/energy_display/milk_vial_underlay.png"
+dest_files=[ "res://.import/milk_vial_underlay.png-5ccf1a5f5b49125c350cf501756eaaa4.stex" ]
 
 [params]
 

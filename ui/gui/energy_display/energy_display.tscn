@@ -1,13 +1,14 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://ui/gui/energy_display/milk_vial.png" type="Texture" id=1]
+[ext_resource path="res://ui/gui/energy_display/milk_vial_underlay.png" type="Texture" id=1]
 [ext_resource path="res://ui/gui/energy_display/energy_display.gd" type="Script" id=2]
 [ext_resource path="res://ui/gui/energy_display/milk_fill.png" type="Texture" id=3]
 [ext_resource path="res://ui/gui/energy_display/reserve_indicator/reserve_indicator.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ui/gui/energy_display/milk_vial_overlay.png" type="Texture" id=5]
 
 [node name="EnergyDisplay" type="Control"]
-margin_right = -1120.0
-margin_bottom = -880.0
+margin_right = 560.0
+margin_bottom = 620.0
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -15,41 +16,45 @@ __meta__ = {
 _tween_time = 0.3
 
 [node name="Vial" type="TextureProgress" parent="."]
-margin_right = 1.0
-margin_bottom = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 step = 0.01
 value = 100.0
-texture_over = ExtResource( 1 )
+texture_under = ExtResource( 1 )
+texture_over = ExtResource( 5 )
 texture_progress = ExtResource( 3 )
-texture_progress_offset = Vector2( 57, 220 )
+texture_progress_offset = Vector2( 470, 266 )
+fill_mode = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Reserve" type="Control" parent="."]
-margin_left = 150.0
-margin_top = 195.0
-margin_right = 230.0
-margin_bottom = 225.0
+margin_left = 446.0
+margin_top = 367.0
+margin_right = 476.0
+margin_bottom = 447.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ReserveIndicator" parent="Reserve" instance=ExtResource( 4 )]
-
-[node name="ReserveIndicator2" parent="Reserve" instance=ExtResource( 4 )]
-margin_left = 20.0
-margin_right = -90.0
-margin_bottom = -30.0
+[node name="ReserveIndicator4" parent="Reserve" instance=ExtResource( 4 )]
+margin_top = 60.0
+margin_right = -30.0
+margin_bottom = 30.0
 
 [node name="ReserveIndicator3" parent="Reserve" instance=ExtResource( 4 )]
-margin_left = 40.0
-margin_right = -70.0
-margin_bottom = -30.0
+margin_top = 40.0
+margin_right = -30.0
+margin_bottom = 10.0
 
-[node name="ReserveIndicator4" parent="Reserve" instance=ExtResource( 4 )]
-margin_left = 60.0
-margin_right = -50.0
-margin_bottom = -30.0
+[node name="ReserveIndicator2" parent="Reserve" instance=ExtResource( 4 )]
+margin_top = 20.0
+margin_right = -30.0
+margin_bottom = -10.0
+
+[node name="ReserveIndicator" parent="Reserve" instance=ExtResource( 4 )]
+margin_right = -30.0
+margin_bottom = -80.0
 
 [node name="Tween" type="Tween" parent="."]

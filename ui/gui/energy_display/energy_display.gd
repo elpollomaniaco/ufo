@@ -36,8 +36,10 @@ func _change_container_value(container_number: int, new_value: float):
 	if container_number > _reserve_indicators.size():
 		new_value = _energy_in_container
 	
+	# warning-ignore:return_value_discarded
 	_tween.interpolate_property(self, "_shown_value", null, new_value, _tween_time)
 	if not _tween.is_active():
+		# warning-ignore:return_value_discarded
 		_tween.start()
 	
 	if container_number < _reserve_indicators.size():
