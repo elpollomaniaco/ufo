@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/milk_bottle_empty.png-5cafc2ac8235fc24a9fbd52fc09dc882.stex"
+path="res://.import/health_vial.png-01239258c2618eeeb3d8b7ff08795f0f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/gui/energy_display/energy_container/milk_bottle_empty.png"
-dest_files=[ "res://.import/milk_bottle_empty.png-5cafc2ac8235fc24a9fbd52fc09dc882.stex" ]
+source_file="res://ui/gui/health_display/health_vial.png"
+dest_files=[ "res://.import/health_vial.png-01239258c2618eeeb3d8b7ff08795f0f.stex" ]
 
 [params]
 

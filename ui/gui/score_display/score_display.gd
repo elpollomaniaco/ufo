@@ -26,5 +26,5 @@ func change_value(new_value: int):
 
 func _show_value(new_value: float):
 	# float is needed for calculation during _process().
-	var value = str(new_value as int)
+	var value = "%04d" % new_value
 	$Value.text = value

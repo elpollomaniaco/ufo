@@ -1,14 +1,14 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://ui/gui/energy_display/energy_container/reserve_container/reserve_container.gd" type="Script" id=1]
-[ext_resource path="res://ui/gui/energy_display/energy_container/reserve_container/reserve_container_on.png" type="Texture" id=2]
-[ext_resource path="res://ui/gui/energy_display/energy_container/reserve_container/reserve_container_off.png" type="Texture" id=3]
+[ext_resource path="res://ui/gui/energy_display/reserve_indicator/reserve_indicator.gd" type="Script" id=1]
+[ext_resource path="res://ui/gui/energy_display/reserve_indicator/reserve_indicator_on.png" type="Texture" id=2]
+[ext_resource path="res://ui/gui/energy_display/reserve_indicator/reserve_indicator_off.png" type="Texture" id=3]
 
-[node name="ReserveContainer" type="Control"]
+[node name="ReserveIndicator" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -1900.0
-margin_bottom = -1060.0
+margin_bottom = -1050.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 1 )

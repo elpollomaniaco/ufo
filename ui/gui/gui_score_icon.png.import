@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/reserve_container_on.png-767eae91e5581b032c628e02fed36d3b.stex"
+path="res://.import/gui_score_icon.png-9e0789f2800cc12533346ea9d05349f9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/gui/energy_display/energy_container/reserve_container/reserve_container_on.png"
-dest_files=[ "res://.import/reserve_container_on.png-767eae91e5581b032c628e02fed36d3b.stex" ]
+source_file="res://ui/gui/gui_score_icon.png"
+dest_files=[ "res://.import/gui_score_icon.png-9e0789f2800cc12533346ea9d05349f9.stex" ]
 
 [params]
 

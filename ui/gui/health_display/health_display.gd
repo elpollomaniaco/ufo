@@ -4,23 +4,29 @@ extends Control
 # Not yet secured against changes in player node!
 const MAX_HEALTH: int = 100
 
-onready var _fill: TextureRect = $Fill
-onready var _value_label: Label = $Value
+export var _tween_time: float
+
+var _shown_value: float = 0.0
+
+onready var _progress: TextureProgress = $Vial
+onready var _tween: Tween = $Tween
 
 
 func _ready():
 	change_value(MAX_HEALTH)
 
 
+func _process(_delta):
+	_progress.value = _shown_value
+
+
 func change_value(new_value: int):
-	_change_value_label(new_value)
-	_change_fill_size(new_value)
+	_change_progress_bar_value(new_value)
 
 
-func _change_value_label(health_value: int):
-	_value_label.text = str(health_value)
-
-
-func _change_fill_size(health_value: int):
-	var ratio: float = (health_value as float) / (MAX_HEALTH as float)
-	_fill.rect_scale = Vector2.ONE * ratio
+func _change_progress_bar_value(new_value: int):
+	# warning-ignore:return_value_discarded
+	_tween.interpolate_property(self, "_shown_value", null, new_value, _tween_time)
+	if not _tween.is_active():
+		# warning-ignore:return_value_discarded
+		_tween.start()

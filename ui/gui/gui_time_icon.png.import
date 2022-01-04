@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/milk_bottle_full.png-2942df914ccb4717b88d82120e59cad1.stex"
+path="res://.import/gui_time_icon.png-5946c05f057d07e5f937fc5136b34f2e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/gui/energy_display/energy_container/milk_bottle_full.png"
-dest_files=[ "res://.import/milk_bottle_full.png-2942df914ccb4717b88d82120e59cad1.stex" ]
+source_file="res://ui/gui/gui_time_icon.png"
+dest_files=[ "res://.import/gui_time_icon.png-5946c05f057d07e5f937fc5136b34f2e.stex" ]
 
 [params]
 
