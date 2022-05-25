@@ -3314,24 +3314,16 @@ autostart = true
 
 [node name="SpawnPoints" type="Spatial" parent="Enemies"]
 
-[node name="SpawnPoint" type="Position3D" parent="Enemies/SpawnPoints" groups=[
-"EnemySpawnPoints",
-]]
+[node name="SpawnPoint" type="Position3D" parent="Enemies/SpawnPoints" groups=["EnemySpawnPoints"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 39.5957, 0, 37.8543 )
 
-[node name="SpawnPoint2" type="Position3D" parent="Enemies/SpawnPoints" groups=[
-"EnemySpawnPoints",
-]]
+[node name="SpawnPoint2" type="Position3D" parent="Enemies/SpawnPoints" groups=["EnemySpawnPoints"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.8513, 0, -12.0454 )
 
-[node name="SpawnPoint3" type="Position3D" parent="Enemies/SpawnPoints" groups=[
-"EnemySpawnPoints",
-]]
+[node name="SpawnPoint3" type="Position3D" parent="Enemies/SpawnPoints" groups=["EnemySpawnPoints"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -35.3217, 3, 22.7709 )
 
-[node name="SpawnPoint4" type="Position3D" parent="Enemies/SpawnPoints" groups=[
-"EnemySpawnPoints",
-]]
+[node name="SpawnPoint4" type="Position3D" parent="Enemies/SpawnPoints" groups=["EnemySpawnPoints"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29.2428, 0, -35.0329 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]

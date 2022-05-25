@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/reserve_indicator_off.png-ae0728854b5c09bb1d2a3540175b5ba6.stex"
+path="res://.import/indicator.png-e568a8ffec9ffd18f4ea2804f4e661a5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/gui/energy_display/reserve_indicator/reserve_indicator_off.png"
-dest_files=[ "res://.import/reserve_indicator_off.png-ae0728854b5c09bb1d2a3540175b5ba6.stex" ]
+source_file="res://ui/gui/energy_display/indicator/indicator.png"
+dest_files=[ "res://.import/indicator.png-e568a8ffec9ffd18f4ea2804f4e661a5.stex" ]
 
 [params]
 
