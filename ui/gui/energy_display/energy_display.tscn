@@ -7,8 +7,8 @@
 [ext_resource path="res://ui/gui/energy_display/milk_vial_overlay.png" type="Texture" id=5]
 
 [node name="EnergyDisplay" type="Control"]
-margin_right = 560.0
-margin_bottom = 620.0
+margin_right = 1120.0
+margin_bottom = 1240.0
 script = ExtResource( 2 )
 _tween_time = 0.3
 
@@ -20,37 +20,37 @@ value = 100.0
 texture_under = ExtResource( 1 )
 texture_over = ExtResource( 5 )
 texture_progress = ExtResource( 3 )
-texture_progress_offset = Vector2( 470, 266 )
+texture_progress_offset = Vector2( 942, 530 )
 fill_mode = 3
 
 [node name="Indicators" type="Control" parent="."]
-margin_left = 446.0
-margin_top = 367.0
-margin_right = 476.0
-margin_bottom = 447.0
+margin_left = 892.0
+margin_top = 734.0
+margin_right = 922.0
+margin_bottom = 814.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Indicator5" parent="Indicators" instance=ExtResource( 4 )]
+margin_top = 120.0
+margin_right = -30.0
+margin_bottom = 40.0
+
+[node name="Indicator4" parent="Indicators" instance=ExtResource( 4 )]
+margin_top = 90.0
+margin_right = -30.0
+margin_bottom = 10.0
+
+[node name="Indicator3" parent="Indicators" instance=ExtResource( 4 )]
 margin_top = 60.0
 margin_right = -30.0
 margin_bottom = -20.0
 
-[node name="Indicator4" parent="Indicators" instance=ExtResource( 4 )]
-margin_top = 45.0
-margin_right = -30.0
-margin_bottom = -35.0
-
-[node name="Indicator3" parent="Indicators" instance=ExtResource( 4 )]
+[node name="Indicator2" parent="Indicators" instance=ExtResource( 4 )]
 margin_top = 30.0
 margin_right = -30.0
 margin_bottom = -50.0
-
-[node name="Indicator2" parent="Indicators" instance=ExtResource( 4 )]
-margin_top = 15.0
-margin_right = -30.0
-margin_bottom = -65.0
 
 [node name="Indicator" parent="Indicators" instance=ExtResource( 4 )]
 

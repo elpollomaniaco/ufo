@@ -30,12 +30,14 @@ margin_left = -420.0
 margin_top = -150.0
 margin_right = -420.0
 margin_bottom = -150.0
+rect_scale = Vector2( 0.5, 0.5 )
 
 [node name="HealthDisplay" parent="." instance=ExtResource( 6 )]
 margin_left = -150.0
 margin_top = -180.0
 margin_right = -2070.0
 margin_bottom = -1260.0
+rect_scale = Vector2( 0.5, 0.5 )
 
 [node name="ScoreDisplay" parent="." instance=ExtResource( 5 )]
 margin_left = 1670.0
