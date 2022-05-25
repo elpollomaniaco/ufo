@@ -15,7 +15,9 @@ func _process(_delta):
 
 func show_score(successful: bool, total_score: int, collectible_score: int, time_score: int, health_score: int):
 	if successful:
-		$Title.text = "You did it!"
+		$Background/Success.show()
+	else:
+		$Background/Failed.show()
 	
 	$Scores/CollectibleScore/Value.text = str(collectible_score)
 	$Scores/TimeScore/Value.text = str(time_score)
