@@ -21,11 +21,11 @@ func show_pause_menu():
 	show()
 
 
-func _on_Resume_pressed():
+func _on_resume_pressed():
 	_resume_game()
 
 
-func _on_MainMenu_pressed():
+func _on_main_menu_pressed():
 	get_tree().change_scene_to(_main_menu_scene)
 	get_tree().paused = false
 
