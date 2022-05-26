@@ -26,6 +26,7 @@ func show_score(successful: bool, total_score: int, collectible_score: int, time
 	var health = $ScoreBackground/Scores/HealthScore
 	var total = $ScoreBackground/Scores/TotalScore
 	
+	yield(get_tree().create_timer(0.5), "timeout")
 	collectibles.set_score(collectible_score)
 	yield(collectibles, "count_up_finished")
 	time.set_score(time_score)
