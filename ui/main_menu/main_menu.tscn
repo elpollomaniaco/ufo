@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://ui/fonts/montserrat_regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://ui/main_menu/main_menu.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://ui/main_menu/buttons/button_exit_select.png" type="Texture" id=9]
 [ext_resource path="res://ui/shared/menu_button.tscn" type="PackedScene" id=10]
 [ext_resource path="res://ui/main_menu/buttons/button_exit_active.png" type="Texture" id=11]
+[ext_resource path="res://audio/music/8_Bit_Menu_by_David_Renda.mp3" type="AudioStream" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
@@ -48,6 +49,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 theme = SubResource( 2 )
 script = ExtResource( 3 )
+_background_music = ExtResource( 12 )
 
 [node name="Background" type="TextureRect" parent="."]
 margin_right = 1920.0

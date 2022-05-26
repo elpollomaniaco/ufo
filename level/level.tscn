@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://characters/player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://level/level.gd" type="Script" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://level/props/static/police_car/police_car.tscn" type="PackedScene" id=20]
 [ext_resource path="res://level/props/static/torch/torch.tscn" type="PackedScene" id=21]
 [ext_resource path="res://level/props/static/fog/fog.tscn" type="PackedScene" id=22]
+[ext_resource path="res://audio/music/Arcade_Kid_by_David_Renda.mp3" type="AudioStream" id=23]
 
 [sub_resource type="Image" id=6]
 data = {
@@ -63,6 +64,7 @@ data = PoolVector3Array( -100, -1, -98, -100, 0, -100, -100, 0, -98, -100, -1, -
 
 [node name="Level" type="Node"]
 script = ExtResource( 2 )
+_background_music = ExtResource( 23 )
 _enemy_scene = ExtResource( 3 )
 
 [node name="PlayTimer" type="Timer" parent="."]
@@ -3333,7 +3335,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29.2428, 0, -35.0329 )
 [node name="PauseMenu" parent="." instance=ExtResource( 7 )]
 
 [node name="GameOver" parent="." instance=ExtResource( 8 )]
-visible = false
 
 [node name="CollectiblesController" parent="." instance=ExtResource( 10 )]
 
