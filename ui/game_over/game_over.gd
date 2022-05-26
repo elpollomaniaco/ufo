@@ -19,10 +19,21 @@ func show_score(successful: bool, total_score: int, collectible_score: int, time
 	else:
 		$Background/Failed.show()
 	
-	$Scores/CollectibleScore/Value.text = str(collectible_score)
-	$Scores/TimeScore/Value.text = str(time_score)
-	$Scores/HealthScore/Value.text = str(health_score)
-	$Scores/TotalScore/Value.text = str(total_score)
+	self.show()
+	
+	var collectibles = $ScoreBackground/Scores/CollectibleScore
+	var time = $ScoreBackground/Scores/TimeScore
+	var health = $ScoreBackground/Scores/HealthScore
+	var total = $ScoreBackground/Scores/TotalScore
+	
+	collectibles.set_score(collectible_score)
+	yield(collectibles, "count_up_finished")
+	time.set_score(time_score)
+	yield(time, "count_up_finished")
+	health.set_score(health_score)
+	yield(health, "count_up_finished")
+	total.set_score(total_score)
+	yield(total, "count_up_finished")
 	
 	$InputTimeout.start()
 
