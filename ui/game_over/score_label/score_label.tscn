@@ -1,11 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://ui/game_over/score_label/score_label.gd" type="Script" id=1]
-[ext_resource path="res://ui/fonts/montserrat_regular.ttf" type="DynamicFontData" id=2]
-
-[sub_resource type="DynamicFont" id=2]
-size = 48
-font_data = ExtResource( 2 )
+[ext_resource path="res://ui/shared/themes/big_regular_theme.tres" type="Theme" id=2]
 
 [node name="ScoreLabel" type="Control"]
 margin_top = 43.0
@@ -19,7 +15,7 @@ anchor_bottom = 0.5
 margin_top = -30.5
 margin_right = 199.0
 margin_bottom = 30.5
-custom_fonts/font = SubResource( 2 )
+theme = ExtResource( 2 )
 text = "Score"
 valign = 1
 uppercase = true
@@ -32,7 +28,7 @@ anchor_bottom = 0.5
 margin_left = -231.0
 margin_top = -30.5
 margin_bottom = 30.5
-custom_fonts/font = SubResource( 2 )
+theme = ExtResource( 2 )
 text = "0"
 align = 2
 valign = 1

@@ -4,6 +4,7 @@ extends Control
 signal count_up_finished
 
 export var _label_text: String = "Score"
+export var _bold: bool = false
 
 var _tween_time: float = 2
 var _shown_value: float = 0.0
@@ -13,6 +14,12 @@ onready var _tween: Tween = $Tween
 
 func _ready():
 	$Label.text = _label_text
+	
+	if _bold:
+		var bold_theme = load("res://ui/shared/themes/big_bold_theme.tres")
+		$Label.set_theme(bold_theme)
+		$Value.set_theme(bold_theme)
+	
 	self.set_process(false)
 
 
