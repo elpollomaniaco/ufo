@@ -1,14 +1,15 @@
 extends Node
 
 
-export var _background_music: AudioStream
+export var _default_background_music: AudioStream
 
 
 func _ready():
-	if _background_music != null:
-		change_background_music(_background_music)
-		$Background.play()
+	if _default_background_music != null:
+		change_background_music(_default_background_music)
 
 
 func change_background_music(stream: AudioStream):
-	$Background.stream = stream
+	if stream != null:
+		$Background.stream = stream
+		$Background.play()
