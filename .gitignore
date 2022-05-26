@@ -17,3 +17,8 @@ data_*/
 
 # Working folders
 _import/
+
+# Music
+# Check license before uploading to github
+audio/music/8_Bit_Menu_by_David_Renda.mp3*
+audio/music/Arcade_Kid_by_David_Renda.mp3*
