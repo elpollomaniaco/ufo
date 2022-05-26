@@ -6,7 +6,7 @@ signal count_up_finished
 export var _label_text: String = "Score"
 export var _bold: bool = false
 
-var _tween_time: float = 2
+var _tween_time: float = 1.0
 var _shown_value: float = 0.0
 
 onready var _tween: Tween = $Tween
