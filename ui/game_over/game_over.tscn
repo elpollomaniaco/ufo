@@ -118,6 +118,7 @@ _label_text = "Total"
 _bold = true
 
 [node name="Return" type="Label" parent="ScoreBackground"]
+visible = false
 anchor_top = 0.85
 anchor_right = 1.0
 anchor_bottom = 1.0
