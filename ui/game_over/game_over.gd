@@ -40,4 +40,4 @@ func show_score(successful: bool, total_score: int, collectible_score: int, time
 
 func _on_InputTimeout_timeout():
 	_input_is_deactivated = false
-	$Return.show()
+	$ScoreBackground/Return/AnimationPlayer.play("flash")
