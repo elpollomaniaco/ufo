@@ -1,8 +1,8 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://ui/fonts/montserrat_bold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://ui/game_over/game_over.gd" type="Script" id=2]
-[ext_resource path="res://ui/fonts/montserrat_regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://ui/shared/themes/normal_regular_theme.tres" type="Theme" id=3]
 [ext_resource path="res://ui/main_menu/main_menu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://ui/game_over/game_over_failed.png" type="Texture" id=5]
 [ext_resource path="res://ui/game_over/game_over_success.png" type="Texture" id=6]
@@ -13,10 +13,6 @@
 [sub_resource type="DynamicFont" id=1]
 size = 96
 font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=4]
-size = 24
-font_data = ExtResource( 3 )
 
 [sub_resource type="Animation" id=5]
 resource_name = "flash"
@@ -119,13 +115,13 @@ margin_bottom = 207.0
 margin_top = 257.0
 margin_bottom = 257.0
 _label_text = "Total"
+_bold = true
 
 [node name="Return" type="Label" parent="ScoreBackground"]
-visible = false
 anchor_top = 0.85
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_fonts/font = SubResource( 4 )
+theme = ExtResource( 3 )
 text = "Use tractor beam to return to main menu"
 align = 1
 uppercase = true
