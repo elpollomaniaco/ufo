@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://ui/fonts/montserrat_bold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://ui/game_over/game_over.gd" type="Script" id=2]
@@ -8,17 +8,10 @@
 [ext_resource path="res://ui/game_over/game_over_success.png" type="Texture" id=6]
 [ext_resource path="res://ui/shared/sky.png" type="Texture" id=7]
 [ext_resource path="res://ui/game_over/score_background.png" type="Texture" id=8]
+[ext_resource path="res://ui/game_over/score_label/score_label.tscn" type="PackedScene" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 96
-font_data = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=2]
-size = 48
-font_data = ExtResource( 3 )
-
-[sub_resource type="DynamicFont" id=3]
-size = 48
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=4]
@@ -39,12 +32,14 @@ texture = ExtResource( 7 )
 expand = true
 
 [node name="Success" type="TextureRect" parent="Background"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 6 )
 expand = true
 
 [node name="Failed" type="TextureRect" parent="Background"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 5 )
@@ -67,10 +62,12 @@ __meta__ = {
 }
 
 [node name="ScoreBackground" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
 margin_left = 1100.0
-margin_top = 550.0
-margin_right = 1800.0
-margin_bottom = 950.0
+margin_top = 450.0
+margin_right = -120.0
+margin_bottom = -230.0
 texture = ExtResource( 8 )
 expand = true
 
@@ -78,180 +75,38 @@ expand = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 50.0
-margin_top = 50.0
+margin_top = 25.0
 margin_right = -50.0
-margin_bottom = -50.0
+margin_bottom = -75.0
 custom_constants/separation = 50
 alignment = 1
 
-[node name="CollectibleScore" type="Control" parent="ScoreBackground/Scores"]
-margin_top = 43.0
-margin_right = 600.0
-margin_bottom = 43.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="CollectibleScore" parent="ScoreBackground/Scores" instance=ExtResource( 9 )]
 
-[node name="Label" type="Label" parent="ScoreBackground/Scores/CollectibleScore"]
-anchor_top = 0.5
-anchor_bottom = 0.5
-margin_top = -30.5
-margin_right = 199.0
-margin_bottom = 30.5
-custom_fonts/font = SubResource( 2 )
-text = "Score"
-valign = 1
-uppercase = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Value" type="Label" parent="ScoreBackground/Scores/CollectibleScore"]
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = -231.0
-margin_top = -30.5
-margin_bottom = 30.5
-custom_fonts/font = SubResource( 2 )
-text = "0"
-align = 2
-valign = 1
-uppercase = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TimeScore" type="Control" parent="ScoreBackground/Scores"]
+[node name="TimeScore" parent="ScoreBackground/Scores" instance=ExtResource( 9 )]
 margin_top = 93.0
-margin_right = 600.0
 margin_bottom = 93.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+_label_text = "Time"
 
-[node name="Label" type="Label" parent="ScoreBackground/Scores/TimeScore"]
-anchor_top = 0.5
-anchor_bottom = 0.5
-margin_top = -30.5
-margin_right = 199.0
-margin_bottom = 30.5
-custom_fonts/font = SubResource( 2 )
-text = "Time"
-valign = 1
-uppercase = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Value" type="Label" parent="ScoreBackground/Scores/TimeScore"]
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = -231.0
-margin_top = -30.5
-margin_bottom = 30.5
-custom_fonts/font = SubResource( 2 )
-text = "0"
-align = 2
-valign = 1
-uppercase = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HealthScore" type="Control" parent="ScoreBackground/Scores"]
+[node name="HealthScore" parent="ScoreBackground/Scores" instance=ExtResource( 9 )]
 margin_top = 143.0
-margin_right = 600.0
 margin_bottom = 143.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="ScoreBackground/Scores/HealthScore"]
-anchor_top = 0.5
-anchor_bottom = 0.5
-margin_top = -30.5
-margin_right = 199.0
-margin_bottom = 30.5
-custom_fonts/font = SubResource( 2 )
-text = "Health"
-valign = 1
-uppercase = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Value" type="Label" parent="ScoreBackground/Scores/HealthScore"]
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = -231.0
-margin_top = -30.5
-margin_bottom = 30.5
-custom_fonts/font = SubResource( 2 )
-text = "0"
-align = 2
-valign = 1
-uppercase = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+_label_text = "Health"
 
 [node name="Separator" type="Label" parent="ScoreBackground/Scores"]
 margin_top = 193.0
 margin_right = 600.0
 margin_bottom = 207.0
 
-[node name="TotalScore" type="Control" parent="ScoreBackground/Scores"]
+[node name="TotalScore" parent="ScoreBackground/Scores" instance=ExtResource( 9 )]
 margin_top = 257.0
-margin_right = 600.0
 margin_bottom = 257.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+_label_text = "Total"
 
-[node name="Label" type="Label" parent="ScoreBackground/Scores/TotalScore"]
-anchor_top = 0.5
-anchor_bottom = 0.5
-margin_top = -30.5
-margin_right = 199.0
-margin_bottom = 30.5
-custom_fonts/font = SubResource( 3 )
-text = "Total"
-valign = 1
-uppercase = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Value" type="Label" parent="ScoreBackground/Scores/TotalScore"]
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = -231.0
-margin_top = -30.5
-margin_bottom = 30.5
-custom_fonts/font = SubResource( 3 )
-text = "0"
-align = 2
-valign = 1
-uppercase = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Return" type="Label" parent="."]
-visible = false
-anchor_top = 1.0
+[node name="Return" type="Label" parent="ScoreBackground"]
+anchor_top = 0.85
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -180.0
-margin_bottom = -166.0
 custom_fonts/font = SubResource( 4 )
 text = "Use tractor beam to return to main menu"
 align = 1

@@ -25,8 +25,6 @@ func show_score(successful: bool, total_score: int, collectible_score: int, time
 	$Scores/TotalScore/Value.text = str(total_score)
 	
 	$InputTimeout.start()
-	
-	show()
 
 
 func _on_InputTimeout_timeout():
