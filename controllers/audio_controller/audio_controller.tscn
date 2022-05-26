@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://controllers/audio_controller/audio_controller.gd" type="Script" id=1]
+
+[node name="AudioController" type="Node"]
+pause_mode = 2
+script = ExtResource( 1 )
+
+[node name="Background" type="AudioStreamPlayer" parent="."]
