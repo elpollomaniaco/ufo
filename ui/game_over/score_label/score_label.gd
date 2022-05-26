@@ -23,7 +23,7 @@ func _ready():
 	self.set_process(false)
 
 
-func _process(delta):
+func _process(_delta):
 	$Value.text = "%d" % _shown_value 
 
 
@@ -36,10 +36,12 @@ func set_score(value: float):
 		_on_tween_completed()
 		return
 	
+	# warning-ignore:return_value_discarded
 	_tween.interpolate_property(self, "_shown_value", null, value, _tween_time, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	if not _tween.is_active():
 		# warning-ignore:return_value_discarded
 		_tween.start()
+		# warning-ignore:return_value_discarded
 		_tween.connect("tween_all_completed", self, "_on_tween_completed")
 
 
