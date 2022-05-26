@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://ui/fonts/montserrat_bold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://ui/game_over/game_over.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://ui/game_over/game_over_failed.png" type="Texture" id=5]
 [ext_resource path="res://ui/game_over/game_over_success.png" type="Texture" id=6]
 [ext_resource path="res://ui/shared/sky.png" type="Texture" id=7]
+[ext_resource path="res://ui/game_over/score_background.png" type="Texture" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 96
@@ -38,20 +39,19 @@ texture = ExtResource( 7 )
 expand = true
 
 [node name="Success" type="TextureRect" parent="Background"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 6 )
 expand = true
 
 [node name="Failed" type="TextureRect" parent="Background"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 5 )
 expand = true
 
 [node name="Title" type="Label" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -452.0
@@ -66,30 +66,33 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Scores" type="VBoxContainer" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = 258.0
-margin_top = -8.0
-margin_right = 758.0
-margin_bottom = 492.0
+[node name="ScoreBackground" type="TextureRect" parent="."]
+margin_left = 1100.0
+margin_top = 550.0
+margin_right = 1800.0
+margin_bottom = 950.0
+texture = ExtResource( 8 )
+expand = true
+
+[node name="Scores" type="VBoxContainer" parent="ScoreBackground"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 50.0
+margin_top = 50.0
+margin_right = -50.0
+margin_bottom = -50.0
 custom_constants/separation = 50
 alignment = 1
+
+[node name="CollectibleScore" type="Control" parent="ScoreBackground/Scores"]
+margin_top = 43.0
+margin_right = 600.0
+margin_bottom = 43.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CollectibleScore" type="Control" parent="Scores"]
-margin_top = 143.0
-margin_right = 500.0
-margin_bottom = 143.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="Scores/CollectibleScore"]
+[node name="Label" type="Label" parent="ScoreBackground/Scores/CollectibleScore"]
 anchor_top = 0.5
 anchor_bottom = 0.5
 margin_top = -30.5
@@ -103,7 +106,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Value" type="Label" parent="Scores/CollectibleScore"]
+[node name="Value" type="Label" parent="ScoreBackground/Scores/CollectibleScore"]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -120,15 +123,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TimeScore" type="Control" parent="Scores"]
-margin_top = 193.0
-margin_right = 500.0
-margin_bottom = 193.0
+[node name="TimeScore" type="Control" parent="ScoreBackground/Scores"]
+margin_top = 93.0
+margin_right = 600.0
+margin_bottom = 93.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Scores/TimeScore"]
+[node name="Label" type="Label" parent="ScoreBackground/Scores/TimeScore"]
 anchor_top = 0.5
 anchor_bottom = 0.5
 margin_top = -30.5
@@ -142,7 +145,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Value" type="Label" parent="Scores/TimeScore"]
+[node name="Value" type="Label" parent="ScoreBackground/Scores/TimeScore"]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -159,15 +162,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HealthScore" type="Control" parent="Scores"]
-margin_top = 243.0
-margin_right = 500.0
-margin_bottom = 243.0
+[node name="HealthScore" type="Control" parent="ScoreBackground/Scores"]
+margin_top = 143.0
+margin_right = 600.0
+margin_bottom = 143.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Scores/HealthScore"]
+[node name="Label" type="Label" parent="ScoreBackground/Scores/HealthScore"]
 anchor_top = 0.5
 anchor_bottom = 0.5
 margin_top = -30.5
@@ -181,7 +184,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Value" type="Label" parent="Scores/HealthScore"]
+[node name="Value" type="Label" parent="ScoreBackground/Scores/HealthScore"]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -198,20 +201,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Separator" type="Label" parent="Scores"]
-margin_top = 293.0
-margin_right = 500.0
-margin_bottom = 307.0
+[node name="Separator" type="Label" parent="ScoreBackground/Scores"]
+margin_top = 193.0
+margin_right = 600.0
+margin_bottom = 207.0
 
-[node name="TotalScore" type="Control" parent="Scores"]
-margin_top = 357.0
-margin_right = 500.0
-margin_bottom = 357.0
+[node name="TotalScore" type="Control" parent="ScoreBackground/Scores"]
+margin_top = 257.0
+margin_right = 600.0
+margin_bottom = 257.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Scores/TotalScore"]
+[node name="Label" type="Label" parent="ScoreBackground/Scores/TotalScore"]
 anchor_top = 0.5
 anchor_bottom = 0.5
 margin_top = -30.5
@@ -225,7 +228,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Value" type="Label" parent="Scores/TotalScore"]
+[node name="Value" type="Label" parent="ScoreBackground/Scores/TotalScore"]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
