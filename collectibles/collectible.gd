@@ -12,11 +12,12 @@ func destroy():
 	queue_free()
 
 
-func collect() -> int:
+func collect() -> Dictionary:
 	emit_signal("collectible_vanished")
 	queue_free()
-	return _points
-
-
-func get_energy_charge() -> float:
-	return _energy_charge
+	
+	var collection = {
+		"Points": _points,
+		"Energy": _energy_charge
+	}
+	return collection
