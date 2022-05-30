@@ -42,7 +42,7 @@ surfaces/0 = {
 }
 
 [node name="SmallEnergyContainer" instance=ExtResource( 1 )]
-mass = 10.0
+mass = 15.0
 _energy_charge = 5.0
 
 [node name="Collider" parent="." index="0"]
