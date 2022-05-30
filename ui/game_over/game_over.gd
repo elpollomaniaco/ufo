@@ -2,6 +2,7 @@ extends Control
 
 
 export var _main_menu_scene: PackedScene
+export var _background_music: AudioStream
 
 var _input_is_deactivated: bool = true
 
@@ -20,6 +21,7 @@ func show_score(successful: bool, total_score: int, collectible_score: int, time
 		$Background/Failed.show()
 	
 	self.show()
+	AudioController.change_background_music(_background_music)
 	
 	var collectibles = $ScoreBackground/Scores/CollectibleScore
 	var time = $ScoreBackground/Scores/TimeScore
