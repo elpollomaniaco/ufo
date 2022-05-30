@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://collectibles/collectible.tscn" type="PackedScene" id=1]
+
+[sub_resource type="CylinderShape" id=1]
+radius = 1.1
+height = 2.1
+
+[sub_resource type="CylinderMesh" id=2]
+
+[node name="BigEnergyContainer" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+mass = 50.0
+_energy_charge = 100.0
+
+[node name="Collider" parent="." index="0"]
+shape = SubResource( 1 )
+
+[node name="CSGMesh" type="CSGMesh" parent="." index="1"]
+mesh = SubResource( 2 )
