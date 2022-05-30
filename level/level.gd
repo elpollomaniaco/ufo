@@ -3,6 +3,7 @@ extends Node
 
 const MAX_TIME_SCORE: int = 600
 
+export var _background_music: AudioStream
 export var _enemy_scene: PackedScene
 
 onready var _spawn_points: Array = get_tree().get_nodes_in_group("EnemySpawnPoints")
@@ -10,6 +11,7 @@ onready var _spawn_points: Array = get_tree().get_nodes_in_group("EnemySpawnPoin
 
 func _ready():
 	randomize()
+	_set_background_music()
 
 
 func _process(_delta):
@@ -55,3 +57,7 @@ func _game_over(successful: bool):
 	
 	$GameOver.show_score(successful, total_score, collectible_score, time_score, health_score)
 	get_tree().paused = true
+
+
+func _set_background_music():
+	AudioController.change_background_music(_background_music)

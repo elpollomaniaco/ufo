@@ -14,6 +14,10 @@ config/name="U.F.O."
 run/main_scene="res://ui/main_menu/main_menu.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+AudioController="*res://controllers/audio_controller/audio_controller.tscn"
+
 [display]
 
 window/size/width=1920
