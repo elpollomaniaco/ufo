@@ -20,7 +20,7 @@ surfaces/0 = {
 "vertex_count": 812
 }
 
-[node name="Cow" instance=ExtResource( 1 )]
+[node name="Cow" groups=["MainCollectibles"] instance=ExtResource( 1 )]
 mass = 75.0
 axis_lock_angular_x = true
 axis_lock_angular_z = true

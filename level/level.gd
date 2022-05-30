@@ -40,7 +40,7 @@ func _on_Player_player_died():
 	_game_over(false)
 
 
-func _on_CollectiblesController_last_collectible_vanished():
+func _on_CollectiblesController_last_main_collectible_vanished():
 	_game_over(true)
 
 
