@@ -1,10 +1,16 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://characters/player/player.gd" type="Script" id=1]
 [ext_resource path="res://characters/player/tractor_beam/tractor_beam.tscn" type="PackedScene" id=2]
 [ext_resource path="res://characters/player/hatch/hatch.tscn" type="PackedScene" id=3]
+[ext_resource path="res://audio/sfx/metal_bang_fast_02.mp3str" type="AudioStream" id=4]
 [ext_resource path="res://characters/player/ufo/ufo.tscn" type="PackedScene" id=5]
 [ext_resource path="res://characters/player/weapon/weapon.tscn" type="PackedScene" id=6]
+[ext_resource path="res://audio/sfx/metal_bang_fast_03.mp3str" type="AudioStream" id=7]
+[ext_resource path="res://audio/sfx/metal_bang_slow_01.mp3str" type="AudioStream" id=8]
+[ext_resource path="res://audio/sfx/metal_bang_slow_02.mp3str" type="AudioStream" id=9]
+[ext_resource path="res://audio/sfx/metal_bang_slow_03.mp3str" type="AudioStream" id=10]
+[ext_resource path="res://audio/sfx/metal_bang_fast_01.mp3str" type="AudioStream" id=11]
 
 [sub_resource type="CylinderShape" id=1]
 height = 0.436533
@@ -24,6 +30,7 @@ __meta__ = {
 }
 _movement_acceleration = 2000
 _energy_regeneration = 1.0
+_damage_sounds = [ ExtResource( 11 ), ExtResource( 4 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ]
 
 [node name="Collider" type="CollisionShape" parent="."]
 shape = SubResource( 1 )
@@ -60,5 +67,7 @@ size = 25.0
 [node name="Hatch" parent="." instance=ExtResource( 3 )]
 
 [node name="Weapon" parent="." instance=ExtResource( 6 )]
+
+[node name="SFX" type="Node" parent="."]
 
 [connection signal="timeout" from="AimMarker/RayCastTimer" to="." method="_update_ground_position"]

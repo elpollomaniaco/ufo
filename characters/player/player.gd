@@ -13,6 +13,7 @@ const BEAM_ANIMATION_NAME: String = "UFOEarsBeam"
 
 export var _movement_acceleration: int
 export var _energy_regeneration: float
+export var _damage_sounds: Array # Type: AudioStream
 
 var _current_health: int = MAX_HEALTH
 var _current_energy: float = MAX_ENERGY
@@ -75,6 +76,7 @@ func get_ground_position() -> Vector3:
 func damage(amount: int):
 	_current_health -= amount
 	emit_signal("health_changed", _current_health)
+	_play_random_damage_sound()
 	if _current_health <= 0:
 		_die()
 
@@ -156,3 +158,17 @@ func _attack():
 func _update_ground_position():
 	if $AimMarker.is_colliding():
 		_ground_position = $AimMarker.get_collision_point()
+
+
+func _play_random_damage_sound():
+	var idx = randi() % _damage_sounds.size()
+	var stream_player = AudioStreamPlayer.new()
+	stream_player.stream = _damage_sounds[idx]
+	stream_player.bus = "UFO"
+	
+	$SFX.add_child(stream_player)
+	stream_player.play()
+	
+	# Won't be freed automatically
+	yield(stream_player, "finished") 
+	stream_player.queue_free()
