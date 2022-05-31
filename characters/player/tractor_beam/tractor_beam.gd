@@ -43,6 +43,9 @@ func _attract_targets():
 		var direction = owner.global_transform.origin - target.global_transform.origin
 		direction = direction.normalized()
 		target.add_central_force(direction * _pull_force)
+		
+		if target.has_method("attract"):
+			target.attract()
 
 
 func _force_deactivate_tractor_beam():

@@ -5,6 +5,7 @@ signal collectible_vanished
 
 export var _points: int
 export var _energy_charge: float
+export var _attract_sounds: Array # Type: AudioStream
 
 
 func destroy():
@@ -21,3 +22,10 @@ func collect() -> Dictionary:
 		"Energy": _energy_charge
 	}
 	return collection
+
+
+func attract():
+	if not $SFX.playing:
+		var idx = randi() % _attract_sounds.size()
+		$SFX.stream = _attract_sounds[idx]
+		$SFX.play()
