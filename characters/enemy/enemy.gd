@@ -5,6 +5,7 @@ export var _movement_acceleration: int
 export var _attack_range: int
 export var _fire_power: int
 export var _projectile_scene: PackedScene
+export var _woosh_sounds: Array # Type: AudioStream
 
 # Player node will be set during initilization.
 # Initializing script (Level) can access player node easier (no search for root).
@@ -67,3 +68,10 @@ func _fire_projectile(target_position: Vector3):
 	projectile.translation = ($ProjectileOffset as Spatial).global_transform.origin
 	projectile.look_at(target_position, Vector3.UP)
 	projectile.apply_central_impulse(direction * _fire_power)
+	_play_random_woosh_sound()
+
+
+func _play_random_woosh_sound():
+	var idx = randi() % _woosh_sounds.size()
+	$SFX.stream = _woosh_sounds[idx]
+	$SFX.play()
