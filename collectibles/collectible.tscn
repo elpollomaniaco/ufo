@@ -10,5 +10,5 @@ script = ExtResource( 1 )
 [node name="Collider" type="CollisionShape" parent="."]
 
 [node name="SFX" type="AudioStreamPlayer3D" parent="."]
-unit_size = 10.0
+unit_size = 20.0
 bus = "Collectibles"
