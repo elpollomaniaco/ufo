@@ -1,0 +1,9 @@
+Name:		Metal Clang by battlestar10
+License:	Attribution 3.0
+URL:		https://soundbible.com/1781-Metal-Clang.html
+Usage: 	metal_clang_A01 (modified), metal_clang_A02 (modified)
+
+Name:		Frying Pan Impact by Mike Koenig
+License:	Attribution 3.0
+URL:		https://soundbible.com/1005-Frying-Pan-Impact.html
+Usage: 	metal_clang_B01 (modified), metal_clang_B02 (modified)
