@@ -25,6 +25,7 @@ func extend():
 	$Extension/Collider.disabled = false
 	$Extension/DestroyTrigger/Shape.disabled = false
 	_current_movement = MOVEMENT.DOWN
+	$SFX.play()
 
 
 func _retract():
