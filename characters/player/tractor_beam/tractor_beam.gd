@@ -20,10 +20,12 @@ func _physics_process(delta):
 func activate():
 	show()
 	_is_active = true
+	$SFX.play()
 
 
 func deactivate():
 	_is_active = false
+	$SFX.stop()
 	hide()
 
 
@@ -44,6 +46,5 @@ func _attract_targets():
 
 
 func _force_deactivate_tractor_beam():
-	hide()
-	_is_active = false
 	# TODO: Some fancy "no more energy" stuff
+	deactivate()
