@@ -8,6 +8,7 @@ func _on_Hatch_body_entered(body):
 		body.destroy()
 	else:
 		body.queue_free()
+	$SFX.play()
 
 
 func _collect(collection: Dictionary):
