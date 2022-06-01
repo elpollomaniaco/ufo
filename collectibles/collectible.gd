@@ -25,7 +25,7 @@ func collect() -> Dictionary:
 
 
 func attract():
-	if not $SFX.playing:
+	if _attract_sounds.size() > 0 and not $SFX.playing:
 		var idx = randi() % _attract_sounds.size()
 		$SFX.stream = _attract_sounds[idx]
 		$SFX.play()

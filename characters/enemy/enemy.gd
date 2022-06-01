@@ -72,6 +72,7 @@ func _fire_projectile(target_position: Vector3):
 
 
 func _play_random_woosh_sound():
-	var idx = randi() % _woosh_sounds.size()
-	$SFX.stream = _woosh_sounds[idx]
-	$SFX.play()
+	if _woosh_sounds.size() > 0:
+		var idx = randi() % _woosh_sounds.size()
+		$SFX.stream = _woosh_sounds[idx]
+		$SFX.play()
