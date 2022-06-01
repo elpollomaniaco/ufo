@@ -10,5 +10,6 @@ func _on_focus_entered():
 	$SFX/Selected.play()
 
 
-func _on_pressed():
+# On button_down because of directly loading new scene on pressed will interrupt event reaction.
+func _on_button_down():
 	$SFX/Pressed.play()
