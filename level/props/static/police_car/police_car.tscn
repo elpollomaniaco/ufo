@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://_import/Common.material" type="Material" id=1]
 [ext_resource path="res://level/props/static/police_car/police_car.gd" type="Script" id=2]
+[ext_resource path="res://audio/sfx/police_siren.mp3str" type="AudioStream" id=3]
 
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 1, 0.750865, 1.64688 )
@@ -76,5 +77,12 @@ light_indirect_energy = 0.0
 light_bake_mode = 2
 spot_range = 15.0
 spot_angle = 31.1395
+
+[node name="SFX" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 3 )
+unit_size = 35.0
+autoplay = true
+max_distance = 50.0
+bus = "Environment"
 
 [connection signal="timeout" from="EmergencyLights/EmergencyLightSwitchTimer" to="." method="_switch_emergency_lights"]
