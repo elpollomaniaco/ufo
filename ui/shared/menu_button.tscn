@@ -8,8 +8,10 @@ script = ExtResource( 1 )
 [node name="SFX" type="Node" parent="."]
 
 [node name="Pressed" type="AudioStreamPlayer" parent="SFX"]
+bus = "Menu"
 
 [node name="Selected" type="AudioStreamPlayer" parent="SFX"]
+bus = "Menu"
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
 [connection signal="focus_exited" from="." to="." method="_on_focus_exited"]
