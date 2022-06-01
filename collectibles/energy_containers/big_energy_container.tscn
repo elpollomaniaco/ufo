@@ -1,6 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://collectibles/collectible.tscn" type="PackedScene" id=1]
+[ext_resource path="res://audio/sfx/metal_clang_A02.mp3str" type="AudioStream" id=2]
+[ext_resource path="res://audio/sfx/metal_clang_B02.mp3str" type="AudioStream" id=3]
 
 [sub_resource type="CylinderShape" id=1]
 radius = 0.541196
@@ -44,6 +46,7 @@ surfaces/0 = {
 [node name="BigEnergyContainer" instance=ExtResource( 1 )]
 mass = 60.0
 _energy_charge = 100.0
+_attract_sounds = [ ExtResource( 2 ), ExtResource( 3 ) ]
 
 [node name="Collider" parent="." index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03938, 0 )

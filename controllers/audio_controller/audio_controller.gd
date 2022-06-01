@@ -15,6 +15,20 @@ func change_background_music(stream: AudioStream):
 		$Background.play()
 
 
+# TODO: Change to 3D Streamer?
+func play_sound_effect(sound_effect: AudioStream, bus: String):
+	var bus_idx = AudioServer.get_bus_index(bus)
+	if bus_idx:
+		var streamer = AudioStreamPlayer.new()
+		streamer.bus = bus
+		streamer.stream = sound_effect
+		add_child(streamer)
+		streamer.play()
+		
+		yield(streamer, "finished")
+		streamer.queue_free()
+
+
 func change_volume(bus: String, volume: float):
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(bus), _float_to_decibel(volume))
 

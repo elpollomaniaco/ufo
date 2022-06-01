@@ -18,8 +18,16 @@ data_*/
 # Working folders
 _import/
 
-# Music
+# Music and SFX
 # Check license before uploading to github
 audio/music/8_Bit_Menu_by_David_Renda.mp3*
 audio/music/Arcade_Kid_by_David_Renda.mp3*
 audio/music/Play_Again_by_Eric_Ricci.mp3*
+audio/sfx/woosh*
+audio/sfx/metal_bang*
+audio/sfx/cow_moo*
+audio/sfx/sheep_bah*
+audio/sfx/air_compressor*
+audio/sfx/menu_button_pressed*
+audio/sfx/menu_selection_changed*
+audio/sfx/blood_*

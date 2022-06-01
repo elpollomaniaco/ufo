@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://characters/player/tractor_beam/tractor_beam.gd" type="Script" id=1]
+[ext_resource path="res://audio/sfx/Purr_by_Nunu.mp3str" type="AudioStream" id=2]
 
 [sub_resource type="CylinderShape" id=1]
 height = 20.0
@@ -28,6 +29,10 @@ shape = SubResource( 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0 )
 mesh = SubResource( 2 )
 material/0 = SubResource( 3 )
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+bus = "UFO"
 
 [connection signal="body_entered" from="." to="." method="_on_TractorBeam_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_TractorBeam_body_exited"]
