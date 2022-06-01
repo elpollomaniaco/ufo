@@ -6,6 +6,7 @@ export var _attack_range: int
 export var _fire_power: int
 export var _projectile_scene: PackedScene
 export var _woosh_sounds: Array # Type: AudioStream
+export var _dying_sounds: Array # Type: AudioStream
 
 # Player node will be set during initilization.
 # Initializing script (Level) can access player node easier (no search for root).
@@ -37,6 +38,7 @@ func _integrate_forces(_state):
 
 
 func destroy():
+	_play_random_dying_sound()
 	queue_free()
 
 
@@ -76,3 +78,9 @@ func _play_random_woosh_sound():
 		var idx = randi() % _woosh_sounds.size()
 		$SFX.stream = _woosh_sounds[idx]
 		$SFX.play()
+
+
+func _play_random_dying_sound():
+	if _dying_sounds.size() > 0:
+		var idx = randi() % _dying_sounds.size()
+		AudioController.play_sound_effect(_dying_sounds[idx], "Enemies")
