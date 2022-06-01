@@ -7,3 +7,13 @@ Name:		Frying Pan Impact by Mike Koenig
 License:	Attribution 3.0
 URL:		https://soundbible.com/1005-Frying-Pan-Impact.html
 Usage: 	metal_clang_B01 (modified), metal_clang_B02 (modified)
+
+Name:		Police by TheCristi95
+License:	Public Domain
+URL:		https://soundbible.com/1819-Police.html
+Usage:	police_siren
+
+Name:		Police Radio Chatter Sound Effect [Extended] by SoundEffectsFactory
+License:	CC0
+URL:		https://www.youtube.com/watch?v=B47A4IVXsJk
+Usage:	police_chatter (modified)
