@@ -3420,7 +3420,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -47.2119, 3, 26.9035 )
 [node name="Enemies" type="Spatial" parent="."]
 
 [node name="SpawnTimer" type="Timer" parent="Enemies"]
-wait_time = 5.0
+wait_time = 0.5
 autostart = true
 
 [node name="SpawnPoints" type="Spatial" parent="Enemies"]
