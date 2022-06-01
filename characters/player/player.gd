@@ -74,11 +74,12 @@ func get_ground_position() -> Vector3:
 
 
 func damage(amount: int):
-	_current_health -= amount
-	emit_signal("health_changed", _current_health)
-	_play_random_damage_sound()
-	if _current_health <= 0:
-		_die()
+	if _current_health > 0: # Not dead yet/already dying
+		_current_health -= amount
+		emit_signal("health_changed", _current_health)
+		_play_random_damage_sound()
+		if _current_health <= 0:
+			_die()
 
 
 func recharge_energy(amount: float):
