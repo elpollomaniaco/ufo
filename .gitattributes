@@ -21,6 +21,6 @@
 *.tza binary
 # Detect language on GitHub
 *.gd linguist-language=GDScript
-
 # Audio
 *.mp3 filter=lfs diff=lfs merge=lfs -text
+*.mp3str filter=lfs diff=lfs merge=lfs -text

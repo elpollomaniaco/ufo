@@ -4,7 +4,7 @@
 [ext_resource path="res://_import/Common.material" type="Material" id=2]
 [ext_resource path="res://characters/player/weapon/claws/claws_glyphs.png" type="Texture" id=3]
 [ext_resource path="res://characters/player/weapon/claws/claws_dust.png" type="Texture" id=4]
-[ext_resource path="res://audio/sfx/Meow_by_Pumpkin.mp3str" type="AudioStream" id=5]
+[ext_resource path="res://audio/sfx/meow_pumpkin.mp3str" type="AudioStream" id=5]
 
 [sub_resource type="CylinderShape" id=1]
 radius = 0.908001

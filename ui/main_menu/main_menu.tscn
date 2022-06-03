@@ -11,7 +11,7 @@
 [ext_resource path="res://ui/main_menu/buttons/button_exit_select.png" type="Texture" id=9]
 [ext_resource path="res://ui/shared/menu_button.tscn" type="PackedScene" id=10]
 [ext_resource path="res://ui/main_menu/buttons/button_exit_active.png" type="Texture" id=11]
-[ext_resource path="res://audio/music/8_Bit_Menu_by_David_Renda.mp3" type="AudioStream" id=12]
+[ext_resource path="res://audio/music/menu.mp3str" type="AudioStream" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
