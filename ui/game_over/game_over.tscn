@@ -9,7 +9,7 @@
 [ext_resource path="res://ui/shared/sky.png" type="Texture" id=7]
 [ext_resource path="res://ui/game_over/score_background.png" type="Texture" id=8]
 [ext_resource path="res://ui/game_over/score_label/score_label.tscn" type="PackedScene" id=9]
-[ext_resource path="res://audio/music/Play_Again_by_Eric_Ricci.mp3" type="AudioStream" id=10]
+[ext_resource path="res://audio/music/game_over.mp3str" type="AudioStream" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 96

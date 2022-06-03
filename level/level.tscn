@@ -22,7 +22,7 @@
 [ext_resource path="res://level/props/static/police_car/police_car.tscn" type="PackedScene" id=20]
 [ext_resource path="res://level/props/static/torch/torch.tscn" type="PackedScene" id=21]
 [ext_resource path="res://level/props/static/fog/fog.tscn" type="PackedScene" id=22]
-[ext_resource path="res://audio/music/Arcade_Kid_by_David_Renda.mp3" type="AudioStream" id=23]
+[ext_resource path="res://audio/music/level.mp3str" type="AudioStream" id=23]
 [ext_resource path="res://collectibles/energy_containers/big_energy_container.tscn" type="PackedScene" id=24]
 [ext_resource path="res://collectibles/energy_containers/small_energy_container.tscn" type="PackedScene" id=25]
 

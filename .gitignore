@@ -20,9 +20,9 @@ _import/
 
 # Music and SFX
 # Check license before uploading to github
-audio/music/8_Bit_Menu_by_David_Renda.mp3*
-audio/music/Arcade_Kid_by_David_Renda.mp3*
-audio/music/Play_Again_by_Eric_Ricci.mp3*
+audio/music/level.*
+audio/music/menu.*
+audio/music/game_over.*
 audio/sfx/woosh*
 audio/sfx/metal_bang*
 audio/sfx/cow_moo*
