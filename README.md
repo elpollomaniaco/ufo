@@ -26,8 +26,16 @@
 ***
 
 ## Table of contents
+- [Prerequisites](#prerequisites)
 - [Installation](#installation)
 
+***
+
+## Prerequisites
+
+Name | Version | Comment
+-----|---------|---------
+[Git LFS](https://git-lfs.github.com/) | - | Audio files are tracked via LFS (see also [Audio dummy files](#audio-dummy-files))
 ***
 
 ## Installation
