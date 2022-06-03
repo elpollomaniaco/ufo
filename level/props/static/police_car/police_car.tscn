@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://_import/Common.material" type="Material" id=1]
+[ext_resource path="res://common/common_material.material" type="Material" id=1]
 [ext_resource path="res://level/props/static/police_car/police_car.gd" type="Script" id=2]
 [ext_resource path="res://audio/sfx/police_siren.mp3str" type="AudioStream" id=3]
 
