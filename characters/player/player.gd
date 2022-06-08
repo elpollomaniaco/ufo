@@ -45,6 +45,8 @@ func _physics_process(_delta):
 	if direction != Vector3.ZERO:
 		direction = direction.normalized()
 		add_central_force(direction * _movement_acceleration)
+	
+	_update_ground_position()
 
 
 func _process(delta):
@@ -152,10 +154,6 @@ func _attack():
 
 
 # Using RayCast to take level height into account.
-# Called by timer to improve performance. 
-# Calling get_collision_point() every frame was unplayable on laptop.
-# Updating the position every second for enemies to follow the player is enough, 
-# as throwing projectiles is calculated completely independently.
 func _update_ground_position():
 	if $AimMarker.is_colliding():
 		_ground_position = $AimMarker.get_collision_point()
