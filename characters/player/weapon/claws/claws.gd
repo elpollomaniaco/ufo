@@ -26,8 +26,9 @@ func _physics_process(delta):
 
 func start_extension():
 	# Trigger needs to be reactivated because  
-	# it is deactivated on returning.
+	# it is deactivated on retracting/returning.
 	$Extension/DestroyTrigger/Shape.disabled = false
+	$Extension/Collider.disabled = false
 	$SFX.play()
 	_current_state = State.EXTENDING
 
@@ -62,6 +63,7 @@ func _move_extension(target: Vector3):
 
 func _on_RetractTimer_timeout():
 	_set_particle_emission(false)
+	$Extension/Collider.disabled = true # In case claws get under ground.
 	_current_state = State.RETRACTING
 
 
