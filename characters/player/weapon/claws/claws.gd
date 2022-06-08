@@ -1,67 +1,70 @@
 extends Spatial
 
 
-const MOVEMENT = {
-	"UP": 1,
-	"DOWN": -1,
-	"STOP": 0,
+enum State {
+	RETRACTED,
+	EXTENDED,
+	RETRACTING,
+	EXTENDING,
 }
 
 export var _vertical_speed: float
-# For throwing moveables around.
-export var _throw_power: float
+export var _throw_power: float # For throwing moveables around.
 
-var _current_movement: int = MOVEMENT.STOP
+var _current_state = State.RETRACTED
 
 
 func _physics_process(delta):
-	if _current_movement != MOVEMENT.STOP:
-		_move_extension(delta, _current_movement)
+	match _current_state:
+		State.EXTENDING:
+			_extend(delta)
+		State.EXTENDED:
+			_move_extension(get_owner().get_target())
+		State.RETRACTING:
+			_retract()
 
 
-func extend():
-	# Needs to be reactivated because it is deactivated 
-	# on touching environment/returning.
-	$Extension/Collider.disabled = false
+func start_extension():
+	# Trigger needs to be reactivated because  
+	# it is deactivated on retracting/returning.
 	$Extension/DestroyTrigger/Shape.disabled = false
-	_current_movement = MOVEMENT.DOWN
+	$Extension/Collider.disabled = false
 	$SFX.play()
+	_current_state = State.EXTENDING
 
 
 func _retract():
-	_current_movement = MOVEMENT.UP
-	_set_particle_emission(false)
-
-
-func _move_extension(delta: float, direction: int):
-	var collision = $Extension.move_and_collide(Vector3.UP * direction * _vertical_speed * delta)
+	var direction = -$Extension.transform.origin
+	direction = direction.normalized()
+	$Extension.move_and_slide(direction * _vertical_speed)
 	
-	if collision:
-		_on_collision()
-	if direction == MOVEMENT.UP and $Extension.translation.y >= 0.0:
-		_on_return()
+	if $Extension.translation.y >= 0.0: # Gone too far.
+		$Extension.translation = Vector3.ZERO # Fix offset.
+		$Extension/DestroyTrigger/Shape.disabled = true # Prevent covering hatch.
+		_current_state = State.RETRACTED
 
 
-func _on_collision():
-	# Disable collider so it won't be moved around 
-	# when extension is extracted, player is flying around
-	# and it hits buildings etc.
-	#$Extension/Collider.disabled = true
-	_current_movement = MOVEMENT.STOP
-	$RetractTimer.start()
-	_set_particle_emission(true)
+func _extend(delta: float):
+	var collider = $Extension.move_and_collide(Vector3.DOWN * _vertical_speed * delta)
+	
+	if collider:
+		$RetractTimer.start()
+		_set_particle_emission(true)
+		_current_state = State.EXTENDED
 
 
-func _on_return():
-	_current_movement = MOVEMENT.STOP
-	# Fix offset.
-	$Extension.translation = Vector3.ZERO
-	# Disable so collectibles won't be destroyed.
-	$Extension/DestroyTrigger/Shape.disabled = true
+func _move_extension(target: Vector3):
+	var direction = target - $Extension.global_transform.origin
+	# Add force downwards so claws will move faster from roof to ground 
+	# and simulate kind of gravity.
+	direction = direction + (Vector3.DOWN * _vertical_speed) 
+	$Extension.move_and_slide_with_snap(direction, Vector3.DOWN, Vector3.UP)
 
 
 func _on_RetractTimer_timeout():
-	_retract()
+	_set_particle_emission(false)
+	$Extension/Collider.disabled = true # In case claws get under ground.
+	_current_state = State.RETRACTING
 
 
 func _on_DestroyTrigger_body_entered(body):
