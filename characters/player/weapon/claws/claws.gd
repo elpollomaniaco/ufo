@@ -1,12 +1,6 @@
 extends Spatial
 
 
-const MOVEMENT = {
-	"UP": 1,
-	"DOWN": -1,
-	"STOP": 0,
-}
-
 enum State {
 	RETRACTED,
 	EXTENDED,
@@ -18,7 +12,6 @@ export var _vertical_speed: float
 # For throwing moveables around.
 export var _throw_power: float
 
-var _current_movement: int = MOVEMENT.STOP
 var _current_state = State.RETRACTED
 
 
@@ -37,13 +30,11 @@ func extend():
 	# on touching environment/returning.
 	$Extension/Collider.disabled = false
 	$Extension/DestroyTrigger/Shape.disabled = false
-	_current_movement = MOVEMENT.DOWN
 	$SFX.play()
 
 
 func _retract():
-	_current_movement = MOVEMENT.UP
-	_set_particle_emission(false)
+	pass
 
 
 func _extend():
@@ -54,27 +45,16 @@ func _move_extension(target: Vector3, delta: float):
 	pass
 
 
-#func _move_extension(delta: float, direction: int):
-#	var collision = $Extension.move_and_collide(Vector3.UP * direction * _vertical_speed * delta)
-#
-#	if collision:
-#		_on_collision()
-#	if direction == MOVEMENT.UP and $Extension.translation.y >= 0.0:
-#		_on_return()
-
-
 func _on_collision():
 	# Disable collider so it won't be moved around 
 	# when extension is extracted, player is flying around
 	# and it hits buildings etc.
 	#$Extension/Collider.disabled = true
-	_current_movement = MOVEMENT.STOP
 	$RetractTimer.start()
 	_set_particle_emission(true)
 
 
 func _on_return():
-	_current_movement = MOVEMENT.STOP
 	# Fix offset.
 	$Extension.translation = Vector3.ZERO
 	# Disable so collectibles won't be destroyed.
