@@ -22,7 +22,7 @@ func _physics_process(delta):
 		State.EXTENDED:
 			_move_extension(get_owner().get_target())
 		State.RETRACTING:
-			_retract(delta)
+			_retract()
 
 
 func start_extension():
@@ -33,10 +33,10 @@ func start_extension():
 	_current_state = State.EXTENDING
 
 
-func _retract(delta: float):
+func _retract():
 	var direction = -$Extension.transform.origin
 	direction = direction.normalized()
-	$Extension.move_and_collide(direction * _vertical_speed * delta)
+	$Extension.move_and_slide(direction * _vertical_speed)
 	
 	if $Extension.translation.y >= 0.0: # Gone too far.
 		# Fix offset.
