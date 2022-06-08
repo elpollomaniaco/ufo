@@ -7,16 +7,29 @@ const MOVEMENT = {
 	"STOP": 0,
 }
 
+enum State {
+	RETRACTED,
+	EXTENDED,
+	RETRACTING,
+	EXTENDING,
+}
+
 export var _vertical_speed: float
 # For throwing moveables around.
 export var _throw_power: float
 
 var _current_movement: int = MOVEMENT.STOP
+var _current_state = State.RETRACTED
 
 
 func _physics_process(delta):
-	if _current_movement != MOVEMENT.STOP:
-		_move_extension(delta, _current_movement)
+	match _current_state:
+		State.EXTENDING:
+			_extend()
+		State.EXTENDED:
+			_move_extension(Vector3.ZERO, delta)
+		State.RETRACTING:
+			_retract()
 
 
 func extend():
@@ -33,13 +46,21 @@ func _retract():
 	_set_particle_emission(false)
 
 
-func _move_extension(delta: float, direction: int):
-	var collision = $Extension.move_and_collide(Vector3.UP * direction * _vertical_speed * delta)
-	
-	if collision:
-		_on_collision()
-	if direction == MOVEMENT.UP and $Extension.translation.y >= 0.0:
-		_on_return()
+func _extend():
+	pass
+
+
+func _move_extension(target: Vector3, delta: float):
+	pass
+
+
+#func _move_extension(delta: float, direction: int):
+#	var collision = $Extension.move_and_collide(Vector3.UP * direction * _vertical_speed * delta)
+#
+#	if collision:
+#		_on_collision()
+#	if direction == MOVEMENT.UP and $Extension.translation.y >= 0.0:
+#		_on_return()
 
 
 func _on_collision():
