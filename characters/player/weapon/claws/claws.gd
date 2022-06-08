@@ -9,8 +9,7 @@ enum State {
 }
 
 export var _vertical_speed: float
-# For throwing moveables around.
-export var _throw_power: float
+export var _throw_power: float # For throwing moveables around.
 
 var _current_state = State.RETRACTED
 
@@ -26,8 +25,8 @@ func _physics_process(delta):
 
 
 func start_extension():
-	# Trigger needs to be reactivated because it is deactivated 
-	# on touching environment/returning.
+	# Trigger needs to be reactivated because  
+	# it is deactivated on returning.
 	$Extension/DestroyTrigger/Shape.disabled = false
 	$SFX.play()
 	_current_state = State.EXTENDING
@@ -39,10 +38,8 @@ func _retract():
 	$Extension.move_and_slide(direction * _vertical_speed)
 	
 	if $Extension.translation.y >= 0.0: # Gone too far.
-		# Fix offset.
-		$Extension.translation = Vector3.ZERO
-		# Disable so collectibles won't be destroyed.
-		$Extension/DestroyTrigger/Shape.disabled = true
+		$Extension.translation = Vector3.ZERO # Fix offset.
+		$Extension/DestroyTrigger/Shape.disabled = true # Prevent covering hatch.
 		_current_state = State.RETRACTED
 
 
@@ -50,10 +47,6 @@ func _extend(delta: float):
 	var collider = $Extension.move_and_collide(Vector3.DOWN * _vertical_speed * delta)
 	
 	if collider:
-		# Disable collider so it won't be moved around 
-		# when extension is extracted, player is flying around
-		# and it hits buildings etc.
-		#$Extension/Collider.disabled = true
 		$RetractTimer.start()
 		_set_particle_emission(true)
 		_current_state = State.EXTENDED
@@ -61,7 +54,9 @@ func _extend(delta: float):
 
 func _move_extension(target: Vector3):
 	var direction = target - $Extension.global_transform.origin
-	direction = direction + (Vector3.DOWN * _vertical_speed)
+	# Add force downwards so claws will move faster from roof to ground 
+	# and simulate kind of gravity.
+	direction = direction + (Vector3.DOWN * _vertical_speed) 
 	$Extension.move_and_slide_with_snap(direction, Vector3.DOWN, Vector3.UP)
 
 
