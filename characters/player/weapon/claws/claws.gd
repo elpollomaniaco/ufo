@@ -18,7 +18,7 @@ var _current_state = State.RETRACTED
 func _physics_process(delta):
 	match _current_state:
 		State.EXTENDING:
-			_extend()
+			_extend(delta)
 		State.EXTENDED:
 			_move_extension(Vector3.ZERO, delta)
 		State.RETRACTING:
@@ -37,21 +37,21 @@ func _retract():
 	pass
 
 
-func _extend():
-	pass
+func _extend(delta: float):
+	var collider = $Extension.move_and_collide(Vector3.DOWN * _vertical_speed * delta)
+	
+	if collider:
+		# Disable collider so it won't be moved around 
+		# when extension is extracted, player is flying around
+		# and it hits buildings etc.
+		#$Extension/Collider.disabled = true
+		$RetractTimer.start()
+		_set_particle_emission(true)
+		_current_state = State.EXTENDED
 
 
 func _move_extension(target: Vector3, delta: float):
 	pass
-
-
-func _on_collision():
-	# Disable collider so it won't be moved around 
-	# when extension is extracted, player is flying around
-	# and it hits buildings etc.
-	#$Extension/Collider.disabled = true
-	$RetractTimer.start()
-	_set_particle_emission(true)
 
 
 func _on_return():
