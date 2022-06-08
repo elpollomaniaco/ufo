@@ -160,14 +160,15 @@ func _update_ground_position():
 
 
 func _play_random_damage_sound():
-	var idx = randi() % _damage_sounds.size()
-	var stream_player = AudioStreamPlayer.new()
-	stream_player.stream = _damage_sounds[idx]
-	stream_player.bus = "UFO"
-	
-	$SFX.add_child(stream_player)
-	stream_player.play()
-	
-	# Won't be freed automatically
-	yield(stream_player, "finished") 
-	stream_player.queue_free()
+	if _damage_sounds.size() > 0:
+		var idx = randi() % _damage_sounds.size()
+		var stream_player = AudioStreamPlayer.new()
+		stream_player.stream = _damage_sounds[idx]
+		stream_player.bus = "UFO"
+		
+		$SFX.add_child(stream_player)
+		stream_player.play()
+		
+		# Won't be freed automatically
+		yield(stream_player, "finished") 
+		stream_player.queue_free()
