@@ -22,7 +22,7 @@ func _physics_process(delta):
 		State.EXTENDED:
 			_move_extension(get_owner().get_target())
 		State.RETRACTING:
-			_retract()
+			_retract(delta)
 
 
 func start_extension():
@@ -33,8 +33,17 @@ func start_extension():
 	_current_state = State.EXTENDING
 
 
-func _retract():
-	pass
+func _retract(delta: float):
+	var direction = -$Extension.transform.origin
+	direction = direction.normalized()
+	$Extension.move_and_collide(direction * _vertical_speed * delta)
+	
+	if $Extension.translation.y >= 0.0: # Gone too far.
+		# Fix offset.
+		$Extension.translation = Vector3.ZERO
+		# Disable so collectibles won't be destroyed.
+		$Extension/DestroyTrigger/Shape.disabled = true
+		_current_state = State.RETRACTED
 
 
 func _extend(delta: float):
@@ -55,15 +64,9 @@ func _move_extension(target: Vector3):
 	$Extension.move_and_slide_with_snap(direction, Vector3.DOWN, Vector3.UP)
 
 
-func _on_return():
-	# Fix offset.
-	$Extension.translation = Vector3.ZERO
-	# Disable so collectibles won't be destroyed.
-	$Extension/DestroyTrigger/Shape.disabled = true
-
-
 func _on_RetractTimer_timeout():
-	_retract()
+	_set_particle_emission(false)
+	_current_state = State.RETRACTING
 
 
 func _on_DestroyTrigger_body_entered(body):
