@@ -11,3 +11,7 @@ func attack() -> bool:
 		return true
 	else:
 		return false
+
+
+func get_target() -> Vector3:
+	return get_owner().get_ground_position()

@@ -20,7 +20,7 @@ func _physics_process(delta):
 		State.EXTENDING:
 			_extend(delta)
 		State.EXTENDED:
-			_move_extension(Vector3.ZERO, delta)
+			_move_extension(get_owner().get_target())
 		State.RETRACTING:
 			_retract()
 
@@ -50,8 +50,9 @@ func _extend(delta: float):
 		_current_state = State.EXTENDED
 
 
-func _move_extension(target: Vector3, delta: float):
-	pass
+func _move_extension(target: Vector3):
+	var direction = target - $Extension.global_transform.origin
+	$Extension.move_and_slide_with_snap(direction, Vector3.DOWN, Vector3.UP)
 
 
 func _on_return():
