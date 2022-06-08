@@ -61,6 +61,7 @@ func _extend(delta: float):
 
 func _move_extension(target: Vector3):
 	var direction = target - $Extension.global_transform.origin
+	direction = direction + (Vector3.DOWN * _vertical_speed)
 	$Extension.move_and_slide_with_snap(direction, Vector3.DOWN, Vector3.UP)
 
 
