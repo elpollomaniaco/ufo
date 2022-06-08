@@ -5,6 +5,9 @@
 
 [node name="Torch" type="Spatial"]
 script = ExtResource( 1 )
+_base_rotation_degrees = 45.0
+_base_rotation_time = 4.0
+_max_random_factor = 1.2
 
 [node name="Light" type="SpotLight" parent="."]
 transform = Transform( -1, 1.52574e-09, -8.74095e-08, 0, 0.999848, 0.0174524, 8.74228e-08, 0.0174524, -0.999848, 0, 0.3, -0.001 )
@@ -14,10 +17,6 @@ spot_range = 25.0
 spot_attenuation = 0.1
 spot_angle = 5.0
 
-[node name="ChangeRotationTimer" type="Timer" parent="."]
-one_shot = true
-autostart = true
-
 [node name="SFX" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource( 2 )
 unit_size = 35.0
@@ -25,4 +24,4 @@ autoplay = true
 max_distance = 60.0
 bus = "Environment"
 
-[connection signal="timeout" from="ChangeRotationTimer" to="." method="_change_rotation_direction"]
+[node name="Tween" type="Tween" parent="."]
