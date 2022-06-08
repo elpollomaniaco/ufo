@@ -25,12 +25,12 @@ func _physics_process(delta):
 			_retract()
 
 
-func extend():
-	# Needs to be reactivated because it is deactivated 
+func start_extension():
+	# Trigger needs to be reactivated because it is deactivated 
 	# on touching environment/returning.
-	$Extension/Collider.disabled = false
 	$Extension/DestroyTrigger/Shape.disabled = false
 	$SFX.play()
+	_current_state = State.EXTENDING
 
 
 func _retract():
