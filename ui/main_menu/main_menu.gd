@@ -27,7 +27,7 @@ func _on_exit_pressed():
 
 
 func _show_buttons():
-	yield(get_tree().create_timer(1.0), "timeout")
+	yield(get_tree().create_timer(0.5), "timeout")
 	$Buttons/AnimationPlayer.play("buttons_slide_in")
 	yield($Buttons/AnimationPlayer, "animation_finished")
 	$Buttons/Start.grab_focus()
@@ -50,7 +50,11 @@ func _pre_load_level():
 	if state == ERR_FILE_EOF: 
 		_level_ressource = _loader.get_resource()
 		_loader = null
+		$Loading.hide()
 		_show_buttons()
+	elif state == OK:
+		var progress = 100 * float(_loader.get_stage()) / _loader.get_stage_count()
+		$Loading/Progress.value = progress
 
 
 func _change_level():
