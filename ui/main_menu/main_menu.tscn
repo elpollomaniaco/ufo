@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://ui/fonts/montserrat_regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://ui/main_menu/main_menu.png" type="Texture" id=2]
@@ -42,6 +42,30 @@ tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
 "points": PoolRealArray( 1930, -0.1, 1083.93, 0.1, -1083.93, 840, -0.048, -189.225, 0.048, -189.225 ),
+"times": PoolRealArray( 0.2, 0.5 )
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "buttons_slide_out"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:rect_position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 859, -0.1, 1083.93, 0.1, -1083.93, 1930, -0.0475579, -189.225, 0.0475579, 189.225 ),
+"times": PoolRealArray( 0, 0.3 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("../Exit:rect_position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 840, -0.1, 1083.93, 0.1, -1083.93, 1930, -0.048, -189.225, 0.048, -189.225 ),
 "times": PoolRealArray( 0.2, 0.5 )
 }
 
@@ -101,6 +125,7 @@ texture_focused = ExtResource( 9 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Buttons"]
 root_node = NodePath("../Start")
 anims/buttons_slide_in = SubResource( 3 )
+anims/buttons_slide_out = SubResource( 6 )
 
 [node name="Loading" type="Control" parent="."]
 anchor_top = 0.5
