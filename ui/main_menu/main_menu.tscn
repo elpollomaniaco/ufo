@@ -1,6 +1,5 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=17 format=2]
 
-[ext_resource path="res://ui/fonts/montserrat_regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://ui/main_menu/main_menu.png" type="Texture" id=2]
 [ext_resource path="res://ui/main_menu/main_menu.gd" type="Script" id=3]
 [ext_resource path="res://ui/shared/sky.png" type="Texture" id=4]
@@ -13,13 +12,6 @@
 [ext_resource path="res://ui/main_menu/buttons/button_exit_active.png" type="Texture" id=11]
 [ext_resource path="res://audio/music/menu.mp3str" type="AudioStream" id=12]
 [ext_resource path="res://ui/shared/themes/big_regular_theme.tres" type="Theme" id=13]
-
-[sub_resource type="DynamicFont" id=1]
-size = 24
-font_data = ExtResource( 1 )
-
-[sub_resource type="Theme" id=2]
-default_font = SubResource( 1 )
 
 [sub_resource type="Animation" id=3]
 resource_name = "buttons_slide_in"
@@ -83,7 +75,6 @@ border_color = Color( 1, 1, 1, 1 )
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = SubResource( 2 )
 script = ExtResource( 3 )
 _background_music = ExtResource( 12 )
 

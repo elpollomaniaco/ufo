@@ -1,6 +1,5 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://ui/fonts/montserrat_bold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://ui/game_over/game_over.gd" type="Script" id=2]
 [ext_resource path="res://ui/shared/themes/normal_regular_theme.tres" type="Theme" id=3]
 [ext_resource path="res://ui/main_menu/main_menu.tscn" type="PackedScene" id=4]
@@ -10,10 +9,6 @@
 [ext_resource path="res://ui/game_over/score_background.png" type="Texture" id=8]
 [ext_resource path="res://ui/game_over/score_label/score_label.tscn" type="PackedScene" id=9]
 [ext_resource path="res://audio/music/game_over.mp3str" type="AudioStream" id=10]
-
-[sub_resource type="DynamicFont" id=1]
-size = 96
-font_data = ExtResource( 1 )
 
 [sub_resource type="Animation" id=5]
 resource_name = "flash"
@@ -60,22 +55,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 5 )
 expand = true
-
-[node name="Title" type="Label" parent="."]
-visible = false
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -452.0
-margin_top = 442.0
-margin_right = 1468.0
-margin_bottom = 560.0
-custom_fonts/font = SubResource( 1 )
-text = "Game Over"
-align = 1
-uppercase = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ScoreBackground" type="TextureRect" parent="."]
 anchor_right = 1.0
