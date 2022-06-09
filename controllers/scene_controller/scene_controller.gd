@@ -7,6 +7,8 @@ signal loading_progress_changed
 var _loader: ResourceInteractiveLoader
 var _current_scene: Node
 
+var _resource_cache: Dictionary
+
 
 func _ready():
 	_current_scene = get_node("/root").get_child(get_node("/root").get_child_count() -1) # Set first scene as current.
@@ -18,8 +20,10 @@ func _process(_delta):
 	
 	var state = _loader.poll()
 	
-	if state == ERR_FILE_EOF: 
-		emit_signal("scene_loaded", _loader.get_resource())
+	if state == ERR_FILE_EOF:
+		var scene_resource = _loader.get_resource()
+		_resource_cache[scene_resource.resource_path] = scene_resource # Cache resource for next load.
+		emit_signal("scene_loaded", scene_resource)
 		_loader = null
 	elif state == OK:
 		var progress = 100 * float(_loader.get_stage()) / _loader.get_stage_count()
@@ -27,8 +31,11 @@ func _process(_delta):
 
 
 func load_scene(scene_path: String): 
-	_loader = ResourceLoader.load_interactive(scene_path)
-	set_process(true)
+	if _resource_cache.has(scene_path):
+		emit_signal("scene_loaded", _resource_cache[scene_path])
+	else:
+		_loader = ResourceLoader.load_interactive(scene_path)
+		set_process(true)
 
 
 func change_scene(scene_resource: Resource):
