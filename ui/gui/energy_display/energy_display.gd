@@ -7,7 +7,7 @@ const INDICATOR_ENERGY = 20.0 # Weapon energy usage
 
 export var _tween_time: float
 
-var _shown_value: float = 0.0
+var _shown_value: float = MAX_ENERGY
 
 onready var _indicators: Array = $Indicators.get_children()
 onready var _energy_container: TextureProgress = $Vial
