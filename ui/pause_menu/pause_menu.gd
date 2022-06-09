@@ -1,7 +1,7 @@
 extends Control
 
 
-export var _main_menu_scene: PackedScene
+export var _main_menu_resource: Resource
 
 
 func _ready():
@@ -26,8 +26,8 @@ func _on_resume_pressed():
 
 
 func _on_main_menu_pressed():
-	get_tree().change_scene_to(_main_menu_scene)
 	get_tree().paused = false
+	SceneController.change_scene(_main_menu_resource)
 
 
 func _resume_game():

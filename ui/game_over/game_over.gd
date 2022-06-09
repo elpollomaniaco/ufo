@@ -1,7 +1,7 @@
 extends Control
 
 
-export var _main_menu_scene: PackedScene
+export var _main_menu_resource: Resource
 export var _background_music: AudioStream
 
 var _input_is_deactivated: bool = true
@@ -10,8 +10,8 @@ var _input_is_deactivated: bool = true
 func _process(_delta):
 	if not _input_is_deactivated:
 		if Input.is_action_just_pressed("player_tractor_beam"):
-			get_tree().change_scene_to(_main_menu_scene)
 			get_tree().paused = false
+			SceneController.change_scene(_main_menu_resource)
 
 
 func show_score(successful: bool, total_score: int, collectible_score: int, time_score: int, health_score: int):
