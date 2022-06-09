@@ -17,6 +17,7 @@ config/icon="res://icon.png"
 [autoload]
 
 AudioController="*res://controllers/audio_controller/audio_controller.tscn"
+SceneController="*res://controllers/scene_controller/scene_controller.tscn"
 
 [display]
 

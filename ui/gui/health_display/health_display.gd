@@ -6,7 +6,7 @@ const MAX_HEALTH: int = 100
 
 export var _tween_time: float
 
-var _shown_value: float = 0.0
+var _shown_value: float = MAX_HEALTH
 
 onready var _progress: TextureProgress = $Vial
 onready var _tween: Tween = $Tween

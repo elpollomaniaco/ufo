@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://ui/fonts/montserrat_regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://ui/main_menu/main_menu.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://ui/shared/menu_button.tscn" type="PackedScene" id=10]
 [ext_resource path="res://ui/main_menu/buttons/button_exit_active.png" type="Texture" id=11]
 [ext_resource path="res://audio/music/menu.mp3str" type="AudioStream" id=12]
+[ext_resource path="res://ui/shared/themes/big_regular_theme.tres" type="Theme" id=13]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
@@ -43,6 +44,41 @@ tracks/1/keys = {
 "points": PoolRealArray( 1930, -0.1, 1083.93, 0.1, -1083.93, 840, -0.048, -189.225, 0.048, -189.225 ),
 "times": PoolRealArray( 0.2, 0.5 )
 }
+
+[sub_resource type="Animation" id=6]
+resource_name = "buttons_slide_out"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:rect_position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 859, -0.1, 1083.93, 0.1, -1083.93, 1930, -0.0475579, -189.225, 0.0475579, 189.225 ),
+"times": PoolRealArray( 0, 0.3 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("../Exit:rect_position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 840, -0.1, 1083.93, 0.1, -1083.93, 1930, -0.048, -189.225, 0.048, -189.225 ),
+"times": PoolRealArray( 0.2, 0.5 )
+}
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 1, 1, 1, 1 )
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -89,6 +125,42 @@ texture_focused = ExtResource( 9 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Buttons"]
 root_node = NodePath("../Start")
 anims/buttons_slide_in = SubResource( 3 )
+anims/buttons_slide_out = SubResource( 6 )
+
+[node name="Loading" type="Control" parent="."]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = 420.0
+margin_bottom = 420.0
+
+[node name="Progress" type="ProgressBar" parent="Loading"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -250.0
+margin_top = 30.0
+margin_right = 250.0
+margin_bottom = 50.0
+rect_pivot_offset = Vector2( 250, 10 )
+custom_styles/fg = SubResource( 4 )
+custom_styles/bg = SubResource( 5 )
+step = 0.1
+percent_visible = false
+
+[node name="Label" type="Label" parent="Loading"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -107.5
+margin_top = -33.5
+margin_right = 107.5
+margin_bottom = 33.5
+theme = ExtResource( 13 )
+text = "LOADING"
+align = 1
 
 [connection signal="pressed" from="Buttons/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Buttons/Exit" to="." method="_on_exit_pressed"]
