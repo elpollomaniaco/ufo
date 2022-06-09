@@ -6,16 +6,14 @@ const LEVEL_PATH: String = "res://level/level.tscn"
 export var _background_music: AudioStream
 
 var _loader: ResourceInteractiveLoader
-var _level_ressource: Resource
+var _level_resource: Resource
 
 
 func _ready():
 	_set_background_music()
-	_init_preload()
-
-
-func _process(_delta):
-	_pre_load_level()
+	SceneController.connect("loading_progress_changed", self, "_on_loading_progress_changed")
+	SceneController.connect("scene_loaded", self, "_on_scene_loaded")
+	SceneController.load_scene(LEVEL_PATH)
 
 
 func _on_start_pressed():
@@ -37,27 +35,15 @@ func _set_background_music():
 	AudioController.change_background_music(_background_music)
 
 
-func _init_preload():
-	_loader = ResourceLoader.load_interactive(LEVEL_PATH)
-
-
-func _pre_load_level():
-	if _loader == null: # Done loading.
-		return
-	
-	var state = _loader.poll()
-	
-	if state == ERR_FILE_EOF: 
-		_level_ressource = _loader.get_resource()
-		_loader = null
-		$Loading.hide()
-		_show_buttons()
-	elif state == OK:
-		var progress = 100 * float(_loader.get_stage()) / _loader.get_stage_count()
-		$Loading/Progress.value = progress
-
-
 func _change_level():
-	var level_scene = _level_ressource.instance()
-	get_node("/root").add_child(level_scene)
-	queue_free()
+	SceneController.change_scene(_level_resource)
+
+
+func _on_loading_progress_changed(progress: float):
+	$Loading/Progress.value = progress
+
+
+func _on_scene_loaded(level_resource: Resource):
+	_level_resource = level_resource
+	$Loading.hide()
+	_show_buttons()
