@@ -11,7 +11,9 @@ var _level_resource: Resource
 
 func _ready():
 	_set_background_music()
+	# warning-ignore:return_value_discarded
 	SceneController.connect("loading_progress_changed", self, "_on_loading_progress_changed")
+	# warning-ignore:return_value_discarded
 	SceneController.connect("scene_loaded", self, "_on_scene_loaded")
 	SceneController.load_scene(LEVEL_PATH)
 
