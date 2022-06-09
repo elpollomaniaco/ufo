@@ -1,0 +1,37 @@
+extends Node
+
+
+signal scene_loaded
+signal loading_progress_changed
+
+var _loader: ResourceInteractiveLoader
+var _current_scene: Node
+
+
+func _ready():
+	_current_scene = get_node("/root").get_child(get_node("/root").get_child_count() -1) # Set first scene as current.
+
+func _process(_delta):
+	if _loader == null: # Done loading.
+		set_process(false) # Save some resources.
+		return
+	
+	var state = _loader.poll()
+	
+	if state == ERR_FILE_EOF: 
+		emit_signal("scene_loaded", _loader.get_resource())
+		_loader = null
+	elif state == OK:
+		var progress = 100 * float(_loader.get_stage()) / _loader.get_stage_count()
+		emit_signal("loading_progress_changed", progress)
+
+
+func load_scene(scene_path: String): 
+	_loader = ResourceLoader.load_interactive(scene_path)
+	set_process(true)
+
+
+func change_scene(scene_resource: Resource):
+	_current_scene.queue_free()
+	_current_scene = scene_resource.instance()
+	get_node("/root").add_child(_current_scene)
