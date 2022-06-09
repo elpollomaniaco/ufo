@@ -50,3 +50,4 @@ func change_scene(scene_resource: Resource):
 	yield(get_tree(),"idle_frame")
 	animation_player.play("transition_out")
 	yield(animation_player, "animation_finished")
+	animation_player.play("RESET")
