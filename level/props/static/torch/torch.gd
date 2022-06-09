@@ -27,6 +27,7 @@ func _change_rotation_direction():
 	var new_rotation_degrees = _base_rotation_degrees * random_factor
 	var rotation_time = _base_rotation_time / random_factor
 	
+	# warning-ignore:return_value_discarded
 	_tween.interpolate_property(self, "_current_rotation", null, _current_rotation + (new_rotation_degrees * _rotation_direction), rotation_time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	if not _tween.is_active():
 		# warning-ignore:return_value_discarded
