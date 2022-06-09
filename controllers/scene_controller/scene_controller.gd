@@ -1,4 +1,4 @@
-extends Node
+extends Control
 
 
 signal scene_loaded
@@ -39,6 +39,14 @@ func load_scene(scene_path: String):
 
 
 func change_scene(scene_resource: Resource):
+	raise() # Needs to be in foreground.
+	var animation_player = $Transition/AnimationPlayer
+	animation_player.play("transition_in")
+	yield(animation_player, "animation_finished")
 	_current_scene.queue_free()
+	yield(get_tree(), "idle_frame")
 	_current_scene = scene_resource.instance()
 	get_node("/root").add_child(_current_scene)
+	yield(get_tree(),"idle_frame")
+	animation_player.play("transition_out")
+	yield(animation_player, "animation_finished")
