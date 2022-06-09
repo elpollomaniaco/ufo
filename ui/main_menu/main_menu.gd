@@ -1,24 +1,32 @@
 extends Control
 
 
+const LEVEL_PATH: String = "res://level/level.tscn"
+
 export var _background_music: AudioStream
+
+var _loader: ResourceInteractiveLoader
+var _level_ressource: Resource
 
 
 func _ready():
-	_init_buttons()
 	_set_background_music()
+	_init_preload()
+
+
+func _process(_delta):
+	_pre_load_level()
 
 
 func _on_start_pressed():
-	# Not via PackedScene because of cyclic dependencies.
-	get_tree().change_scene("res://level/level.tscn")
+	_change_level()
 
 
 func _on_exit_pressed():
 	get_tree().quit()
 
 
-func _init_buttons():
+func _show_buttons():
 	yield(get_tree().create_timer(1.0), "timeout")
 	$Buttons/AnimationPlayer.play("buttons_slide_in")
 	yield($Buttons/AnimationPlayer, "animation_finished")
@@ -27,3 +35,25 @@ func _init_buttons():
 
 func _set_background_music():
 	AudioController.change_background_music(_background_music)
+
+
+func _init_preload():
+	_loader = ResourceLoader.load_interactive(LEVEL_PATH)
+
+
+func _pre_load_level():
+	if _loader == null: # Done loading.
+		return
+	
+	var state = _loader.poll()
+	
+	if state == ERR_FILE_EOF: 
+		_level_ressource = _loader.get_resource()
+		_loader = null
+		_show_buttons()
+
+
+func _change_level():
+	var level_scene = _level_ressource.instance()
+	get_node("/root").add_child(level_scene)
+	queue_free()
