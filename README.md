@@ -1,6 +1,6 @@
 <div align="center">
     <img
-        alt="default Godot icon"
+        alt="Game icon showing an UFO with cat ears pulling up a cow with its tractor beam."
         src="./icon.png"
     />
     <h1>
