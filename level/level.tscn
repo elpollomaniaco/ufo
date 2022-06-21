@@ -1819,7 +1819,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -47.2119, 3, 26.9035 )
 [node name="Enemies" type="Spatial" parent="."]
 
 [node name="SpawnTimer" type="Timer" parent="Enemies"]
-wait_time = 5.0
+wait_time = 10.0
 autostart = true
 
 [node name="SpawnPoints" type="Spatial" parent="Enemies"]
@@ -1839,7 +1839,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29.2428, 0, -35.0329 )
 [node name="Player" parent="." instance=ExtResource( 1 )]
 
 [node name="GUI" parent="." instance=ExtResource( 4 )]
-theme = null
 
 [node name="PauseMenu" parent="." instance=ExtResource( 7 )]
 
